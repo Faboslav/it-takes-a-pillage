@@ -1,0 +1,56 @@
+{
+	"schemaVersion": 1,
+	"id": "${modId}",
+	"version": "${modVersion}",
+	"name": "${modName}",
+	"description": "${modDescription}",
+	"authors": [
+		"${modAuthor}"
+	],
+	"contact": {
+		"homepage": "https://github.com/Faboslav/it-takes-a-pillage",
+		"sources": "https://github.com/Faboslav/it-takes-a-pillage",
+		"issues": "https://github.com/Faboslav/it-takes-a-pillage/issues",
+		"discord": "https://discord.com/invite/QGwFvvMQCn"
+	},
+	"license": "MIT",
+	"icon": "icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.izofar.takesapillage.fabric.ItTakesPillageFabric"
+		],
+		"client": [
+			"com.izofar.takesapillage.fabric.ItTakesPillageFabricClient"
+		],
+		"modmenu": [
+			"com.izofar.takesapillage.modcompat.fabric.ModMenuCompat"
+		]
+	},
+	"mixins": [
+		"${modId}-common.mixins.json",
+		"${modId}-fabric.mixins.json"
+	],
+	"depends": {
+		"minecraft": ">=${minMinecraftVersion}-",
+		"fabricloader": "*",
+		"fabric": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"Discord": "https://discord.com/invite/QGwFvvMQCn",
+				"CurseForge": "https://www.curseforge.com/minecraft/mc-mods/it-takes-a-pillage-continuation",
+				"Modrinth": "https://modrinth.com/mod/it-takes-a-pillage-continuation"
+			}
+		},
+		"catalogue": {
+			"configFactory": "com.faboslav.structurify.fabric.CatalogueCompat",
+			"icon": {
+				"image": "catalogue_icon.png"
+			},
+			"banner": "catalogue_logo.png",
+			"background": "catalogue_background.png"
+		}
+	}
+}
