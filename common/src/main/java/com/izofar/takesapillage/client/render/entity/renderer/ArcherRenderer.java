@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 @Environment(EnvType.CLIENT)
 public final class ArcherRenderer extends IllagerRenderer<Archer>
 {
-	private static final ResourceLocation ARCHER = new ResourceLocation(ItTakesPillage.MOD_ID, "textures/entity/archer.png");
+	private static final ResourceLocation ARCHER = ItTakesPillage.makeId("textures/entity/archer.png");
 
 	public ArcherRenderer(EntityRendererProvider.Context context) {
 		super(context, new IllagerModel<>(context.bakeLayer(ModelLayers.EVOKER)), 0.5F);

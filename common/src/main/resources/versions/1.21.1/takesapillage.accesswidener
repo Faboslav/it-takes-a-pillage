@@ -4,7 +4,6 @@ accessible class net/minecraft/world/entity/raid/Raid$RaiderType
 accessible field net/minecraft/world/entity/animal/IronGolem attackAnimationTick I
 accessible field net/minecraft/world/entity/ai/sensing/VillagerHostilesSensor ACCEPTABLE_DISTANCE_FROM_HOSTILES Lcom/google/common/collect/ImmutableMap;
 mutable field net/minecraft/world/entity/ai/sensing/VillagerHostilesSensor ACCEPTABLE_DISTANCE_FROM_HOSTILES Lcom/google/common/collect/ImmutableMap;
-accessible method net/minecraft/world/item/RecordItem <init> (ILnet/minecraft/sounds/SoundEvent;Lnet/minecraft/world/item/Item$Properties;I)V
 accessible method net/minecraft/world/entity/LivingEntity onEffectRemoved (Lnet/minecraft/world/effect/MobEffectInstance;)V
 accessible method net/minecraft/world/damagesource/DamageSources source (Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/damagesource/DamageSource;
 accessible method net/minecraft/world/damagesource/DamageSources source (Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/damagesource/DamageSource;

@@ -51,6 +51,14 @@ public final class ItTakesPillageForge
 				);
 			}
 
+			if (ItTakesPillage.getConfig().enableSkirmisherInRaids) {
+				Raid.RaiderType.create(
+					CustomRaidMember.SKIRMISHER_INTERNAL_NAME,
+					ItTakesPillageEntityTypes.SKIRMISHER.get(),
+					CustomRaidMember.SKIRMISHER_COUNT_IN_WAVES
+				);
+			}
+
 			if (ItTakesPillage.getConfig().enableLegionerInRaids) {
 				Raid.RaiderType.create(
 					CustomRaidMember.LEGIONER_INTERNAL_NAME,

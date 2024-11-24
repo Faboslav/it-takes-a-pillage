@@ -1,8 +1,15 @@
 package com.izofar.takesapillage.entity;
 
+/*? >=1.21 {*/
+import net.minecraft.server.level.ServerLevel;
+import com.izofar.takesapillage.ItTakesPillage;
+/*?} else {*/
+/*import java.util.UUID;
+import net.minecraft.nbt.CompoundTag;
+*//*?}*/
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import com.izofar.takesapillage.entity.ai.ShieldGoal;
 import com.izofar.takesapillage.init.ItTakesPillageSoundEvents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -14,7 +21,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -37,16 +43,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.UUID;
-
 public final class Legioner extends AbstractIllager implements ShieldedMob
 {
 	private static final EntityDataAccessor<Boolean> DATA_IS_SHIELDED = SynchedEntityData.defineId(Legioner.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> DATA_SHIELD_HAND = SynchedEntityData.defineId(Legioner.class, EntityDataSerializers.BOOLEAN); // True for Main Hand, False for Offhand
 	private static final EntityDataAccessor<Integer> DATA_SHIELD_COOLDOWN = SynchedEntityData.defineId(Legioner.class, EntityDataSerializers.INT);
 
-	private static final UUID SPEED_MODIFIER_ATTACKING_UUID = UUID.fromString("3520BCE0-D755-458F-944B-A528DB8EF9DC");
+	/*? >=1.21 {*/
+	private static final AttributeModifier SPEED_MODIFIER_BLOCKING = new AttributeModifier(ItTakesPillage.makeId("speed_modifier_attacking"), -0.10D, AttributeModifier.Operation.ADD_VALUE);
+	/*?} else {*/
+	/*private static final UUID SPEED_MODIFIER_ATTACKING_UUID = UUID.fromString("3520BCE0-D755-458F-944B-A528DB8EF9DC");
 	private static final AttributeModifier SPEED_MODIFIER_BLOCKING = new AttributeModifier(SPEED_MODIFIER_ATTACKING_UUID, "Shielded speed penalty", -0.10D, AttributeModifier.Operation.ADDITION);
+	*//*?}*/
 
 	public Legioner(EntityType<? extends AbstractIllager> entitytype, Level world) {
 		super(entitytype, world);
@@ -77,13 +85,23 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, Mob.class, 8.0F));
 	}
 
+	/*? >=1.21 {*/
 	@Override
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_IS_SHIELDED, false);
+		builder.define(DATA_SHIELD_HAND, false);
+		builder.define(DATA_SHIELD_COOLDOWN, 0);
+	}
+	/*?} else {*/
+	/*@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(DATA_IS_SHIELDED, false);
 		this.entityData.define(DATA_SHIELD_HAND, false);
 		this.entityData.define(DATA_SHIELD_COOLDOWN, 0);
 	}
+	*//*?}*/
 
 	@Override
 	public void tick() {
@@ -93,8 +111,26 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		}
 	}
 
-	@Nullable
+	/*? >=1.21 {*/
 	@Override
+	@Nullable
+	public SpawnGroupData finalizeSpawn(
+		ServerLevelAccessor levelaccessor,
+		DifficultyInstance difficulty,
+		MobSpawnType spawntype,
+		@Nullable SpawnGroupData data
+	) {
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(levelaccessor, difficulty, spawntype, data);
+		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
+		RandomSource randomSource = levelaccessor.getRandom();
+		this.populateDefaultEquipmentSlots(randomSource, difficulty);
+		this.populateDefaultEquipmentEnchantments(levelaccessor, randomSource, difficulty);
+
+		return spawngroupdata;
+	}
+	/*?} else {*/
+	/*@Override
+	@Nullable
 	public SpawnGroupData finalizeSpawn(
 		ServerLevelAccessor levelaccessor,
 		DifficultyInstance difficulty,
@@ -109,6 +145,7 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawngroupdata;
 	}
+	*//*?}*/
 
 	@Override
 	protected void populateDefaultEquipmentSlots(RandomSource randomsource, DifficultyInstance difficulty) {
@@ -117,22 +154,19 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 	}
 
 	@Override
-	public boolean isAlliedTo(Entity entity) {
-		if (super.isAlliedTo(entity)) return true;
-		else if (entity instanceof LivingEntity livingEntity && livingEntity.getMobType() == MobType.ILLAGER)
-			return (this.getTeam() == null && entity.getTeam() == null);
-		return false;
-	}
-
-	@Override
 	public AbstractIllager.IllagerArmPose getArmPose() {
 		if (this.isAggressive()) return AbstractIllager.IllagerArmPose.ATTACKING;
 		return this.isCelebrating() ? AbstractIllager.IllagerArmPose.CELEBRATING:null;
 	}
 
-	@Override
+	/*? if <=1.20.1 {*/
+	/*@Override
 	public void applyRaidBuffs(int round, boolean b) {
 	}
+	*//*?} else {*/
+	public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
+	}
+	/*?}*/
 
 	@Override
 	public void knockback(double x, double y, double z) {
@@ -172,7 +206,11 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 				this.setUsingShield(true);
 				this.setShieldMainhand(interactionhand == InteractionHand.MAIN_HAND);
 				AttributeInstance attributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
-				if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
+				/*? >=1.21 {*/
+				if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING.id())) {
+				/*?} else {*/
+				/*if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
+				*//*?}*/
 					attributeinstance.addTransientModifier(SPEED_MODIFIER_BLOCKING);
 				}
 			}

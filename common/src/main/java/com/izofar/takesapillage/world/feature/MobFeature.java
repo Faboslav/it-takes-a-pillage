@@ -2,6 +2,7 @@ package com.izofar.takesapillage.world.feature;
 
 import com.izofar.takesapillage.util.MobWeightedEntry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -33,7 +34,11 @@ public class MobFeature<T extends Mob> extends Feature<NoneFeatureConfiguration>
 		if (entity == null)
 			return false;
 		entity.moveTo(position.getX() + 0.5D, position.getY(), position.getZ() + 0.5D, 0.0F, 0.0F);
-		entity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(position), MobSpawnType.STRUCTURE, null, null);
+		/*? if >=1.21.1 {*/
+		entity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(position), MobSpawnType.STRUCTURE, null);
+		/*?} else {*/
+		/*entity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(position), MobSpawnType.STRUCTURE, null, null);
+		*//*?}*/
 		entity.setPersistenceRequired();
 		context.level().addFreshEntity(entity);
 		return true;

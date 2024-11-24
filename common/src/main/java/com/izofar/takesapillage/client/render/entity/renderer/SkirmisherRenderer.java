@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 @Environment(EnvType.CLIENT)
 public final class SkirmisherRenderer extends MobRenderer<Skirmisher, SkirmisherModel>
 {
-	private static final ResourceLocation SKIRMISHER = new ResourceLocation(ItTakesPillage.MOD_ID, "textures/entity/skirmisher.png");
+	private static final ResourceLocation SKIRMISHER = ItTakesPillage.makeId("textures/entity/skirmisher.png");
 
 	public SkirmisherRenderer(EntityRendererProvider.Context context) {
 		super(context, new SkirmisherModel(SkirmisherModel.createBodyLayer().bakeRoot()), 0.5F);

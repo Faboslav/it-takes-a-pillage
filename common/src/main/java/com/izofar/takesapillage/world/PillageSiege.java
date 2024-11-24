@@ -3,6 +3,7 @@ package com.izofar.takesapillage.world;
 import com.izofar.takesapillage.ItTakesPillage;
 import com.izofar.takesapillage.util.MobLists;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -110,10 +111,18 @@ public final class PillageSiege implements CustomSpawner
 				pillager = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData().create(serverLevel);
 				pillager.setPersistenceRequired();
 				if (serverLevel.random.nextInt(6) < 1) {
-					pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
+					/*? if >=1.21.1 {*/
+					pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
+					/*?} else {*/
+					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
+					 *//*?}*/
 					pillager.setDropChance(EquipmentSlot.HEAD, 2.0F);
 				}
-				pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), MobSpawnType.EVENT, null, null);
+				/*? if >=1.21.1 {*/
+				pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), MobSpawnType.EVENT, null);
+				/*?} else {*/
+				/*pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), MobSpawnType.EVENT, null, null);
+				 *//*?}*/
 			} catch (Exception exception) {
 				ItTakesPillage.getLogger().warn("Failed to create pillager for pillage siege at {}", vec3, exception);
 				return;

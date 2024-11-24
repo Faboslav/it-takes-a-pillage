@@ -16,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 @Environment(EnvType.CLIENT)
 public final class ClayGolemRenderer extends MobRenderer<ClayGolem, ClayGolemModel>
 {
-	private static final ResourceLocation GOLEM_LOCATION = new ResourceLocation(ItTakesPillage.MOD_ID, "textures/entity/clay_golem/clay_golem.png");
+	private static final ResourceLocation GOLEM_LOCATION = ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem.png");
 
 	public ClayGolemRenderer(EntityRendererProvider.Context context) {
 		super(context, new ClayGolemModel(ClayGolemModel.createBodyLayer().bakeRoot()), 0.7F);
@@ -28,8 +28,13 @@ public final class ClayGolemRenderer extends MobRenderer<ClayGolem, ClayGolemMod
 		return GOLEM_LOCATION;
 	}
 
-	protected void setupRotations(ClayGolem entity, PoseStack stack, float pitch, float yaw, float roll) {
+	/*? >=1.21 {*/
+	protected void setupRotations(ClayGolem entity, PoseStack stack, float pitch, float yaw, float roll, float i) {
+		super.setupRotations(entity, stack, pitch, yaw, roll, i);
+	/*?} else {*/
+	/*protected void setupRotations(ClayGolem entity, PoseStack stack, float pitch, float yaw, float roll) {
 		super.setupRotations(entity, stack, pitch, yaw, roll);
+	 *//*?}*/
 		if (entity.walkAnimation.speed() >= 0.01D) {
 			float f1 = entity.walkAnimation.position(roll) + 6.0F;
 			float f2 = (Math.abs(f1 % 13.0F - 6.5F) - 3.25F) / 3.25F;

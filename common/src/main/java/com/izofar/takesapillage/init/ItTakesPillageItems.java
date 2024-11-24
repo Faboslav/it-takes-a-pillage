@@ -10,8 +10,14 @@ import com.izofar.takesapillage.item.RavagerHornItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
+/*? >=1.21 {*/
+/*?} else {*/
+/*import net.minecraft.world.item.RecordItem;
+*//*?}*/
 
+/**
+ * @see net.minecraft.world.item.Items
+ */
 public final class ItTakesPillageItems
 {
 	public static final ResourcefulRegistry<Item> ITEMS = ResourcefulRegistries.create(BuiltInRegistries.ITEM, ItTakesPillage.MOD_ID);
@@ -21,7 +27,12 @@ public final class ItTakesPillageItems
 	public static final RegistryEntry<Item> LEGIONER_SPAWN_EGG = ITEMS.register("legioner_spawn_egg", () -> new DispenserAddedSpawnEgg(ItTakesPillageEntityTypes.LEGIONER, 0x2b1a33, 0x916751, new Item.Properties()));
 
 	public static final RegistryEntry<Item> RAVAGER_HORN = ITEMS.register("ravager_horn", () -> new RavagerHornItem(new Item.Properties().stacksTo(1).durability(1), ItTagesPillageTags.RAVAGER_HORNS));
-	public static final RegistryEntry<Item> BASTILLE_BLUES_MUSIC_DISC = ITEMS.register("bastille_blues_music_disc", () -> new RecordItem(4, ItTakesPillageSoundEvents.BASTILLE_BLUES.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 3968));
+	/*? >=1.21 {*/
+	public static final RegistryEntry<Item> BASTILLE_BLUES_MUSIC_DISC = ITEMS.register("music_disc_bastille_blues", () -> new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ItTakesPillageJukeboxSongs.BASTILLE_BLUES)));
+	/*?} else {*/
+	/*public static final RegistryEntry<Item> BASTILLE_BLUES_MUSIC_DISC = ITEMS.register("music_disc_bastille_blues", () -> new RecordItem(4, ItTakesPillageSoundEvents.BASTILLE_BLUES.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 3968));
+	*//*?}*/
+
 
 	public static void registerItemProperties(RegisterItemPropertiesEvent event) {
 		event.register(

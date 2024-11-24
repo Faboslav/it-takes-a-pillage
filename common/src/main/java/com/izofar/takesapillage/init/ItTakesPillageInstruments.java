@@ -8,6 +8,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Instrument;
 
+/**
+ * @see net.minecraft.world.item.Instruments
+ */
 public final class ItTakesPillageInstruments
 {
 	public static final ResourcefulRegistry<Instrument> INSTRUMENTS = ResourcefulRegistries.create(BuiltInRegistries.INSTRUMENT, ItTakesPillage.MOD_ID);

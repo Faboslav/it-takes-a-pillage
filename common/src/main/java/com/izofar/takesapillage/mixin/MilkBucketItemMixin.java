@@ -2,6 +2,7 @@ package com.izofar.takesapillage.mixin;
 
 import com.izofar.takesapillage.ItTakesPillage;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffect;
@@ -19,7 +20,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Iterator;
-import java.util.Map;
 
 @Mixin(MilkBucketItem.class)
 public class MilkBucketItemMixin
@@ -46,15 +46,15 @@ public class MilkBucketItemMixin
 			}
 
 			if (!level.isClientSide) {
-				Map<MobEffect, MobEffectInstance> map = entity.getActiveEffectsMap();
+				var activeEffects = entity.getActiveEffects();
 
-				for (Iterator<MobEffect> iterator = map.keySet().iterator(); iterator.hasNext(); ) {
-					MobEffect effect = iterator.next();
-					MobEffectInstance instance = map.get(effect);
-
-					if (instance.getEffect() != MobEffects.BAD_OMEN) {
-						iterator.remove();
-						entity.onEffectRemoved(instance);
+				for (var activeEffect : activeEffects) {
+					/*? >=1.21 {*/
+					if (activeEffect.getEffect().value() != MobEffects.BAD_OMEN) {
+					/*?} else {*/
+					/*if (activeEffect.getEffect() != MobEffects.BAD_OMEN) {
+					*//*?}*/
+						entity.onEffectRemoved(activeEffect);
 					}
 				}
 			}

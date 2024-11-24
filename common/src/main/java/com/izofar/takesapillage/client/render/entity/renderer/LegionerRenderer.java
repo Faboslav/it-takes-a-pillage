@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 @Environment(EnvType.CLIENT)
 public final class LegionerRenderer extends IllagerRenderer<Legioner>
 {
-	private static final ResourceLocation LEGIONER = new ResourceLocation(ItTakesPillage.MOD_ID, "textures/entity/legioner.png");
+	private static final ResourceLocation LEGIONER = ItTakesPillage.makeId( "textures/entity/legioner.png");
 
 	public LegionerRenderer(EntityRendererProvider.Context context) {
 		super(context, new LegionerModel(context.bakeLayer(ModelLayers.PILLAGER)), 0.5F);

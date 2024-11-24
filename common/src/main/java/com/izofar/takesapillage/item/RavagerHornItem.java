@@ -1,13 +1,14 @@
 package com.izofar.takesapillage.item;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Instrument;
 import net.minecraft.world.item.InstrumentItem;
@@ -16,25 +17,36 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 
+/*? if >=1.21.1 {*/
+import net.minecraft.world.entity.LivingEntity;
+/*?}*/
+
 public class RavagerHornItem extends InstrumentItem
 {
-
 	public RavagerHornItem(Item.Properties properties, TagKey<Instrument> instruments) {
 		super(properties, instruments);
 	}
 
 	@Override
-	public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int remainingTicks) {
-		super.finishUsingItem(stack, level, livingEntity);
-		stack.hurtAndBreak(1, livingEntity, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
-	}
-
-	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+		ItemStack itemStack = player.getItemInHand(hand);
+
+		if (!world.isClientSide()) {
+			/*? if >=1.21.1 {*/
+			itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+			/*?} else {*/
+			/*itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
+			*//*?}*/
+
+			return InteractionResultHolder.consume(player.getItemInHand(hand));
+		}
+
 		InteractionResultHolder<ItemStack> result = super.use(world, player, hand);
+
 		if (world instanceof ServerLevel level) {
 			incrementBadOmen(level, player);
 		}
+
 		return result;
 	}
 

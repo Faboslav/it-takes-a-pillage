@@ -26,7 +26,7 @@ architectury {
 loom {
 	silentMojangMappingsLicense()
 
-	accessWidenerPath = getRootProject().file("common/src/main/resources/${mod_id}.accesswidener")
+	accessWidenerPath = getRootProject().file("common/src/main/resources/versions/${minecraftVersion}/${mod_id}.accesswidener")
 
 	runConfigs.all {
 		ideConfigGenerated true

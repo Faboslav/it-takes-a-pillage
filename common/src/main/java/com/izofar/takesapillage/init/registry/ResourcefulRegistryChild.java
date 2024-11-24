@@ -3,9 +3,16 @@ package com.izofar.takesapillage.init.registry;
 import java.util.Collection;
 import java.util.function.Supplier;
 
+/**
+ * Event/registry related is code based on The Bumblezone/Resourceful Lib mods with permissions from the authors
+ *
+ * @author TelepathicGrunt
+ * <a href="https://github.com/TelepathicGrunt/Bumblezone">https://github.com/TelepathicGrunt/Bumblezone</a>
+ * @author ThatGravyBoat
+ * <a href="https://github.com/Team-Resourceful/ResourcefulLib">https://github.com/Team-Resourceful/ResourcefulLib</a>
+ */
 public class ResourcefulRegistryChild<T> implements ResourcefulRegistry<T>
 {
-
 	private final ResourcefulRegistry<T> parent;
 	private final RegistryEntries<T> entries = new RegistryEntries<>();
 
@@ -16,6 +23,11 @@ public class ResourcefulRegistryChild<T> implements ResourcefulRegistry<T>
 	@Override
 	public <I extends T> RegistryEntry<I> register(String id, Supplier<I> supplier) {
 		return this.entries.add(parent.register(id, supplier));
+	}
+
+	@Override
+	public HolderRegistryEntry<T> registerHolder(String id, Supplier<T> supplier) {
+		return this.entries.add(parent.registerHolder(id, supplier));
 	}
 
 	@Override

@@ -13,8 +13,15 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.monster.AbstractIllager;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.Nullable;
 
 @Environment(EnvType.CLIENT)
 public class SkirmisherModel extends HierarchicalModel<Skirmisher> implements ArmedModel, HeadedModel
@@ -147,7 +154,24 @@ public class SkirmisherModel extends HierarchicalModel<Skirmisher> implements Ar
 		getArm(arm).translateAndRotate(stack);
 	}
 
+	/*? >=1.21 {*/
 	@Override
+	public void renderToBuffer(
+		PoseStack poseStack,
+		VertexConsumer buffer,
+		int packedLight,
+		int packedOverlay,
+		int k
+	) {
+		this.head.render(poseStack, buffer, packedLight, packedOverlay);
+		this.body.render(poseStack, buffer, packedLight, packedOverlay);
+		this.left_arm.render(poseStack, buffer, packedLight, packedOverlay);
+		this.right_arm.render(poseStack, buffer, packedLight, packedOverlay);
+		this.left_leg.render(poseStack, buffer, packedLight, packedOverlay);
+		this.right_leg.render(poseStack, buffer, packedLight, packedOverlay);
+	}
+	/*?} else {*/
+	/*@Override
 	public void renderToBuffer(
 		PoseStack poseStack,
 		VertexConsumer buffer,
@@ -165,4 +189,6 @@ public class SkirmisherModel extends HierarchicalModel<Skirmisher> implements Ar
 		this.left_leg.render(poseStack, buffer, packedLight, packedOverlay);
 		this.right_leg.render(poseStack, buffer, packedLight, packedOverlay);
 	}
+	*//*?}*/
+
 }

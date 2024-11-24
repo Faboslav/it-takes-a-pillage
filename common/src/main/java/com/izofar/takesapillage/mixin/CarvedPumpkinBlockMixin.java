@@ -25,7 +25,7 @@ public abstract class CarvedPumpkinBlockMixin
 		BlockPos blockPos,
 		CallbackInfoReturnable<Boolean> cir
 	) {
-		if ( ClayGolem.getOrCreateClayGolemFull().find(levelReader, blockPos) != null) {
+		if (ClayGolem.getOrCreateClayGolemFull().find(levelReader, blockPos) != null) {
 			cir.setReturnValue(true);
 		}
 	}

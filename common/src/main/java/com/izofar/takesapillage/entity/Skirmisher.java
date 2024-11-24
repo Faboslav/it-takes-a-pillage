@@ -17,9 +17,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.util.GoalUtils;
 import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.monster.AbstractIllager;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Ravager;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.raid.Raider;
@@ -40,9 +38,14 @@ public final class Skirmisher extends AbstractIllager
 		super(entityType, world);
 	}
 
-	@Override
+	/*? if <=1.20.1 {*/
+	/*@Override
 	public void applyRaidBuffs(int round, boolean b) {
 	}
+	*//*?} else {*/
+	public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
+	}
+	/*?}*/
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return Monster.createMonsterAttributes()
@@ -59,7 +62,7 @@ public final class Skirmisher extends AbstractIllager
 		this.goalSelector.addGoal(1, new SkirmisherBreakDoorGoal(this));
 		this.goalSelector.addGoal(2, new AbstractIllager.RaiderOpenDoorGoal(this));
 		this.goalSelector.addGoal(3, new Raider.HoldGroundAttackGoal(this, 10.0F));
-		this.goalSelector.addGoal(4, new SkirmisherMeleeAttackGoal(this));
+		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.1D, false));
 		this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, Raider.class)).setAlertOthers());
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
@@ -86,22 +89,32 @@ public final class Skirmisher extends AbstractIllager
 	}
 
 	@Override
-	public boolean isAlliedTo(Entity entity) {
-		if (super.isAlliedTo(entity)) return true;
-		if (entity instanceof LivingEntity livingEntity && livingEntity.getMobType() == MobType.ILLAGER)
-			return (this.getTeam() == null && entity.getTeam() == null);
-		return false;
-	}
-
-	@Override
 	protected void customServerAiStep() {
 		if (!this.isNoAi() && GoalUtils.hasGroundPathNavigation(this))
 			((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(((ServerLevel) this.level()).isRaided(this.blockPosition()));
 		super.customServerAiStep();
 	}
 
-	@Nullable
+	/*? >=1.21 {*/
 	@Override
+	@Nullable
+	public SpawnGroupData finalizeSpawn(
+		ServerLevelAccessor levelaccessor,
+		DifficultyInstance difficulty,
+		MobSpawnType spawntype,
+		@Nullable SpawnGroupData data
+	) {
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(levelaccessor, difficulty, spawntype, data);
+		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
+		RandomSource randomSource = levelaccessor.getRandom();
+		this.populateDefaultEquipmentSlots(randomSource, difficulty);
+		this.populateDefaultEquipmentEnchantments(levelaccessor, randomSource, difficulty);
+
+		return spawngroupdata;
+	}
+	/*?} else {*/
+	/*@Override
+	@Nullable
 	public SpawnGroupData finalizeSpawn(
 		ServerLevelAccessor levelaccessor,
 		DifficultyInstance difficulty,
@@ -116,22 +129,7 @@ public final class Skirmisher extends AbstractIllager
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
 		return spawngroupdata;
 	}
-
-	private static class SkirmisherMeleeAttackGoal extends MeleeAttackGoal
-	{
-		public SkirmisherMeleeAttackGoal(Skirmisher entity) {
-			super(entity, 1.1D, false);
-		}
-
-		@Override
-		protected double getAttackReachSqr(LivingEntity livingentity) {
-			if (this.mob.getVehicle() instanceof Ravager) {
-				float f = this.mob.getVehicle().getBbWidth() - 0.1F;
-				return (f * 2.0F * f * 2.0F + livingentity.getBbWidth());
-			}
-			return super.getAttackReachSqr(livingentity);
-		}
-	}
+	*//*?}*/
 
 	@Override
 	protected SoundEvent getAmbientSound() {

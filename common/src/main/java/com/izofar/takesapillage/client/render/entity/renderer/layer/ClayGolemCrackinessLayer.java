@@ -11,14 +11,29 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.animal.IronGolem;
+/*? >=1.21 {*/
+import net.minecraft.world.entity.Crackiness;
+/*?} else {*/
+/*import net.minecraft.world.entity.animal.IronGolem;
+*//*?}*/
 
 import java.util.Map;
 
 @Environment(EnvType.CLIENT)
 public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolem, ClayGolemModel>
 {
-	private static final Map<IronGolem.Crackiness, ResourceLocation> resourceLocations = ImmutableMap.of(IronGolem.Crackiness.LOW, new ResourceLocation(ItTakesPillage.MOD_ID, "textures/entity/clay_golem/clay_golem_crackiness_low.png"), IronGolem.Crackiness.MEDIUM, new ResourceLocation(ItTakesPillage.MOD_ID, "textures/entity/clay_golem/clay_golem_crackiness_medium.png"), IronGolem.Crackiness.HIGH, new ResourceLocation(ItTakesPillage.MOD_ID, "textures/entity/clay_golem/clay_golem_crackiness_high.png"));
+	/*? >=1.21 {*/
+	private static final Map<Crackiness.Level, ResourceLocation> resourceLocations = ImmutableMap.of(
+		Crackiness.Level.LOW, ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem_crackiness_low.png"),
+		Crackiness.Level.MEDIUM, ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem_crackiness_medium.png"),
+		Crackiness.Level.HIGH, ItTakesPillage.makeId( "textures/entity/clay_golem/clay_golem_crackiness_high.png")
+	);
+	/*?} else {*/
+	/*private static final Map<IronGolem.Crackiness, ResourceLocation> resourceLocations = ImmutableMap.of(
+		IronGolem.Crackiness.LOW, ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem_crackiness_low.png"),
+		IronGolem.Crackiness.MEDIUM, ItTakesPillage.makeId( "textures/entity/clay_golem/clay_golem_crackiness_medium.png"),
+		IronGolem.Crackiness.HIGH, ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem_crackiness_high.png"));
+	*//*?}*/
 
 	public ClayGolemCrackinessLayer(RenderLayerParent<ClayGolem, ClayGolemModel> layer) {
 		super(layer);
@@ -37,11 +52,21 @@ public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolem, ClayG
 		float f5
 	) {
 		if (!entity.isInvisible()) {
-			IronGolem.Crackiness claygolem$crackiness = entity.getCrackiness();
-			if (claygolem$crackiness != IronGolem.Crackiness.NONE) {
-				ResourceLocation resourcelocation = resourceLocations.get(claygolem$crackiness);
+			/*? >=1.21 {*/
+			Crackiness.Level crackiness = entity.getCrackiness();
+
+			if (crackiness != Crackiness.Level.NONE) {
+				ResourceLocation resourcelocation = resourceLocations.get(crackiness);
+				renderColoredCutoutModel(this.getParentModel(), resourcelocation, stack, buffersource, i, entity, -1);
+			}
+			/*?} else {*/
+			/*IronGolem.Crackiness crackiness = entity.getCrackiness();
+
+			if (crackiness != IronGolem.Crackiness.NONE) {
+				ResourceLocation resourcelocation = resourceLocations.get(crackiness);
 				renderColoredCutoutModel(this.getParentModel(), resourcelocation, stack, buffersource, i, entity, 1.0F, 1.0F, 1.0F);
 			}
+			*//*?}*/
 		}
 	}
 }

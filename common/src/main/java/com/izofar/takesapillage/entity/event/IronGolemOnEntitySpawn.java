@@ -5,6 +5,7 @@ import com.izofar.takesapillage.entity.ClayGolem;
 import com.izofar.takesapillage.event.entity.EntitySpawnEvent;
 import com.izofar.takesapillage.init.ItTakesPillageEntityTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
@@ -33,15 +34,26 @@ public final class IronGolemOnEntitySpawn
 
 		var level = event.level();
 
+		/*? >=1.21 {*/
 		ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(
 			(ServerLevel) level,
-			null,
 			null,
 			event.entity().blockPosition(),
 			event.spawnType(),
 			false,
 			false
 		);
+		/*?} else {*/
+			/*ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(
+				(ServerLevel) level,
+				null,
+				null,
+				event.entity().blockPosition(),
+				event.spawnType(),
+				false,
+				false
+			);
+		*//*?}*/
 
 		if (clayGolem == null) {
 			return false;

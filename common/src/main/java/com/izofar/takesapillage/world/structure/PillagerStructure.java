@@ -3,6 +3,7 @@ package com.izofar.takesapillage.world.structure;
 import com.izofar.takesapillage.init.ItTakesPillageStructureTypes;
 import com.izofar.takesapillage.util.ModStructureUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -15,13 +16,30 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+
+/*? >=1.21 {*/
+import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
+/*?}*/
 
 import java.util.Optional;
 
-public class PillagerStructure extends Structure
+public final class PillagerStructure extends Structure
 {
-
-	public static final Codec<PillagerStructure> CODEC = RecordCodecBuilder.<PillagerStructure>mapCodec(instance ->
+	/*? >=1.21 {*/
+	public static final MapCodec<PillagerStructure> CODEC = RecordCodecBuilder.mapCodec(instance ->
+		instance.group(PillagerStructure.settingsCodec(instance),
+			StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
+			ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
+			Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
+			Codec.intRange(0, 30).fieldOf("terrain_search_radius").forGetter(structure -> structure.terrainSearchRadius),
+			Codec.intRange(0, 30).fieldOf("max_terrain_range").forGetter(structure -> structure.maxTerrainRange),
+			HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
+			Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
+			Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
+		).apply(instance, PillagerStructure::new));
+	/*?} else {*/
+		/*public static final Codec<PillagerStructure> CODEC = RecordCodecBuilder.<PillagerStructure>mapCodec(instance ->
 		instance.group(PillagerStructure.settingsCodec(instance),
 			StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
 			ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
@@ -32,6 +50,7 @@ public class PillagerStructure extends Structure
 			Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
 			Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
 		).apply(instance, PillagerStructure::new)).codec();
+	*//*?}*/
 
 	private final Holder<StructureTemplatePool> startPool;
 	private final Optional<ResourceLocation> startJigsawName;
@@ -86,6 +105,10 @@ public class PillagerStructure extends Structure
 	public Optional<Structure.GenerationStub> findGenerationPoint(Structure.GenerationContext context) {
 		if (!checkLocation(context, this.terrainSearchRadius, this.maxTerrainRange)) return Optional.empty();
 		BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
-		return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+		/*? >=1.21 {*/
+		return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter, PoolAliasLookup.EMPTY, JigsawStructure.DEFAULT_DIMENSION_PADDING, JigsawStructure.DEFAULT_LIQUID_SETTINGS);
+		/*?} else {*/
+		/*return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+		*//*?}*/
 	}
 }

@@ -32,29 +32,33 @@ public class ItTakesPillage
 	}
 
 	public static ResourceLocation makeId(String path) {
+		return ItTakesPillage.makeId(MOD_ID, path);
+	}
+
+	public static ResourceLocation makeId(String id, String path) {
 		/*? >=1.21 {*/
-		/*return ResourceLocation.tryBuild(
-			MOD_ID,
+		return ResourceLocation.tryBuild(
+			id,
 			path
 		);
-		 *//*?} else {*/
-		return new ResourceLocation(
-			MOD_ID,
+		/*?} else {*/
+		/*return new ResourceLocation(
+			id,
 			path
 		);
-		/*?}*/
+		*//*?}*/
 	}
 
 	public static ResourceLocation makeVanillaId(String id) {
 		/*? >=1.21 {*/
-		/*return ResourceLocation.parse(
+		return ResourceLocation.parse(
 			id
 		);
-		*//*?} else {*/
-		return new ResourceLocation(
+		/*?} else {*/
+		/*return new ResourceLocation(
 			id
 		);
-		/*?}*/
+		*//*?}*/
 	}
 
 	public static void init() {

@@ -7,7 +7,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.IllagerModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.ResourceLocation;
 
 /**
  * @see net.minecraft.client.model.geom.ModelLayers
@@ -15,9 +14,9 @@ import net.minecraft.resources.ResourceLocation;
 @Environment(EnvType.CLIENT)
 public final class ItTakesPillageEntityModelLayers
 {
-	public static final ModelLayerLocation CLAY_GOLEM = new ModelLayerLocation(new ResourceLocation(ItTakesPillage.MOD_ID, "clay_golem"), "main");
-	public static final ModelLayerLocation SKIRMISHER = new ModelLayerLocation(new ResourceLocation(ItTakesPillage.MOD_ID, "skirmisher"), "main");
-	public static final ModelLayerLocation LEGIONER = new ModelLayerLocation(new ResourceLocation(ItTakesPillage.MOD_ID, "legioner"), "main");
+	public static final ModelLayerLocation CLAY_GOLEM = new ModelLayerLocation(ItTakesPillage.makeId( "clay_golem"), "main");
+	public static final ModelLayerLocation SKIRMISHER = new ModelLayerLocation(ItTakesPillage.makeId("skirmisher"), "main");
+	public static final ModelLayerLocation LEGIONER = new ModelLayerLocation(ItTakesPillage.makeId("legioner"), "main");
 
 
 	public static void registerEntityModelLayers(RegisterEntityModelLayersEvent event) {

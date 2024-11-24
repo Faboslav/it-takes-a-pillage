@@ -1,11 +1,11 @@
 package com.izofar.takesapillage.entity;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -26,14 +26,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.item.*;
+
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 public class Archer extends AbstractIllager implements RangedAttackMob
 {
-
 	public Archer(EntityType<? extends AbstractIllager> entitytype, Level world) {
 		super(entitytype, world);
 	}
@@ -66,9 +68,14 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 		return this.isAggressive() ? IllagerArmPose.CROSSBOW_HOLD:IllagerArmPose.NEUTRAL;
 	}
 
-	@Override
+	/*? if <=1.20.1 {*/
+	/*@Override
 	public void applyRaidBuffs(int round, boolean b) {
 	}
+	*//*?} else {*/
+    public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
+    }
+	/*?}*/
 
 	@Override
 	public SoundEvent getCelebrateSound() {
@@ -80,7 +87,7 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 		this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
 	}
 
-
+	@Override
 	public void performRangedAttack(LivingEntity livingEntity, float f) {
 		/*
 		InteractionHand interactionhand = ProjectileUtil.getWeaponHoldingHand(this, (item) -> {
@@ -93,7 +100,7 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 		double e = livingEntity.getY(0.3333333333333333) - abstractArrow.getY();
 		double g = livingEntity.getZ() - this.getZ();
 		double h = Math.sqrt(d * d + g * g);
-		abstractArrow.shoot(d, e + h * 0.20000000298023224, g, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
+		abstractArrow.shoot(d, e + h * 0.20000000298023224, g, 1.6F, (float) (14 - this.level().getDifficulty().getId() * 4));
 		this.playSound(SoundEvents.SKELETON_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
 		this.level().addFreshEntity(abstractArrow);
 	}
@@ -114,7 +121,11 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 	}*/
 
 	protected AbstractArrow getArrow(ItemStack itemstack, float f) {
-		return ProjectileUtil.getMobArrow(this, itemstack, f);
+		/*? if <=1.20.1 {*/
+		/*return ProjectileUtil.getMobArrow(this, itemstack, f);
+		*//*?} else {*/
+		return ProjectileUtil.getMobArrow(this, itemstack, f, null);
+		/*?}*/
 	}
 
 	@Override
@@ -122,8 +133,26 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 		return (item == Items.BOW);
 	}
 
-	@Nullable
+	/*? >=1.21 {*/
 	@Override
+	@Nullable
+	public SpawnGroupData finalizeSpawn(
+		ServerLevelAccessor levelaccessor,
+		DifficultyInstance difficulty,
+		MobSpawnType spawntype,
+		@Nullable SpawnGroupData data
+	) {
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(levelaccessor, difficulty, spawntype, data);
+		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
+		RandomSource randomSource = levelaccessor.getRandom();
+		this.populateDefaultEquipmentSlots(randomSource, difficulty);
+		this.populateDefaultEquipmentEnchantments(levelaccessor, randomSource, difficulty);
+
+		return spawngroupdata;
+	}
+	/*?} else {*/
+	/*@Override
+	@Nullable
 	public SpawnGroupData finalizeSpawn(
 		ServerLevelAccessor levelaccessor,
 		DifficultyInstance difficulty,
@@ -131,25 +160,14 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 		@Nullable SpawnGroupData data,
 		@Nullable CompoundTag tag
 	) {
-		data = super.finalizeSpawn(levelaccessor, difficulty, spawntype, data, tag);
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(levelaccessor, difficulty, spawntype, data, tag);
 		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
 		RandomSource randomsource = levelaccessor.getRandom();
 		this.populateDefaultEquipmentSlots(randomsource, difficulty);
 		this.populateDefaultEquipmentEnchantments(randomsource, difficulty);
-		this.setCanPickUpLoot((this.random.nextFloat() < 0.55F * difficulty.getSpecialMultiplier()));
-		return data;
+		return spawngroupdata;
 	}
-
-	@Override
-	public boolean isAlliedTo(Entity entity) {
-		if (super.isAlliedTo(entity)) {
-			return true;
-		} else if (entity instanceof LivingEntity livingEntity && livingEntity.getMobType() == MobType.ILLAGER) {
-			return this.getTeam() == null && entity.getTeam() == null;
-		} else {
-			return false;
-		}
-	}
+	*//*?}*/
 
 	@Override
 	protected SoundEvent getAmbientSound() {

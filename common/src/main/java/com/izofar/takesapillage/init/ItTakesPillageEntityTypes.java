@@ -34,10 +34,10 @@ public final class ItTakesPillageEntityTypes
 
 	static {
 		SharedConstants.CHECK_DATA_FIXER_SCHEMA = false;
-		CLAY_GOLEM = ENTITY_TYPES.register("clay_golem", () -> EntityType.Builder.of(ClayGolem::new, MobCategory.MISC).sized(1.4F, 2.7F).clientTrackingRange(10).build((new ResourceLocation(ItTakesPillage.MOD_ID, "clay_golem")).toString()));
-		ARCHER = ENTITY_TYPES.register("archer", () -> EntityType.Builder.of(Archer::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F).clientTrackingRange(8).build((new ResourceLocation(ItTakesPillage.MOD_ID, "archer")).toString()));
-		SKIRMISHER = ENTITY_TYPES.register("skirmisher", () -> EntityType.Builder.of(Skirmisher::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F).clientTrackingRange(8).build((new ResourceLocation(ItTakesPillage.MOD_ID, "skirmisher")).toString()));
-		LEGIONER = ENTITY_TYPES.register("legioner", () -> EntityType.Builder.of(Legioner::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F).clientTrackingRange(8).build((new ResourceLocation(ItTakesPillage.MOD_ID, "legioner")).toString()));
+		CLAY_GOLEM = ENTITY_TYPES.register("clay_golem", () -> EntityType.Builder.of(ClayGolem::new, MobCategory.MISC).sized(1.4F, 2.7F).clientTrackingRange(10).build((ItTakesPillage.makeId("clay_golem")).toString()));
+		ARCHER = ENTITY_TYPES.register("archer", () -> EntityType.Builder.of(Archer::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F).clientTrackingRange(8).build((ItTakesPillage.makeId("archer")).toString()));
+		SKIRMISHER = ENTITY_TYPES.register("skirmisher", () -> EntityType.Builder.of(Skirmisher::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F).clientTrackingRange(8).build((ItTakesPillage.makeId("skirmisher")).toString()));
+		LEGIONER = ENTITY_TYPES.register("legioner", () -> EntityType.Builder.of(Legioner::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F).clientTrackingRange(8).build((ItTakesPillage.makeId("legioner")).toString()));
 		SharedConstants.CHECK_DATA_FIXER_SCHEMA = previousCheckDataFixerSchema;
 	}
 }
