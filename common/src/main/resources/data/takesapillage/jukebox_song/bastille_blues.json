@@ -1,7 +1,7 @@
 {
   "comparator_output": 13,
   "description": {
-    "translate": "item.takesapillage.music_disc_bastille_blues"
+    "translate": "jukebox_song.takesapillage.bastille_blues"
   },
   "length_in_seconds": 190.8,
   "sound_event": "takesapillage:bastille_blues"
