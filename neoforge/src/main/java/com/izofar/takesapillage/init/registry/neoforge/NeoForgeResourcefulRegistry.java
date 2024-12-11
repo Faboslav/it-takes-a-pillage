@@ -33,10 +33,12 @@ public class NeoForgeResourcefulRegistry<T> implements ResourcefulRegistry<T>
         return this.entries.add(new NeoForgeRegistryEntry<>(register.register(id, supplier)));
     }
 
+	/*? >=1.21 {*/
 	@Override
 	public HolderRegistryEntry<T> registerHolder(String id, Supplier<T> supplier) {
 		return this.entries.add(new NeoForgeHolderRegistryEntry<>(register.register(id, supplier)));
 	}
+	/*?}*/
 
     @Override
     public Collection<RegistryEntry<T>> getEntries() {

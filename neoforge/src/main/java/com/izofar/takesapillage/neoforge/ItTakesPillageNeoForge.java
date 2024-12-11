@@ -36,7 +36,7 @@ public final class ItTakesPillageNeoForge
 	}
 
 	private static void onSetup(final FMLCommonSetupEvent event) {
-		// SetupEvent.EVENT.invoke(new SetupEvent(event::enqueueWork));
+		SetupEvent.EVENT.invoke(new SetupEvent(event::enqueueWork));
 	}
 
 	private static void onLevelTickPost(LevelTickEvent.Post event) {

@@ -34,6 +34,13 @@ public class FabricResourcefulRegistry<T> implements ResourcefulRegistry<T>
         return entries.add(FabricRegistryEntry.of(this.registry, ItTakesPillage.makeId(this.id, id), supplier));
     }
 
+	/*? >=1.21 {*/
+	@Override
+	public HolderRegistryEntry<T> registerHolder(String id, Supplier<T> supplier) {
+		return entries.add(FabricHolderRegistryEntry.of(this.registry, ItTakesPillage.makeId(this.id, id), supplier));
+	}
+	/*?}*/
+
     @Override
     public Collection<RegistryEntry<T>> getEntries() {
         return this.entries.getEntries();

@@ -35,7 +35,9 @@ public final class ItTakesPillageSoundEvents
 		return SOUND_EVENTS.register(path, () -> SoundEvent.createVariableRangeEvent(ItTakesPillage.makeId(path)));
 	}
 
+	/*? >=1.21 {*/
 	private static HolderRegistryEntry<SoundEvent> registerHolderSoundEvent(String path) {
 		return SOUND_EVENTS.registerHolder(path, () -> SoundEvent.createVariableRangeEvent(ItTakesPillage.makeId(path)));
 	}
+	/*?}*/
 }

@@ -25,10 +25,13 @@ public class ResourcefulRegistryChild<T> implements ResourcefulRegistry<T>
 		return this.entries.add(parent.register(id, supplier));
 	}
 
+	/*? >=1.21 {*/
+	
 	@Override
 	public HolderRegistryEntry<T> registerHolder(String id, Supplier<T> supplier) {
 		return this.entries.add(parent.registerHolder(id, supplier));
 	}
+	/*?}*/
 
 	@Override
 	public Collection<RegistryEntry<T>> getEntries() {
