@@ -43,14 +43,6 @@
 				"CurseForge": "https://www.curseforge.com/minecraft/mc-mods/it-takes-a-pillage-continuation",
 				"Modrinth": "https://modrinth.com/mod/it-takes-a-pillage-continuation"
 			}
-		},
-		"catalogue": {
-			"configFactory": "com.faboslav.structurify.fabric.CatalogueCompat",
-			"icon": {
-				"image": "catalogue_icon.png"
-			},
-			"banner": "catalogue_logo.png",
-			"background": "catalogue_background.png"
 		}
 	}
 }
