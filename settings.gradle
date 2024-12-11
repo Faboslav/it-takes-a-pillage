@@ -18,7 +18,7 @@ rootProject.name = 'it-takes-a-pillage'
 def dists = [
 	common: stonecutter_enabled_common_versions.split(',').collect { it.trim() }.toList(),
 	fabric: stonecutter_enabled_fabric_versions.split(',').collect { it.trim() }.toList(),
-	forge: stonecutter_enabled_forge_versions.split(',').collect { it.trim() }.toList(),
+	// forge: stonecutter_enabled_forge_versions.split(',').collect { it.trim() }.toList(),
 	neoforge: stonecutter_enabled_neoforge_versions.split(',').collect { it.trim() }.toList(),
 ]
 

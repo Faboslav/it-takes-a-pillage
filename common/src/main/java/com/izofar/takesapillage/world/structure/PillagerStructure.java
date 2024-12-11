@@ -16,13 +16,14 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
+
+
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
+import java.util.Optional;
 
 /*? >=1.21 {*/
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 /*?}*/
-
-import java.util.Optional;
 
 public final class PillagerStructure extends Structure
 {
@@ -109,6 +110,6 @@ public final class PillagerStructure extends Structure
 		return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter, PoolAliasLookup.EMPTY, JigsawStructure.DEFAULT_DIMENSION_PADDING, JigsawStructure.DEFAULT_LIQUID_SETTINGS);
 		/*?} else {*/
 		/*return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
-		*//*?}*/
+		 *//*?}*/
 	}
 }

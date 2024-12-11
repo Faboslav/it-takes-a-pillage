@@ -1,8 +1,8 @@
 {
-  "comparator_output": 13,
-  "description": {
-    "translate": "jukebox_song.takesapillage.bastille_blues"
-  },
-  "length_in_seconds": 190.8,
-  "sound_event": "takesapillage:bastille_blues"
+	"comparator_output": 13,
+	"description": {
+		"translate": "jukebox_song.takesapillage.bastille_blues"
+	},
+	"length_in_seconds": 190.8,
+	"sound_event": "takesapillage:bastille_blues"
 }

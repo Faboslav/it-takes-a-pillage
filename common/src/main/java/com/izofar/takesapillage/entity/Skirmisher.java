@@ -26,12 +26,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.EnumSet;
 import java.util.function.Predicate;
 
 /*? if <=1.20.1 {*/
 /*import net.minecraft.nbt.CompoundTag;
-*//*?}*/
+ *//*?}*/
 
 public final class Skirmisher extends AbstractIllager
 {

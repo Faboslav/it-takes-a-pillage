@@ -13,7 +13,7 @@ import net.minecraft.world.item.Rarity;
 /*? >=1.21 {*/
 /*?} else {*/
 /*import net.minecraft.world.item.RecordItem;
-*//*?}*/
+ *//*?}*/
 
 /**
  * @see net.minecraft.world.item.Items
@@ -31,7 +31,7 @@ public final class ItTakesPillageItems
 	public static final RegistryEntry<Item> BASTILLE_BLUES_MUSIC_DISC = ITEMS.register("music_disc_bastille_blues", () -> new Item((new Item.Properties()).stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ItTakesPillageJukeboxSongs.BASTILLE_BLUES)));
 	/*?} else {*/
 	/*public static final RegistryEntry<Item> BASTILLE_BLUES_MUSIC_DISC = ITEMS.register("music_disc_bastille_blues", () -> new RecordItem(4, ItTakesPillageSoundEvents.BASTILLE_BLUES.get(), new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 3968));
-	*//*?}*/
+	 *//*?}*/
 
 
 	public static void registerItemProperties(RegisterItemPropertiesEvent event) {

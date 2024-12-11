@@ -9,10 +9,10 @@ import net.minecraft.world.item.JukeboxSong;
 public class ItTakesPillageJukeboxSongs
 {
 
-    public static ResourceKey<JukeboxSong> BASTILLE_BLUES = create("bastille_blues");
+	public static ResourceKey<JukeboxSong> BASTILLE_BLUES = create("bastille_blues");
 
-    private static ResourceKey<JukeboxSong> create(String id) {
-        return ResourceKey.create(Registries.JUKEBOX_SONG, ItTakesPillage.makeId(id));
-    }
+	private static ResourceKey<JukeboxSong> create(String id) {
+		return ResourceKey.create(Registries.JUKEBOX_SONG, ItTakesPillage.makeId(id));
+	}
 }
 /*?}*/

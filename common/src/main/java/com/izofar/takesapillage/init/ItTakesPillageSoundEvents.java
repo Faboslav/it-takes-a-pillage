@@ -29,7 +29,7 @@ public final class ItTakesPillageSoundEvents
 	public static final HolderRegistryEntry<SoundEvent> BASTILLE_BLUES = registerHolderSoundEvent("bastille_blues");
 	/*?} else {*/
 	/*public static final RegistryEntry<SoundEvent> BASTILLE_BLUES = registerSoundEvent("bastille_blues");
-	*//*?}*/
+	 *//*?}*/
 
 	private static RegistryEntry<SoundEvent> registerSoundEvent(String path) {
 		return SOUND_EVENTS.register(path, () -> SoundEvent.createVariableRangeEvent(ItTakesPillage.makeId(path)));

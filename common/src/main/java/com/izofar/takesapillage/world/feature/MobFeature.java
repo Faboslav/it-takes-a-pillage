@@ -2,7 +2,6 @@ package com.izofar.takesapillage.world.feature;
 
 import com.izofar.takesapillage.util.MobWeightedEntry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -10,7 +9,6 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-
 import java.util.function.Supplier;
 
 public class MobFeature<T extends Mob> extends Feature<NoneFeatureConfiguration>
@@ -38,7 +36,7 @@ public class MobFeature<T extends Mob> extends Feature<NoneFeatureConfiguration>
 		entity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(position), MobSpawnType.STRUCTURE, null);
 		/*?} else {*/
 		/*entity.finalizeSpawn(context.level(), context.level().getCurrentDifficultyAt(position), MobSpawnType.STRUCTURE, null, null);
-		*//*?}*/
+		 *//*?}*/
 		entity.setPersistenceRequired();
 		context.level().addFreshEntity(entity);
 		return true;

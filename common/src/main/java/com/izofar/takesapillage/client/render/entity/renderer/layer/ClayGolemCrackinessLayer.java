@@ -11,13 +11,17 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
+
+
+
+import java.util.Map;
+
 /*? >=1.21 {*/
 import net.minecraft.world.entity.Crackiness;
 /*?} else {*/
 /*import net.minecraft.world.entity.animal.IronGolem;
+ 
 *//*?}*/
-
-import java.util.Map;
 
 @Environment(EnvType.CLIENT)
 public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolem, ClayGolemModel>
@@ -26,7 +30,7 @@ public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolem, ClayG
 	private static final Map<Crackiness.Level, ResourceLocation> resourceLocations = ImmutableMap.of(
 		Crackiness.Level.LOW, ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem_crackiness_low.png"),
 		Crackiness.Level.MEDIUM, ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem_crackiness_medium.png"),
-		Crackiness.Level.HIGH, ItTakesPillage.makeId( "textures/entity/clay_golem/clay_golem_crackiness_high.png")
+		Crackiness.Level.HIGH, ItTakesPillage.makeId("textures/entity/clay_golem/clay_golem_crackiness_high.png")
 	);
 	/*?} else {*/
 	/*private static final Map<IronGolem.Crackiness, ResourceLocation> resourceLocations = ImmutableMap.of(

@@ -31,7 +31,7 @@ public final class ClayGolemRenderer extends MobRenderer<ClayGolem, ClayGolemMod
 	/*? >=1.21 {*/
 	protected void setupRotations(ClayGolem entity, PoseStack stack, float pitch, float yaw, float roll, float i) {
 		super.setupRotations(entity, stack, pitch, yaw, roll, i);
-	/*?} else {*/
+		/*?} else {*/
 	/*protected void setupRotations(ClayGolem entity, PoseStack stack, float pitch, float yaw, float roll) {
 		super.setupRotations(entity, stack, pitch, yaw, roll);
 	 *//*?}*/

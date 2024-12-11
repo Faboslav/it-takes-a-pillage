@@ -11,7 +11,6 @@ import com.izofar.takesapillage.init.registry.ResourcefulRegistries;
 import com.izofar.takesapillage.init.registry.ResourcefulRegistry;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 

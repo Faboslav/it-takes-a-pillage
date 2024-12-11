@@ -1,7 +1,5 @@
 package com.izofar.takesapillage.init.registry;
 
-import com.izofar.takesapillage.ItTakesPillage;
-
 import java.util.Collection;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -19,7 +17,7 @@ public interface ResourcefulRegistry<T>
 	<I extends T> RegistryEntry<I> register(String id, Supplier<I> supplier);
 
 	/*? >=1.21 {*/
-	HolderRegistryEntry<T>  registerHolder(String id, Supplier<T> supplier);
+	HolderRegistryEntry<T> registerHolder(String id, Supplier<T> supplier);
 	/*?}*/
 
 	Collection<RegistryEntry<T>> getEntries();
