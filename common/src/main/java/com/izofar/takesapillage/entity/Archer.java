@@ -25,7 +25,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.raid.Raider;
-
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ProjectileWeaponItem;
@@ -35,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 /*? <=1.21 {*/
 /*import net.minecraft.nbt.CompoundTag;
-*//*?}*/
+ *//*?}*/
 
 public class Archer extends AbstractIllager implements RangedAttackMob
 {
@@ -76,8 +75,8 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 	public void applyRaidBuffs(int round, boolean b) {
 	}
 	*//*?} else {*/
-    public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
-    }
+	public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
+	}
 	/*?}*/
 
 	@Override
@@ -111,7 +110,7 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 	protected AbstractArrow getArrow(ItemStack itemstack, float f) {
 		/*? if <=1.20.1 {*/
 		/*return ProjectileUtil.getMobArrow(this, itemstack, f);
-		*//*?} else {*/
+		 *//*?} else {*/
 		return ProjectileUtil.getMobArrow(this, itemstack, f, null);
 		/*?}*/
 	}

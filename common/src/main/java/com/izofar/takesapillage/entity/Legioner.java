@@ -1,18 +1,12 @@
 package com.izofar.takesapillage.entity;
 
-/*? >=1.21 {*/
-import net.minecraft.server.level.ServerLevel;
-import com.izofar.takesapillage.ItTakesPillage;
-/*?} else {*/
-/*import java.util.UUID;
-import net.minecraft.nbt.CompoundTag;
-*//*?}*/
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import com.izofar.takesapillage.entity.ai.ShieldGoal;
 import com.izofar.takesapillage.init.ItTakesPillageSoundEvents;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+
+
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -21,6 +15,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
@@ -42,6 +37,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
+
+/*? >=1.21 {*/
+import net.minecraft.server.level.ServerLevel;
+import com.izofar.takesapillage.ItTakesPillage;
+/*?} else {*/
+/*import java.util.UUID;
+import net.minecraft.nbt.CompoundTag;
+*//*?}*/
 
 public final class Legioner extends AbstractIllager implements ShieldedMob
 {
@@ -208,9 +211,9 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 				AttributeInstance attributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
 				/*? >=1.21 {*/
 				if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING.id())) {
-				/*?} else {*/
-				/*if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
-				*//*?}*/
+					/*?} else {*/
+					/*if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
+					 *//*?}*/
 					attributeinstance.addTransientModifier(SPEED_MODIFIER_BLOCKING);
 				}
 			}
