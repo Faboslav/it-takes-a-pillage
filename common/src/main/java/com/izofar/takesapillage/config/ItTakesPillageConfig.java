@@ -12,7 +12,7 @@ public final class ItTakesPillageConfig implements Config
 	public boolean replaceIronGolemsWithClayGolems = false;
 
 	@Description("Remove bad omen effect from game")
-	public boolean removeBadOmen = true;
+	public boolean removeBadOmen = false;
 
 	@Description("Enabled pillage sieges")
 	public boolean enablePillageSieges = true;
