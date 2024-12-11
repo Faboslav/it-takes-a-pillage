@@ -14,32 +14,42 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(NaturalSpawner.class)
 public class NaturalSpawnerMixin
 {
-    @WrapOperation(
+	@WrapOperation(
 		method = "spawnCategoryForPosition(Lnet/minecraft/world/entity/MobCategory;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/NaturalSpawner$SpawnPredicate;Lnet/minecraft/world/level/NaturalSpawner$AfterSpawnCallback;)V",
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/world/level/NaturalSpawner;isValidPositionForMob(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Mob;D)Z"
 		)
 	)
-    private static boolean takesapillage$onEntitySpawn(ServerLevel serverLevel, Mob mob, double d, Operation<Boolean> operation) {
-        if (EntitySpawnEvent.EVENT.invoke(new EntitySpawnEvent(mob, serverLevel, mob.isBaby(), MobSpawnType.NATURAL))) {
-            return false;
-        }
-        return operation.call(serverLevel, mob, d);
-    }
+	private static boolean takesapillage$onEntitySpawn(
+		ServerLevel serverLevel,
+		Mob mob,
+		double d,
+		Operation<Boolean> operation
+	) {
+		if (EntitySpawnEvent.EVENT.invoke(new EntitySpawnEvent(mob, serverLevel, mob.isBaby(), MobSpawnType.NATURAL))) {
+			return false;
+		}
+		return operation.call(serverLevel, mob, d);
+	}
 
-    @WrapOperation(
+	@WrapOperation(
 		method = "spawnMobsForChunkGeneration",
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/world/entity/Mob;checkSpawnRules(Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/entity/MobSpawnType;)Z"
 		)
 	)
-    private static boolean takesapillage$onCheckEntitySpawn(Mob instance, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, Operation<Boolean> operation) {
-        if (EntitySpawnEvent.EVENT.invoke(new EntitySpawnEvent(instance, levelAccessor, instance.isBaby(), mobSpawnType))) {
-            return false;
-        }
+	private static boolean takesapillage$onCheckEntitySpawn(
+		Mob instance,
+		LevelAccessor levelAccessor,
+		MobSpawnType mobSpawnType,
+		Operation<Boolean> operation
+	) {
+		if (EntitySpawnEvent.EVENT.invoke(new EntitySpawnEvent(instance, levelAccessor, instance.isBaby(), mobSpawnType))) {
+			return false;
+		}
 
-        return operation.call(instance, levelAccessor, mobSpawnType);
-    }
+		return operation.call(instance, levelAccessor, mobSpawnType);
+	}
 }

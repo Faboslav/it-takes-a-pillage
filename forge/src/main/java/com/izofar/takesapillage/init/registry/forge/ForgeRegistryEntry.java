@@ -6,19 +6,19 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ForgeRegistryEntry<T> implements RegistryEntry<T>
 {
-    private final RegistryObject<T> object;
+	private final RegistryObject<T> object;
 
-    public ForgeRegistryEntry(RegistryObject<T> object) {
-        this.object = object;
-    }
+	public ForgeRegistryEntry(RegistryObject<T> object) {
+		this.object = object;
+	}
 
-    @Override
-    public T get() {
-        return object.get();
-    }
+	@Override
+	public T get() {
+		return object.get();
+	}
 
-    @Override
-    public ResourceLocation getId() {
-        return object.getId();
-    }
+	@Override
+	public ResourceLocation getId() {
+		return object.getId();
+	}
 }

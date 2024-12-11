@@ -12,13 +12,14 @@ import net.minecraft.core.Registry;
  * @author ThatGravyBoat
  * <a href="https://github.com/Team-Resourceful/ResourcefulLib">https://github.com/Team-Resourceful/ResourcefulLib</a>
  */
-public class ResourcefulRegistriesImpl {
-    public static <T> ResourcefulRegistry<T> create(Registry<T> registry, String id) {
-        return new FabricResourcefulRegistry<>(registry, id);
-    }
+public class ResourcefulRegistriesImpl
+{
+	public static <T> ResourcefulRegistry<T> create(Registry<T> registry, String id) {
+		return new FabricResourcefulRegistry<>(registry, id);
+	}
 
-    @SuppressWarnings("unchecked")
-    public static <D, T extends ResourcefulRegistry<D>> T create(ResourcefulRegistryType<D, T> type, String id) {
-        throw new IllegalArgumentException("Unknown registry type: " + type);
-    }
+	@SuppressWarnings("unchecked")
+	public static <D, T extends ResourcefulRegistry<D>> T create(ResourcefulRegistryType<D, T> type, String id) {
+		throw new IllegalArgumentException("Unknown registry type: " + type);
+	}
 }

@@ -21,17 +21,17 @@ import java.util.function.Supplier;
  */
 public class NeoForgeResourcefulRegistry<T> implements ResourcefulRegistry<T>
 {
-    private final DeferredRegister<T> register;
-    private final RegistryEntries<T> entries = new RegistryEntries<>();
+	private final DeferredRegister<T> register;
+	private final RegistryEntries<T> entries = new RegistryEntries<>();
 
-    public NeoForgeResourcefulRegistry(Registry<T> registry, String id) {
-        this.register = DeferredRegister.create(registry.key(), id);
-    }
+	public NeoForgeResourcefulRegistry(Registry<T> registry, String id) {
+		this.register = DeferredRegister.create(registry.key(), id);
+	}
 
-    @Override
-    public <I extends T> RegistryEntry<I> register(String id, Supplier<I> supplier) {
-        return this.entries.add(new NeoForgeRegistryEntry<>(register.register(id, supplier)));
-    }
+	@Override
+	public <I extends T> RegistryEntry<I> register(String id, Supplier<I> supplier) {
+		return this.entries.add(new NeoForgeRegistryEntry<>(register.register(id, supplier)));
+	}
 
 	/*? >=1.21 {*/
 	@Override
@@ -40,13 +40,13 @@ public class NeoForgeResourcefulRegistry<T> implements ResourcefulRegistry<T>
 	}
 	/*?}*/
 
-    @Override
-    public Collection<RegistryEntry<T>> getEntries() {
-        return this.entries.getEntries();
-    }
+	@Override
+	public Collection<RegistryEntry<T>> getEntries() {
+		return this.entries.getEntries();
+	}
 
-    @Override
-    public void init() {
-        register.register(ModLoadingContext.get().getActiveContainer().getEventBus());
-    }
+	@Override
+	public void init() {
+		register.register(ModLoadingContext.get().getActiveContainer().getEventBus());
+	}
 }

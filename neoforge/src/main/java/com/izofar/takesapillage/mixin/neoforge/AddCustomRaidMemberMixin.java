@@ -20,18 +20,24 @@ import java.util.Arrays;
 
 @Mixin(Raid.RaiderType.class)
 @SuppressWarnings({"ShadowTarget", "InvokerTarget"})
-public final class AddCustomRaidMemberMixin {
-    @Invoker("<init>")
-    private static Raid.RaiderType newRaidMember(String internalName, int internalId, EntityType<? extends Raider> entityType, int[] countInWave) {
-        throw new AssertionError();
-    }
+public final class AddCustomRaidMemberMixin
+{
+	@Invoker("<init>")
+	private static Raid.RaiderType newRaidMember(
+		String internalName,
+		int internalId,
+		EntityType<? extends Raider> entityType,
+		int[] countInWave
+	) {
+		throw new AssertionError();
+	}
 
-    @Shadow
+	@Shadow
 	@Final
 	@Mutable
 	private static Raid.RaiderType[] $VALUES;
 
-    @Inject(
+	@Inject(
 		method = "<clinit>",
 		at = @At(
 			value = "FIELD",
@@ -40,37 +46,37 @@ public final class AddCustomRaidMemberMixin {
 			shift = At.Shift.AFTER
 		)
 	)
-    private static void takesAPillage_addCustomRaidMembers(CallbackInfo ci) {
-        var raidMembers = new ArrayList<>(Arrays.asList($VALUES));
-        var lastRaidMember = raidMembers.get(raidMembers.size() - 1);
+	private static void takesAPillage_addCustomRaidMembers(CallbackInfo ci) {
+		var raidMembers = new ArrayList<>(Arrays.asList($VALUES));
+		var lastRaidMember = raidMembers.get(raidMembers.size() - 1);
 
-        var archerRaidMember = newRaidMember(
-                CustomRaidMember.ARCHER_INTERNAL_NAME,
-                lastRaidMember.ordinal() + 1,
-                ItTakesPillageEntityTypes.ARCHER.get(),
-                CustomRaidMember.ARCHER_COUNT_IN_WAVES
-        );
-        CustomRaidMember.ARCHER = archerRaidMember;
-        raidMembers.add(archerRaidMember);
+		var archerRaidMember = newRaidMember(
+			CustomRaidMember.ARCHER_INTERNAL_NAME,
+			lastRaidMember.ordinal() + 1,
+			ItTakesPillageEntityTypes.ARCHER.get(),
+			CustomRaidMember.ARCHER_COUNT_IN_WAVES
+		);
+		CustomRaidMember.ARCHER = archerRaidMember;
+		raidMembers.add(archerRaidMember);
 
-        var skirmisherRaidMember = newRaidMember(
-                CustomRaidMember.SKIRMISHER_INTERNAL_NAME,
-                lastRaidMember.ordinal() + 2,
-				ItTakesPillageEntityTypes.SKIRMISHER.get(),
-                CustomRaidMember.SKIRMISHER_COUNT_IN_WAVES
-        );
-        CustomRaidMember.SKIRMISHER = skirmisherRaidMember;
-        raidMembers.add(skirmisherRaidMember);
+		var skirmisherRaidMember = newRaidMember(
+			CustomRaidMember.SKIRMISHER_INTERNAL_NAME,
+			lastRaidMember.ordinal() + 2,
+			ItTakesPillageEntityTypes.SKIRMISHER.get(),
+			CustomRaidMember.SKIRMISHER_COUNT_IN_WAVES
+		);
+		CustomRaidMember.SKIRMISHER = skirmisherRaidMember;
+		raidMembers.add(skirmisherRaidMember);
 
-        var legionerRaidMember = newRaidMember(
-                CustomRaidMember.LEGIONER_INTERNAL_NAME,
-                lastRaidMember.ordinal() + 3,
-				ItTakesPillageEntityTypes.LEGIONER.get(),
-                CustomRaidMember.LEGIONER_COUNT_IN_WAVES
-        );
-        CustomRaidMember.LEGIONER = legionerRaidMember;
-        raidMembers.add(legionerRaidMember);
+		var legionerRaidMember = newRaidMember(
+			CustomRaidMember.LEGIONER_INTERNAL_NAME,
+			lastRaidMember.ordinal() + 3,
+			ItTakesPillageEntityTypes.LEGIONER.get(),
+			CustomRaidMember.LEGIONER_COUNT_IN_WAVES
+		);
+		CustomRaidMember.LEGIONER = legionerRaidMember;
+		raidMembers.add(legionerRaidMember);
 
-        $VALUES = raidMembers.toArray(new Raid.RaiderType[0]);
-    }
+		$VALUES = raidMembers.toArray(new Raid.RaiderType[0]);
+	}
 }
