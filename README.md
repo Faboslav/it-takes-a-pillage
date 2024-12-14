@@ -6,6 +6,6 @@
 
 <br>
 
-This is an unofficial continuation of It Takes a Pillage by izofar for newer minecraft versions and also mod loaders.
+<p>This is an unofficial continuation of <a href="https://www.curseforge.com/minecraft/mc-mods/it-takes-a-pillage">It Takes a Pillage</a> by <a href="https://www.curseforge.com/members/izofar/projects">izofar</a> for newer minecraft versions and also mod loaders.</p>
 
-The Pillagers have expanded their Civilization! They have set up encampments and fortresses all over the world! Do you have what it takes to overcome these new threats, and seize their precious loot?
+<p>The Pillagers have expanded their Civilization! They have set up encampments and fortresses all over the world! Do you have what it takes to overcome these new threats, and seize their precious loot?</p>
