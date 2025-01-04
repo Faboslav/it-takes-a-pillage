@@ -3,7 +3,6 @@
 - Fixed crash on NeoForge
 - Fixed advancements
 - Fixed loot tables
-- Fixed structure settings
 
 ## 1.0.4
 
