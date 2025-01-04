@@ -7,7 +7,6 @@ import com.izofar.takesapillage.event.lifecycle.ServerLevelTickEvent;
 import com.izofar.takesapillage.event.lifecycle.SetupEvent;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
@@ -19,7 +18,7 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 @Mod(ItTakesPillage.MOD_ID)
 public final class ItTakesPillageNeoForge
 {
-	public ItTakesPillageNeoForge(ModContainer modContainer, IEventBus modEventBus) {
+	public ItTakesPillageNeoForge(IEventBus modEventBus) {
 		var eventBus = NeoForge.EVENT_BUS;
 
 		ItTakesPillage.init();

@@ -8,7 +8,6 @@ import com.izofar.takesapillage.event.entity.RegisterEntityAttributesEvent;
 import com.izofar.takesapillage.event.lifecycle.ServerLevelTickEvent;
 import com.izofar.takesapillage.event.lifecycle.SetupEvent;
 import com.izofar.takesapillage.init.*;
-import com.izofar.takesapillage.item.DispenserAddedSpawnEgg;
 import com.izofar.takesapillage.world.PillageSiege;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -72,7 +71,6 @@ public class ItTakesPillage
 		ItTakesPillageStructureTypes.STRUCTURE_TYPES.init();
 
 		EntitySpawnEvent.EVENT.addListener(IronGolemOnEntitySpawn::handleEntitySpawn);
-		SetupEvent.EVENT.addListener(DispenserAddedSpawnEgg::onSetup);
 		RegisterEntityAttributesEvent.EVENT.addListener(ItTakesPillageEntityTypes::registerEntityAttributes);
 		ServerLevelTickEvent.EVENT.addListener(ItTakesPillage::registerPillageSiege);
 	}

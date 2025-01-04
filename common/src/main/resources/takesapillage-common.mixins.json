@@ -3,6 +3,7 @@
 	"package": "com.izofar.takesapillage.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"minVersion": "0.8",
+	"plugin": "com.izofar.takesapillage.mixin.plugin.ItTakesPillageMixinPlugin",
 	"injectors": {
 		"defaultRequire": 1
 	},

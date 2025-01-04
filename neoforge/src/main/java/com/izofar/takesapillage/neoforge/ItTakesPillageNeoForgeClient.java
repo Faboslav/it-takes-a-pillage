@@ -6,9 +6,6 @@ import com.izofar.takesapillage.config.ConfigScreenBuilder;
 import com.izofar.takesapillage.event.client.RegisterEntityModelLayersEvent;
 import com.izofar.takesapillage.event.client.RegisterEntityRenderersEvent;
 import com.izofar.takesapillage.event.client.RegisterItemColorEvent;
-import com.izofar.takesapillage.init.ItTakesPillageItems;
-import com.izofar.takesapillage.init.registry.RegistryEntry;
-import com.izofar.takesapillage.item.DispenserAddedSpawnEgg;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
@@ -48,10 +45,5 @@ public final class ItTakesPillageNeoForgeClient
 
 	private static void onRegisterItemColors(RegisterColorHandlersEvent.Item event) {
 		RegisterItemColorEvent.EVENT.invoke(new RegisterItemColorEvent(event::register, event.getBlockColors()::getColor));
-		ItTakesPillageItems.ITEMS.stream()
-			.map(RegistryEntry::get)
-			.filter(item -> item instanceof DispenserAddedSpawnEgg)
-			.map(item -> (DispenserAddedSpawnEgg) item)
-			.forEach(item -> event.register((stack, index) -> item.getColor(index), item));
 	}
 }

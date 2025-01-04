@@ -58,6 +58,7 @@ processResources {
 	}
 
 	inputs.properties(expandProps)
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 java {

@@ -127,8 +127,8 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"weight": 7,
 					"name": "minecraft:potion",
+					"weight": 7,
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -140,8 +140,8 @@
 							"add": false
 						},
 						{
-							"function": "minecraft:set_nbt",
-							"tag": "{Potion:water}"
+							"function": "minecraft:set_potion",
+							"id": "minecraft:water"
 						}
 					]
 				},
@@ -268,8 +268,8 @@
 				},
 				{
 					"type": "minecraft:item",
-					"weight": 3,
 					"name": "minecraft:potion",
+					"weight": 3,
 					"functions": [
 						{
 							"function": "minecraft:set_count",
@@ -281,8 +281,8 @@
 							"add": false
 						},
 						{
-							"function": "minecraft:set_nbt",
-							"tag": "{Potion:healing}"
+							"function": "minecraft:set_potion",
+							"id": "minecraft:healing"
 						}
 					]
 				},
