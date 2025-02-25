@@ -3,7 +3,7 @@
 	"start_pool": "takesapillage:bastille/start_pool",
 	"size": 3,
 	"terrain_search_radius": 3,
-	"max_terrain_range": 8,
+	"max_terrain_range": 16,
 	"max_distance_from_center": 128,
 	"biomes": "#takesapillage:has_structure/pillager_structure",
 	"step": "underground_decoration",

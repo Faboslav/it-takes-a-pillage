@@ -3,99 +3,31 @@
 	"values": [
 		"minecraft:plains",
 		"minecraft:snowy_plains",
-		"minecraft:meadow",
-		"minecraft:savanna",
 		"minecraft:sunflower_plains",
+		"minecraft:meadow",
+		"#minecraft:is_savanna",
 		{
-			"id": "biomesoplenty:bog",
+			"id": "#c:plains",
 			"required": false
 		},
 		{
-			"id": "biomesoplenty:clover_patch",
+			"id": "#c:is_plains",
 			"required": false
 		},
 		{
-			"id": "biomesoplenty:dryland",
+			"id": "#c:snowy_plains",
 			"required": false
 		},
 		{
-			"id": "biomesoplenty:fir_clearing",
+			"id": "#c:is_snowy_plains",
 			"required": false
 		},
 		{
-			"id": "biomesoplenty:grassland",
+			"id": "#c:savanna",
 			"required": false
 		},
 		{
-			"id": "biomesoplenty:lush_savanna",
-			"required": false
-		},
-		{
-			"id": "biomesoplenty:pasture",
-			"required": false
-		},
-		{
-			"id": "biomesoplenty:prairie",
-			"required": false
-		},
-		{
-			"id": "biomesoplenty:scrubland",
-			"required": false
-		},
-		{
-			"id": "biomesoplenty:tundra",
-			"required": false
-		},
-		{
-			"id": "byg:allium_fields",
-			"required": false
-		},
-		{
-			"id": "byg:amaranth_fields",
-			"required": false
-		},
-		{
-			"id": "byg:araucaria_savanna",
-			"required": false
-		},
-		{
-			"id": "byg:baobab_savanna",
-			"required": false
-		},
-		{
-			"id": "byg:cardinal_tundra",
-			"required": false
-		},
-		{
-			"id": "byg:coconino_meadow",
-			"required": false
-		},
-		{
-			"id": "byg:firecracker_shrubland",
-			"required": false
-		},
-		{
-			"id": "byg:prairie",
-			"required": false
-		},
-		{
-			"id": "byg:rose_fields",
-			"required": false
-		},
-		{
-			"id": "terralith:rocky_shrubland",
-			"required": false
-		},
-		{
-			"id": "terralith:shield_clearing",
-			"required": false
-		},
-		{
-			"id": "terralith:steppe",
-			"required": false
-		},
-		{
-			"id": "terralith:valley_clearing",
+			"id": "#c:is_savanna",
 			"required": false
 		}
 	]

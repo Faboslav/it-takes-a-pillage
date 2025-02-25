@@ -3,6 +3,7 @@ package com.izofar.takesapillage;
 import com.izofar.takesapillage.config.ItTakesPillageConfig;
 import com.izofar.takesapillage.config.omegaconfig.OmegaConfig;
 import com.izofar.takesapillage.entity.event.IronGolemOnEntitySpawn;
+import com.izofar.takesapillage.event.AddItemGroupEntriesEvent;
 import com.izofar.takesapillage.event.entity.EntitySpawnEvent;
 import com.izofar.takesapillage.event.entity.RegisterEntityAttributesEvent;
 import com.izofar.takesapillage.event.lifecycle.ServerLevelTickEvent;
@@ -66,6 +67,7 @@ public class ItTakesPillage
 		ItTakesPillageEntityTypes.ENTITY_TYPES.init();
 		ItTakesPillageFeatures.FEATURES.init();
 		ItTakesPillageInstruments.INSTRUMENTS.init();
+		ItTakesPillageItemGroups.ITEM_GROUPS.init();
 		ItTakesPillageItems.ITEMS.init();
 		ItTakesPillageSoundEvents.SOUND_EVENTS.init();
 		ItTakesPillageStructureTypes.STRUCTURE_TYPES.init();
@@ -73,6 +75,7 @@ public class ItTakesPillage
 		EntitySpawnEvent.EVENT.addListener(IronGolemOnEntitySpawn::handleEntitySpawn);
 		RegisterEntityAttributesEvent.EVENT.addListener(ItTakesPillageEntityTypes::registerEntityAttributes);
 		ServerLevelTickEvent.EVENT.addListener(ItTakesPillage::registerPillageSiege);
+		AddItemGroupEntriesEvent.EVENT.addListener(ItTakesPillageItemGroups::addItemGroupEntries);
 	}
 
 	private static void registerPillageSiege(ServerLevelTickEvent event) {

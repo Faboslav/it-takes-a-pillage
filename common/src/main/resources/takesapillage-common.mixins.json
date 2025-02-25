@@ -15,7 +15,6 @@
 		"CarvedPumpkinBlockMixin",
 		"ClayGolemSensorMixin",
 		"CustomDeathMessageMixin",
-		"MilkBucketItemMixin",
 		"RaidMixin",
 		"SpawnEggItemAccessor"
 	]

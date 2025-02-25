@@ -14,6 +14,9 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 
+/**
+ * @see EntityType
+ */
 public final class ItTakesPillageEntityTypes
 {
 	public static final ResourcefulRegistry<EntityType<?>> ENTITY_TYPES = ResourcefulRegistries.create(BuiltInRegistries.ENTITY_TYPE, ItTakesPillage.MOD_ID);

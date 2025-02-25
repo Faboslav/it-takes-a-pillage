@@ -3,6 +3,7 @@
 	"item.takesapillage.skirmisher_spawn_egg": "Skirmisher Spawn Egg",
 	"item.takesapillage.legioner_spawn_egg": "Legioner Spawn Egg",
 	"item.takesapillage.ravager_horn": "Ravager Horn",
+	"item.takesapillage.music_disc_bastille_blues": "Music Disc",
 	"jukebox_song.takesapillage.bastille_blues": "izofar - Bastille Blues",
 	"entity.takesapillage.clay_golem": "Clay Golem",
 	"entity.takesapillage.archer": "Archer",
@@ -38,7 +39,7 @@
 	"takesapillage.configGui.easyGolemRate.title": "Easy Difficulty Clay Golem Replacement",
 	"takesapillage.configGui.normalGolemRate.title": "Normal Difficulty Clay Golem Replacement",
 	"takesapillage.configGui.hardGolemRate.title": "Hard Difficulty Clay Golem Replacement",
-	"takesapillage.configGui.removeBadOmen.title": "Milk Removes Bad Omen",
 	"takesapillage.configGui.pillageSiegesOccur.title": "Pillage Sieges",
-	"instrument.takesapillage.raid_horn": "Raid Horn"
+	"instrument.takesapillage.raid_horn": "Raid Horn",
+	"item_group.takesapillage.main_tab": "It Takes A Pillage Continuation"
 }

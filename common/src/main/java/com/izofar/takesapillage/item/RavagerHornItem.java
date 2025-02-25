@@ -28,23 +28,22 @@ public class RavagerHornItem extends InstrumentItem
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-		ItemStack itemStack = player.getItemInHand(hand);
+	public void releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks) {
+		super.finishUsingItem(itemStack, level, livingEntity);
 
-		if (!world.isClientSide()) {
-			/*? if >=1.21.1 {*/
-			itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
-			/*?} else {*/
-			/*itemStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
-			 *//*?}*/
+		/*? if >=1.21.1 {*/
+		itemStack.hurtAndBreak(1, livingEntity, LivingEntity.getSlotForHand(livingEntity.getUsedItemHand()));
+		/*?} else {*/
+		/*itemStack.hurtAndBreak(1, livingEntity, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
+		*//*?}*/
+	}
 
-			return InteractionResultHolder.consume(player.getItemInHand(hand));
-		}
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		InteractionResultHolder<ItemStack> result = super.use(level, player, hand);
 
-		InteractionResultHolder<ItemStack> result = super.use(world, player, hand);
-
-		if (world instanceof ServerLevel level) {
-			incrementBadOmen(level, player);
+		if (level instanceof ServerLevel serverLevel) {
+			incrementBadOmen(serverLevel, player);
 		}
 
 		return result;
@@ -53,14 +52,17 @@ public class RavagerHornItem extends InstrumentItem
 	private static void incrementBadOmen(ServerLevel level, Player player) {
 		MobEffectInstance mobeffectinstance = player.getEffect(MobEffects.BAD_OMEN);
 		int i = 1;
+
 		if (mobeffectinstance != null) {
 			i += mobeffectinstance.getAmplifier();
 			player.removeEffectNoUpdate(MobEffects.BAD_OMEN);
 		} else {
 			i--;
 		}
+
 		i = Mth.clamp(i, 0, 4);
-		if (!level.getGameRules().getBoolean(GameRules.RULE_DISABLE_RAIDS))
+		if (!level.getGameRules().getBoolean(GameRules.RULE_DISABLE_RAIDS)) {
 			player.addEffect(new MobEffectInstance(MobEffects.BAD_OMEN, 120000, i, false, false, true));
+		}
 	}
 }
