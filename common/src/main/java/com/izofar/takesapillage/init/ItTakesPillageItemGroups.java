@@ -5,16 +5,19 @@ import com.izofar.takesapillage.event.AddItemGroupEntriesEvent;
 import com.izofar.takesapillage.init.registry.RegistryEntry;
 import com.izofar.takesapillage.init.registry.ResourcefulRegistries;
 import com.izofar.takesapillage.init.registry.ResourcefulRegistry;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.CustomData;
 import java.util.List;
 import java.util.stream.Stream;
+
+//? >=1.21.1 {
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.CustomData;
+//?}
 
 /**
  * @see net.minecraft.world.item.CreativeModeTabs
@@ -31,7 +34,9 @@ public class ItTakesPillageItemGroups
 				ItemStack iconStack = ItTakesPillageItems.RAVAGER_HORN.get().getDefaultInstance();
 				CompoundTag nbtCompound = new CompoundTag();
 				nbtCompound.putBoolean("isCreativeTabIcon", true);
+				//? >=1.21.1 {
 				iconStack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbtCompound));
+				//?}
 				return iconStack;
 			})
 			.displayItems((itemDisplayParameters, entries) ->
