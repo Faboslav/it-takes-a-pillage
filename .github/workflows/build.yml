@@ -38,8 +38,8 @@ jobs:
                     generate-job-summary: false
                     gradle-version: wrapper
 
-            - name: "Run chiseled build"
-              run: ./gradlew chiseledBuild
+            -   name: "Run chiseled build"
+                run: ./gradlew chiseledBuild
 
             -   name: "Upload Built JARs"
                 uses: actions/upload-artifact@v4
