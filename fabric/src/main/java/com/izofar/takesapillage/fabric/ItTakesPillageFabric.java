@@ -1,10 +1,10 @@
 package com.izofar.takesapillage.fabric;
 
-import com.izofar.takesapillage.ItTakesPillage;
-import com.izofar.takesapillage.event.AddItemGroupEntriesEvent;
-import com.izofar.takesapillage.event.entity.RegisterEntityAttributesEvent;
-import com.izofar.takesapillage.event.lifecycle.ServerLevelTickEvent;
-import com.izofar.takesapillage.event.lifecycle.SetupEvent;
+import com.izofar.takesapillage.common.ItTakesPillage;
+import com.izofar.takesapillage.common.event.AddItemGroupEntriesEvent;
+import com.izofar.takesapillage.common.event.entity.RegisterEntityAttributesEvent;
+import com.izofar.takesapillage.common.event.lifecycle.ServerLevelTickEvent;
+import com.izofar.takesapillage.common.event.lifecycle.SetupEvent;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;

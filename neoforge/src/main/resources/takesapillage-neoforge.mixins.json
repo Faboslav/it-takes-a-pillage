@@ -1,15 +1,13 @@
 {
 	"required": true,
-	"package": "com.izofar.takesapillage.mixin.neoforge",
-	"compatibilityLevel": "JAVA_17",
+	"package": "com.izofar.takesapillage.neoforge.mixin",
+	"refmap": "${modId}.refmap.json",
+	"compatibilityLevel": "JAVA_${javaVersion}",
 	"minVersion": "0.8",
 	"injectors": {
 		"defaultRequire": 1
 	},
-	"client": [
-	],
-	"minVersion": "0.8",
 	"mixins": [
-		"AddCustomRaidMemberMixin"
+      "AddCustomRaidMemberMixin"
 	]
 }

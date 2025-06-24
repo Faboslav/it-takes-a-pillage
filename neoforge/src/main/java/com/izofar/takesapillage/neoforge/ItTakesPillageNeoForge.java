@@ -1,11 +1,11 @@
 package com.izofar.takesapillage.neoforge;
 
-import com.izofar.takesapillage.ItTakesPillage;
-import com.izofar.takesapillage.event.AddItemGroupEntriesEvent;
-import com.izofar.takesapillage.event.entity.EntitySpawnEvent;
-import com.izofar.takesapillage.event.entity.RegisterEntityAttributesEvent;
-import com.izofar.takesapillage.event.lifecycle.ServerLevelTickEvent;
-import com.izofar.takesapillage.event.lifecycle.SetupEvent;
+import com.izofar.takesapillage.common.ItTakesPillage;
+import com.izofar.takesapillage.common.event.AddItemGroupEntriesEvent;
+import com.izofar.takesapillage.common.event.entity.EntitySpawnEvent;
+import com.izofar.takesapillage.common.event.entity.RegisterEntityAttributesEvent;
+import com.izofar.takesapillage.common.event.lifecycle.ServerLevelTickEvent;
+import com.izofar.takesapillage.common.event.lifecycle.SetupEvent;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;

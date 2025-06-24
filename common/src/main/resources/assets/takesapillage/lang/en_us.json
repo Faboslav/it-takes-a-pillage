@@ -4,6 +4,7 @@
 	"item.takesapillage.legioner_spawn_egg": "Legioner Spawn Egg",
 	"item.takesapillage.ravager_horn": "Ravager Horn",
 	"item.takesapillage.music_disc_bastille_blues": "Music Disc",
+	"item.takesapillage.music_disc_bastille_blues.desc": "izofar - Bastille Blues",
 	"jukebox_song.takesapillage.bastille_blues": "izofar - Bastille Blues",
 	"entity.takesapillage.clay_golem": "Clay Golem",
 	"entity.takesapillage.archer": "Archer",
@@ -41,5 +42,18 @@
 	"takesapillage.configGui.hardGolemRate.title": "Hard Difficulty Clay Golem Replacement",
 	"takesapillage.configGui.pillageSiegesOccur.title": "Pillage Sieges",
 	"instrument.takesapillage.raid_horn": "Raid Horn",
-	"item_group.takesapillage.main_tab": "It Takes A Pillage Continuation"
+	"item_group.takesapillage.main_tab": "It Takes A Pillage Continuation",
+	"yacl3.config.takesapillage:takesapillage.category.general": "General",
+	"yacl3.config.takesapillage:takesapillage.category.mobs": "Mobs",
+	"yacl3.config.takesapillage:takesapillage.category.mobs.group.archer": "Archer",
+	"yacl3.config.takesapillage:takesapillage.category.mobs.group.legioner": "Legioner",
+	"yacl3.config.takesapillage:takesapillage.category.mobs.group.skirmisher": "Skirmisher",
+	"yacl3.config.takesapillage:takesapillage.replaceIronGolemsWithClayGolems": "Replace all iron golems with clay golems",
+	"yacl3.config.takesapillage:takesapillage.enablePillageSieges": "Enabled pillage sieges",
+	"yacl3.config.takesapillage:takesapillage.enableArcher": "Enabled archer",
+	"yacl3.config.takesapillage:takesapillage.enableArcherInRaids": "Enabled archer in raids",
+	"yacl3.config.takesapillage:takesapillage.enableLegioner": "Enabled legioner",
+	"yacl3.config.takesapillage:takesapillage.enableLegionerInRaids": "Enabled legioner in raids",
+	"yacl3.config.takesapillage:takesapillage.enableSkirmisher": "Enabled skirmisher",
+	"yacl3.config.takesapillage:takesapillage.enableSkirmisherInRaids": "Enabled skirmisher in raids"
 }

@@ -1,3 +1,10 @@
+## 1.0.7
+
+- Reworked config/added options to disable archers/legioners/skirmishers
+- Separated archers/legioners/skirmishers models from other illager models
+- Added missing illagers/raiders tags
+- Added missing music disc tags
+
 ## 1.0.6
 
 - Added missing items to custom creative tab(item group)

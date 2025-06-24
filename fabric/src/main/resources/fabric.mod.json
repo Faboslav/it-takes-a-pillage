@@ -24,7 +24,7 @@
 			"com.izofar.takesapillage.fabric.ItTakesPillageFabricClient"
 		],
 		"modmenu": [
-			"com.izofar.takesapillage.modcompat.fabric.ModMenuCompat"
+			"com.izofar.takesapillage.fabric.modcompat.ModMenuCompat"
 		]
 	},
 	"mixins": [
