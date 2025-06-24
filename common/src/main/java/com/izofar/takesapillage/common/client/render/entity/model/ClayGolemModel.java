@@ -1,8 +1,5 @@
 package com.izofar.takesapillage.common.client.render.entity.model;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
@@ -16,7 +13,6 @@ import com.izofar.takesapillage.common.client.render.entity.state.ClayGolemRende
 import com.izofar.takesapillage.common.entity.ClayGolem;
 *///?}
 
-@Environment(EnvType.CLIENT)
 //? >=1.21.3 {
 public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
 //?} else {

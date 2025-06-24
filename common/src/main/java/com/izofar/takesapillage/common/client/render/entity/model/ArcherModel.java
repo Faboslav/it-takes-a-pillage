@@ -1,7 +1,5 @@
 package com.izofar.takesapillage.common.client.render.entity.model;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.IllagerModel;
 import net.minecraft.client.model.geom.ModelPart;
 
@@ -11,7 +9,6 @@ import com.izofar.takesapillage.common.client.render.entity.state.ArcherRenderSt
 /*import com.izofar.takesapillage.common.entity.Archer;
 *///?}
 
-@Environment(EnvType.CLIENT)
 //? >= 1.21.3 {
 public class ArcherModel extends IllagerModel<ArcherRenderState>
 //?} else {

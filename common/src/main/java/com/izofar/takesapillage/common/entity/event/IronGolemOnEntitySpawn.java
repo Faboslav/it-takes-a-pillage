@@ -39,10 +39,10 @@ public final class IronGolemOnEntitySpawn
 		}
 
 		//? if >=1.21.5 {
-		/*clayGolem.snapTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
-		*///?} else {
-		clayGolem.moveTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
-		//?}
+		clayGolem.snapTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
+		//?} else {
+		/*clayGolem.moveTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
+		*///?}
 
 		clayGolem.copyPosition(entity);
 		clayGolem.yBodyRotO = entity.yBodyRotO;

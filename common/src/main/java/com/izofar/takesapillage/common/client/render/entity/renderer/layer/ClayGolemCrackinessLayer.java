@@ -4,8 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.client.render.entity.model.ClayGolemModel;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
@@ -24,7 +22,6 @@ import com.izofar.takesapillage.common.client.render.entity.state.ClayGolemRende
 /*import com.izofar.takesapillage.common.entity.ClayGolem;
 *///?}
 
-@Environment(EnvType.CLIENT)
 //? if >=1.21.3 {
 public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolemRenderState, ClayGolemModel>
 //?} else {

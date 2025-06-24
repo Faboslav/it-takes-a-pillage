@@ -3,8 +3,6 @@ package com.izofar.takesapillage.common.client.render.entity.renderer.layer;
 import com.izofar.takesapillage.common.client.render.entity.model.ClayGolemModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -19,7 +17,6 @@ import com.izofar.takesapillage.common.client.render.entity.state.ClayGolemRende
 /*import com.izofar.takesapillage.common.entity.ClayGolem;
 *///?}
 
-@Environment(EnvType.CLIENT)
 //? if >=1.21.3 {
 public final class ClayGolemFlowerLayer extends RenderLayer<ClayGolemRenderState, ClayGolemModel>
 //?} else {

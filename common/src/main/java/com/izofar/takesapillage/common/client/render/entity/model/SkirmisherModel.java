@@ -1,8 +1,6 @@
 package com.izofar.takesapillage.common.client.render.entity.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.ArmedModel;
 import net.minecraft.client.model.HeadedModel;
@@ -21,7 +19,6 @@ import com.izofar.takesapillage.common.client.render.entity.state.SkirmisherRend
 import com.izofar.takesapillage.common.entity.Skirmisher;
 *///?}
 
-@Environment(EnvType.CLIENT)
 //? >=1.21.3 {
 public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implements ArmedModel, HeadedModel
 //?} else {

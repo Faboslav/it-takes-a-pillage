@@ -4,8 +4,6 @@ import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.client.render.entity.model.SkirmisherModel;
 import com.izofar.takesapillage.common.entity.Skirmisher;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -21,7 +19,6 @@ import net.minecraft.world.item.CrossbowItem;
 /*import com.izofar.takesapillage.common.init.ItTakesPillageEntityModelLayers;
 *///?}
 
-@Environment(EnvType.CLIENT)
 //? >= 1.21.3 {
 public final class SkirmisherRenderer extends MobRenderer<Skirmisher, SkirmisherRenderState, SkirmisherModel>
 //?} else {

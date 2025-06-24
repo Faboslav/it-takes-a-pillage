@@ -4,8 +4,6 @@ import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.client.render.entity.model.ArcherModel;
 import com.izofar.takesapillage.common.entity.Archer;
 import com.izofar.takesapillage.common.init.ItTakesPillageEntityModelLayers;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.IllagerRenderer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -15,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import com.izofar.takesapillage.common.client.render.entity.state.ArcherRenderState;
 //?}
 
-@Environment(EnvType.CLIENT)
 //? >= 1.21.3 {
 public final class ArcherRenderer extends IllagerRenderer<Archer, ArcherRenderState>
 //?} else {

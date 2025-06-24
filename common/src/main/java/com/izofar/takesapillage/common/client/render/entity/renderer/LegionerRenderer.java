@@ -4,8 +4,6 @@ import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.client.render.entity.model.LegionerModel;
 import com.izofar.takesapillage.common.entity.Legioner;
 import com.izofar.takesapillage.common.init.ItTakesPillageEntityModelLayers;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.IllagerRenderer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -15,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import com.izofar.takesapillage.common.client.render.entity.state.LegionerRenderState;
 //?}
 
-@Environment(EnvType.CLIENT)
 //? >= 1.21.3 {
 public final class LegionerRenderer extends IllagerRenderer<Legioner, LegionerRenderState>
 //?} else {

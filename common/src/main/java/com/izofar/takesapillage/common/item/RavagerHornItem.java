@@ -25,12 +25,12 @@ public class RavagerHornItem extends InstrumentItem
 {
 	public RavagerHornItem(TagKey<Instrument> instruments, Properties properties) {
 		//? if >=1.21.5 {
-		/*super(properties);
-		*///?} else if >=1.21.5 {
-		/*super(properties, instruments);
+		super(properties);
+		//?} else if >=1.21.4 {
+		/*super(instruments, properties);
 		*///?} else {
-		super(instruments, properties);
-		//?}
+		/*super(properties, instruments);
+		*///?}
 	}
 
 	@Override

@@ -37,7 +37,7 @@ neoForge {
 			ideName = "NeoForge Server (${project.path})"
 		}
 	}
-
+	
 	parchment {
 		commonMod.depOrNull("parchment")?.let {
 			mappingsVersion = it

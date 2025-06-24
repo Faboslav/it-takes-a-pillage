@@ -76,10 +76,10 @@ public class ClayGolem extends IronGolem
 		if (clayGolem == null) return;
 		clayGolem.setPlayerCreated(true);
 		//? if >=1.21.5 {
-		/*clayGolem.snapTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
-		*///?} else {
-		clayGolem.moveTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
-		//?}
+		clayGolem.snapTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
+		//?} else {
+		/*clayGolem.moveTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
+		*///?}
 		world.addFreshEntity(clayGolem);
 
 		CarvedPumpkinBlock.updatePatternBlocks(world, blockpattern$patternhelper);

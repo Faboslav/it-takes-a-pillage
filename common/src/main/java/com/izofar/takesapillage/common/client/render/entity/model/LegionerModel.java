@@ -1,7 +1,5 @@
 package com.izofar.takesapillage.common.client.render.entity.model;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.model.IllagerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.InteractionHand;
@@ -13,7 +11,6 @@ import com.izofar.takesapillage.common.client.render.entity.state.LegionerRender
 /*import com.izofar.takesapillage.common.entity.Legioner;
 *///?}
 
-@Environment(EnvType.CLIENT)
 //? >= 1.21.3 {
 public final class LegionerModel extends IllagerModel<LegionerRenderState>
 //?} else {

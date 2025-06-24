@@ -4,8 +4,6 @@ import com.izofar.takesapillage.common.ItTakesPillageClient;
 import com.izofar.takesapillage.common.event.client.RegisterEntityModelLayersEvent;
 import com.izofar.takesapillage.common.event.client.RegisterEntityRenderersEvent;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 
@@ -17,7 +15,6 @@ import net.minecraft.client.renderer.item.ItemProperties;
 public final class ItTakesPillageFabricClient implements ClientModInitializer
 {
 	@Override
-	@Environment(EnvType.CLIENT)
 	public void onInitializeClient() {
 		ItTakesPillageClient.init();
 
