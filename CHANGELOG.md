@@ -1,7 +1,8 @@
 ## 1.0.7
 
 - Reworked config/added options to disable archers/legioners/skirmishers
-- Separated archers/legioners/skirmishers models from other illager models
+- Separated archer, legioner, skirmisher models from other vanilla illager models
+- Fixed archer, legioner and skirmisher sitting position
 - Added missing illagers/raiders tags
 - Added missing music disc tags
 

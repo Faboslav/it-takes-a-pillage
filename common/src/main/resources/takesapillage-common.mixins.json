@@ -1,21 +1,22 @@
 {
-	"required": true,
-	"package": "com.izofar.takesapillage.common.mixin",
-	"refmap": "${modId}.refmap.json",
-	"compatibilityLevel": "JAVA_${javaVersion}",
-	"minVersion": "0.8",
-	"plugin": "com.izofar.takesapillage.common.mixin.plugin.ItTakesPillageMixinPlugin",
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"client": [
-		"WorldOpenFlowsMixin"
-	],
-	"mixins": [
-		"CarvedPumpkinBlockMixin",
-		"ClayGolemSensorMixin",
-		"CustomDeathMessageMixin",
-		"RaidMixin",
-		"SpawnEggItemAccessor"
-	]
+  "required": true,
+  "package": "com.izofar.takesapillage.common.mixin",
+  "refmap": "${modId}.refmap.json",
+  "compatibilityLevel": "JAVA_${javaVersion}",
+  "minVersion": "0.8",
+  "plugin": "com.izofar.takesapillage.common.mixin.plugin.ItTakesPillageMixinPlugin",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "WorldOpenFlowsMixin"
+  ],
+  "mixins": [
+    "AddCustomRaidMemberMixin",
+    "CarvedPumpkinBlockMixin",
+    "ClayGolemSensorMixin",
+    "CustomDeathMessageMixin",
+    "RaidMixin",
+    "SpawnEggItemAccessor"
+  ]
 }

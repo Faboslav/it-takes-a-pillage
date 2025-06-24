@@ -37,7 +37,7 @@ public class StructureTemplateEntitySpawnMixin
 			),
             cancellable = true
 	)
-    private static void friendsandfoes$onEntitySpawn(
+    private static void takesapillage$onEntitySpawn(
 		Rotation rotation,
 		Mirror mirror,
 		Vec3 vec3,

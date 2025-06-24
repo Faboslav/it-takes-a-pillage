@@ -21,6 +21,10 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+//? if >= 1.21.1 {
+import net.minecraft.core.registries.Registries;
+//?}
+
 public final class PillageSiege implements CustomSpawner
 {
 	public static final PillageSiege PILLAGE_SIEGE = new PillageSiege();
@@ -34,45 +38,50 @@ public final class PillageSiege implements CustomSpawner
 	private int spawnZ;
 
 	@Override
-	public int tick(ServerLevel serverlevel, boolean spawnEnemies, boolean spawnFriendlies) {
+	//? >=1.21.5 {
+	/*public void tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
+	*///?} else {
+	public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
+	//?}
+	{
 		if (
 			//? if >=1.21.5 {
-			serverlevel.isBrightOutside()
-			//?} else {
-			/*serverlevel.isDay()
-			*///?}
+			/*serverLevel.isBrightOutside()
+			*///?} else {
+			serverLevel.isDay()
+			//?}
 			|| !ItTakesPillage.getConfig().enablePillageSieges
 		) {
 			this.siegeState = State.SIEGE_DONE;
 			this.hasSetupSiege = false;
-			return 0;
+			return /*? <1.21.5 {*/0/*?}*/;
 		}
 
-		float f = serverlevel.getTimeOfDay(0.0F);
+		float f = serverLevel.getTimeOfDay(0.0F);
 		if ((double) f == 0.5D) {
-			this.siegeState = serverlevel.random.nextInt(10) == 0 ? State.SIEGE_TONIGHT:State.SIEGE_DONE;
+			this.siegeState = serverLevel.random.nextInt(10) == 0 ? State.SIEGE_TONIGHT:State.SIEGE_DONE;
 		}
 		if (this.siegeState == State.SIEGE_DONE) {
-			return 0;
+			return /*? <1.21.5 {*/0/*?}*/;
 		} else {
 			if (!this.hasSetupSiege) {
-				if (!this.tryToSetupSiege(serverlevel)) {
-					return 0;
+				if (!this.tryToSetupSiege(serverLevel)) {
+					return /*? <1.21.5 {*/0/*?}*/;
 				}
 				this.hasSetupSiege = true;
 			}
 			if (this.nextSpawnTime > 0) {
 				--this.nextSpawnTime;
-				return 0;
+				return /*? <1.21.5 {*/0/*?}*/;
 			} else {
 				this.nextSpawnTime = 2;
 				if (this.pillagersToSpawn > 0) {
-					this.trySpawn(serverlevel);
+					this.trySpawn(serverLevel);
 					--this.pillagersToSpawn;
 				} else {
 					this.siegeState = State.SIEGE_DONE;
 				}
-				return 1;
+				return /*? <1.21.5 {*/1/*?}*/;
 			}
 		}
 	}
@@ -110,8 +119,14 @@ public final class PillageSiege implements CustomSpawner
 		Vec3 vec3 = findRandomSpawnPos(serverLevel, new BlockPos(this.spawnX, this.spawnY, this.spawnZ));
 		if (vec3 != null) {
 			AbstractIllager pillager;
+
 			try {
-				pillager = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData().create(serverLevel/*? >=1.21.3 {*/, VersionedEntitySpawnReason.EVENT/*?}*/);
+				//? if >=1.21.5 {
+				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get();
+				*///?} else {
+				var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().data();
+				//?}
+				pillager = entityType.create(serverLevel/*? >=1.21.3 {*/, VersionedEntitySpawnReason.EVENT/*?}*/);
 				pillager.setPersistenceRequired();
 				if (serverLevel.random.nextInt(6) < 1) {
 					//? if >= 1.21.3 {
@@ -132,7 +147,11 @@ public final class PillageSiege implements CustomSpawner
 				ItTakesPillage.getLogger().warn("Failed to create pillager for pillage siege at {}", vec3, exception);
 				return;
 			}
+			//? if >=1.21.5 {
+			/*pillager.snapTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
+			*///?} else {
 			pillager.moveTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
+			//?}
 			serverLevel.addFreshEntityWithPassengers(pillager);
 		}
 	}

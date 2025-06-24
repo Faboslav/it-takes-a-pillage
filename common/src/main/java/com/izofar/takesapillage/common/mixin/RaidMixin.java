@@ -5,6 +5,7 @@ import com.izofar.takesapillage.common.entity.Archer;
 import com.izofar.takesapillage.common.entity.Legioner;
 import com.izofar.takesapillage.common.entity.Skirmisher;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.raid.Raid;
 import net.minecraft.world.entity.raid.Raider;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,22 +22,34 @@ public final class RaidMixin
 		cancellable = true
 	)
 	public void takesapillage$addRaider(
-		int i,
+		//? >= 1.21.5 {
+		/*ServerLevel serverLevel,
+		*///?}
+		int wave,
 		Raider raider,
-		BlockPos blockPos,
-		boolean bl,
+		BlockPos pos,
+		boolean existing,
 		CallbackInfo ci
 	) {
 		if (
 			(
 				raider instanceof Archer
-				&& !ItTakesPillage.getConfig().enableArcherInRaids
+				&& (
+					!ItTakesPillage.getConfig().enableArcherInRaids
+					|| !ItTakesPillage.getConfig().enableArcherInRaids
+				)
 			) || (
 				raider instanceof Legioner
-				&& !ItTakesPillage.getConfig().enableLegionerInRaids
+				&& (
+					!ItTakesPillage.getConfig().enableLegioner
+					|| !ItTakesPillage.getConfig().enableLegionerInRaids
+				)
 			) || (
 				raider instanceof Skirmisher
-				&& !ItTakesPillage.getConfig().enableSkirmisherInRaids
+				&& (
+					!ItTakesPillage.getConfig().enableSkirmisher
+					|| !ItTakesPillage.getConfig().enableSkirmisherInRaids
+				)
 			)
 		) {
 			ci.cancel();

@@ -72,19 +72,19 @@ public class ClayGolem extends IronGolem
 			}
 		}
 		BlockPos blockpos = blockpattern$patternhelper.getBlock(1, 2, 0).getPos();
-		ClayGolem claygolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(world/*? >= 1.21.3 {*/, VersionedEntitySpawnReason.TRIGGERED/*?}*/);
-		if (claygolem == null) return;
-		claygolem.setPlayerCreated(true);
+		ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(world/*? >= 1.21.3 {*/, VersionedEntitySpawnReason.TRIGGERED/*?}*/);
+		if (clayGolem == null) return;
+		clayGolem.setPlayerCreated(true);
 		//? if >=1.21.5 {
-		claygolem.snapTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
-		//?} else {
-		/*clayGolem.moveTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
-		*///?}
-		world.addFreshEntity(claygolem);
+		/*clayGolem.snapTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
+		*///?} else {
+		clayGolem.moveTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
+		//?}
+		world.addFreshEntity(clayGolem);
 
 		CarvedPumpkinBlock.updatePatternBlocks(world, blockpattern$patternhelper);
-		for (ServerPlayer serverplayerentity1 : world.getEntitiesOfClass(ServerPlayer.class, claygolem.getBoundingBox().inflate(5.0D))) {
-			CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity1, claygolem);
+		for (ServerPlayer serverplayerentity1 : world.getEntitiesOfClass(ServerPlayer.class, clayGolem.getBoundingBox().inflate(5.0D))) {
+			CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity1, clayGolem);
 		}
 	}
 

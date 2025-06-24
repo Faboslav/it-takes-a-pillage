@@ -18,11 +18,11 @@ public abstract class ItTakesPillageFeatures
 {
 	public static final ResourcefulRegistry<Feature<?>> FEATURES = ResourcefulRegistries.create(BuiltInRegistries.FEATURE, ItTakesPillage.MOD_ID);
 
-	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> ILLAGER = FEATURES.register("mob_feature_illager", () -> new MobFeature(() -> MobLists.PILLAGER_CAMP_LIST));
-	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> RAVAGER = FEATURES.register("mob_feature_ravager", () -> new MobFeature(EntityType.RAVAGER));
-	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> LIVESTOCK = FEATURES.register("mob_feature_livestock", () -> new MobFeature(() -> MobLists.LIVESTOCK_LIST));
-	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> PRISONER = FEATURES.register("mob_feature_prisoner", () -> new MobFeature(() -> MobLists.PRISONER_LIST));
-	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> ARCHER = FEATURES.register("mob_feature_archer", () -> new MobFeature(() -> MobLists.RANGED_ILLAGER_LIST));
-	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> SOLDIER = FEATURES.register("mob_feature_soldier", () -> new MobFeature(() -> MobLists.BASTILLE_LIST));
-	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> CAPTIVE = FEATURES.register("mob_feature_captive", () -> new MobFeature(() -> MobLists.CAPTIVE_LIST));
+	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> ILLAGER = FEATURES.register("mob_feature_illager", () -> new MobFeature<>(() -> MobLists.PILLAGER_CAMP_LIST));
+	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> RAVAGER = FEATURES.register("mob_feature_ravager", () -> new MobFeature<>(EntityType.RAVAGER));
+	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> LIVESTOCK = FEATURES.register("mob_feature_livestock", () -> new MobFeature<>(() -> MobLists.LIVESTOCK_LIST));
+	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> PRISONER = FEATURES.register("mob_feature_prisoner", () -> new MobFeature<>(() -> MobLists.PRISONER_LIST));
+	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> ARCHER = FEATURES.register("mob_feature_archer", () -> new MobFeature<>(() -> MobLists.RANGED_ILLAGER_LIST));
+	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> SOLDIER = FEATURES.register("mob_feature_soldier", () -> new MobFeature<>(() -> MobLists.BASTILLE_LIST));
+	public static final RegistryEntry<Feature<NoneFeatureConfiguration>> CAPTIVE = FEATURES.register("mob_feature_captive", () -> new MobFeature<>(() -> MobLists.CAPTIVE_LIST));
 }

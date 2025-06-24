@@ -27,7 +27,7 @@ public final class NaturalSpawnerMixin
 			target = "Lnet/minecraft/world/level/NaturalSpawner;isValidPositionForMob(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Mob;D)Z"
 		)
 	)
-	private static boolean friendsandfoes$onEntitySpawn(
+	private static boolean takesapillage$onEntitySpawn(
 		ServerLevel serverWorld,
 		Mob mob,
 		double d,
@@ -51,7 +51,7 @@ public final class NaturalSpawnerMixin
 			*//*?}*/
 		)
 	)
-	private static boolean friendsandfoes$onCheckEntitySpawn(
+	private static boolean takesapillage$onCheckEntitySpawn(
 		Mob instance,
 		LevelAccessor worldAccess,
 		/*? >=1.21.3 {*/

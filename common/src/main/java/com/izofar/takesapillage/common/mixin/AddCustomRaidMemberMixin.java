@@ -1,5 +1,6 @@
-package com.izofar.takesapillage.neoforge.mixin;
+package com.izofar.takesapillage.common.mixin;
 
+import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.init.ItTakesPillageEntityTypes;
 import com.izofar.takesapillage.common.util.CustomRaidMember;
 import net.minecraft.world.entity.EntityType;
@@ -46,36 +47,42 @@ public final class AddCustomRaidMemberMixin
 			shift = At.Shift.AFTER
 		)
 	)
-	private static void takesAPillage_addCustomRaidMembers(CallbackInfo ci) {
+	private static void takesapillage$addCustomRaidMembers(CallbackInfo ci) {
 		var raidMembers = new ArrayList<>(Arrays.asList($VALUES));
 		var lastRaidMember = raidMembers.get(raidMembers.size() - 1);
 
-		var archerRaidMember = newRaidMember(
-			CustomRaidMember.ARCHER_INTERNAL_NAME,
-			lastRaidMember.ordinal() + 1,
-			ItTakesPillageEntityTypes.ARCHER.get(),
-			CustomRaidMember.ARCHER_COUNT_IN_WAVES
-		);
-		CustomRaidMember.ARCHER = archerRaidMember;
-		raidMembers.add(archerRaidMember);
+		if (ItTakesPillage.getConfig().enableArcherInRaids) {
+            var archerRaidMember = newRaidMember(
+                    CustomRaidMember.ARCHER_INTERNAL_NAME,
+                    lastRaidMember.ordinal() + 1,
+                    ItTakesPillageEntityTypes.ARCHER.get(),
+                    CustomRaidMember.ARCHER_COUNT_IN_WAVES
+            );
+            CustomRaidMember.ARCHER = archerRaidMember;
+            raidMembers.add(archerRaidMember);
+		}
 
-		var skirmisherRaidMember = newRaidMember(
-			CustomRaidMember.SKIRMISHER_INTERNAL_NAME,
-			lastRaidMember.ordinal() + 2,
-			ItTakesPillageEntityTypes.SKIRMISHER.get(),
-			CustomRaidMember.SKIRMISHER_COUNT_IN_WAVES
-		);
-		CustomRaidMember.SKIRMISHER = skirmisherRaidMember;
-		raidMembers.add(skirmisherRaidMember);
+		if (ItTakesPillage.getConfig().enableSkirmisherInRaids) {
+			var skirmisherRaidMember = newRaidMember(
+				CustomRaidMember.SKIRMISHER_INTERNAL_NAME,
+				lastRaidMember.ordinal() + 2,
+				ItTakesPillageEntityTypes.SKIRMISHER.get(),
+				CustomRaidMember.SKIRMISHER_COUNT_IN_WAVES
+			);
+			CustomRaidMember.SKIRMISHER = skirmisherRaidMember;
+			raidMembers.add(skirmisherRaidMember);
+		}
 
-		var legionerRaidMember = newRaidMember(
-			CustomRaidMember.LEGIONER_INTERNAL_NAME,
-			lastRaidMember.ordinal() + 3,
-			ItTakesPillageEntityTypes.LEGIONER.get(),
-			CustomRaidMember.LEGIONER_COUNT_IN_WAVES
-		);
-		CustomRaidMember.LEGIONER = legionerRaidMember;
-		raidMembers.add(legionerRaidMember);
+		if (ItTakesPillage.getConfig().enableLegionerInRaids) {
+            var legionerRaidMember = newRaidMember(
+                    CustomRaidMember.LEGIONER_INTERNAL_NAME,
+                    lastRaidMember.ordinal() + 3,
+                    ItTakesPillageEntityTypes.LEGIONER.get(),
+                    CustomRaidMember.LEGIONER_COUNT_IN_WAVES
+            );
+            CustomRaidMember.LEGIONER = legionerRaidMember;
+            raidMembers.add(legionerRaidMember);
+		}
 
 		$VALUES = raidMembers.toArray(new Raid.RaiderType[0]);
 	}

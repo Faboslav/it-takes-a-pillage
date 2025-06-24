@@ -23,14 +23,15 @@ import net.minecraft.world.item.Item;
 
 public class RavagerHornItem extends InstrumentItem
 {
-	//? if >=1.21.3 {
 	public RavagerHornItem(TagKey<Instrument> instruments, Properties properties) {
+		//? if >=1.21.5 {
+		/*super(properties);
+		*///?} else if >=1.21.5 {
+		/*super(properties, instruments);
+		*///?} else {
 		super(instruments, properties);
+		//?}
 	}
-	//?} else {
-	/*public RavagerHornItem(TagKey<Instrument> instruments, Item.Properties properties) {
-		super(properties, instruments);
-	}*///?}
 
 	@Override
 	//? if >=1.21.3 {

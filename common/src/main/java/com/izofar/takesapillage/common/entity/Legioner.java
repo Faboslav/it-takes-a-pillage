@@ -177,26 +177,26 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 			super.knockback(x, y, z);
 		} else {
 			//? if >=1.21.5 {
-			var soundEvent = SoundEvents.SHIELD_BLOCK.value();
-			//?} else {
-			/*var soundEvent = SoundEvents.SHIELD_BLOCK;
-			*///?}
+			/*var soundEvent = SoundEvents.SHIELD_BLOCK.value();
+			*///?} else {
+			var soundEvent = SoundEvents.SHIELD_BLOCK;
+			//?}
 			this.playSound(soundEvent, 1.0F, 0.8F + this.level().random.nextFloat() * 0.4F);
 		}
 	}
 
 	@Override
 	//? if >=1.21.5 {
-	protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
-	//?} else {
-	/*protected void blockUsingShield(LivingEntity attacker)
-	*///?}
+	/*protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
+	*///?} else {
+	protected void blockUsingShield(LivingEntity attacker)
+	//?}
 	{
 		//? if >=1.21.5 {
-		super.blockedByItem(this);
-		//?} else {
-		/*super.blockUsingShield(attacker);
-		*///?}
+		/*super.blockedByItem(this);
+		*///?} else {
+		super.blockUsingShield(attacker);
+		//?}
 
 		if (attacker.getMainHandItem().getItem() instanceof AxeItem) {
 			this.disableShield();
@@ -208,10 +208,10 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		this.stopUsingShield();
 		this.level().broadcastEntityEvent(this, (byte) 30);
 		//? if >=1.21.5 {
-		var soundEvent = SoundEvents.SHIELD_BREAK.value();
-		//?} else {
-		/*var soundEvent = SoundEvents.SHIELD_BREAK;
-		 *///?}
+		/*var soundEvent = SoundEvents.SHIELD_BREAK.value();
+		*///?} else {
+		var soundEvent = SoundEvents.SHIELD_BREAK;
+		 //?}
 		this.playSound(soundEvent, 0.8F, 0.8F + this.level().random.nextFloat() * 0.4F);
 	}
 
