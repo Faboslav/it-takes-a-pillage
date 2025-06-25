@@ -10,5 +10,5 @@
   "mixins": [
     "NaturalSpawnerMixin",
     "StructureTemplateEntitySpawnMixin"
-    ]
+  ]
 }
