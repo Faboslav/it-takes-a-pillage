@@ -17,7 +17,7 @@ import net.minecraft.util.random.WeightedEntry;
 *///?}
 
 
-@SuppressWarnings("all")
+@SuppressWarnings("unchecked")
 public final class MobLists
 {
 	public static final /*? >=1.21.5 {*/WeightedList<EntityType<? extends Raider>>/*?} else {*//*WeightedRandomList<WeightedEntry.Wrapper<EntityType<? extends AbstractIllager>>>*//*?}*/ PILLAGER_CAMP_LIST = createWeightedList(ImmutableList.of(createWeightedEntry(EntityType.PILLAGER, 15), createWeightedEntry(EntityType.PILLAGER, 15), createWeightedEntry(ItTakesPillageEntityTypes.SKIRMISHER.get(), 12), createWeightedEntry(ItTakesPillageEntityTypes.ARCHER.get(), 8), createWeightedEntry(EntityType.VINDICATOR, 5), createWeightedEntry(EntityType.WITCH, 3), createWeightedEntry(EntityType.EVOKER, 1)));
