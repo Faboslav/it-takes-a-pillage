@@ -97,7 +97,8 @@ public class ClayGolem extends IronGolem
 			(double) cachedBlockPosition.getZ() + 0.5D
 		);
 
-		clayGolem.finalizeSpawn((ServerLevelAccessor) world, world.getCurrentDifficultyAt(cachedBlockPosition), VersionedEntitySpawnReason.TRIGGERED, null);
+		clayGolem.finalizeSpawn((ServerLevelAccessor) world, world.getCurrentDifficultyAt(cachedBlockPosition), VersionedEntitySpawnReason.TRIGGERED, null/*? =1.20.1 {*//*, null*//*?}*/);
+
 		world.addFreshEntity(clayGolem);
 
 		for (ServerPlayer serverPlayerEntity : world.getEntitiesOfClass(
