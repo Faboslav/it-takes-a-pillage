@@ -19,6 +19,7 @@ public final class ItTakesPillageConfig
 	private static final String GENERAL_CATEGORY = "general";
 	private static final String MOBS_CATEGORY = "mobs";
 
+	private static final String CLAY_GOLEM_GROUP = "clay_golem";
 	private static final String ARCHER_GROUP = "archer";
 	private static final String LEGIONER_GROUP = "legioner";
 	private static final String SKIRMISHER_GROUP = "skirmisher";
@@ -26,12 +27,17 @@ public final class ItTakesPillageConfig
 	@SerialEntry()
 	@AutoGen(category = GENERAL_CATEGORY)
 	@Boolean(formatter = Boolean.Formatter.YES_NO, colored = true)
-	public boolean replaceIronGolemsWithClayGolems = false;
+	public boolean enablePillageSieges = true;
 
 	@SerialEntry()
-	@AutoGen(category = GENERAL_CATEGORY)
+	@AutoGen(category = MOBS_CATEGORY, group = CLAY_GOLEM_GROUP)
 	@Boolean(formatter = Boolean.Formatter.YES_NO, colored = true)
-	public boolean enablePillageSieges = true;
+	public boolean enableClayGolem = true;
+
+	@SerialEntry()
+	@AutoGen(category = MOBS_CATEGORY, group = CLAY_GOLEM_GROUP)
+	@Boolean(formatter = Boolean.Formatter.YES_NO, colored = true)
+	public boolean replaceIronGolemsWithClayGolems = false;
 
 	@SerialEntry()
 	@AutoGen(category = MOBS_CATEGORY, group = ARCHER_GROUP)

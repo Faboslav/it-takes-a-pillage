@@ -2,7 +2,7 @@
 	//? >=1.21.5 {
 	"model": {
 		"type": "minecraft:model",
-		"model": "takesapillage:item/legioner_spawn_egg"
+		"model": "takesapillage:item/clay_golem_spawn_egg"
 	}
 //?} else {
     /*"model": {
@@ -11,11 +11,11 @@
         "tints": [
 			{
 				"type": "minecraft:constant",
-				"value": 4281014835
+				"value": 4286216826
 			},
 			{
 				"type": "minecraft:constant",
-				"value": 4287719249
+				"value": 4284185670
 			}
         ]
 	}*///?}

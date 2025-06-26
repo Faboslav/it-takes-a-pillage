@@ -10,6 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
@@ -21,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CarvedPumpkinBlock;
@@ -29,14 +31,21 @@ import net.minecraft.world.level.block.state.pattern.BlockInWorld;
 import net.minecraft.world.level.block.state.pattern.BlockPattern;
 import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.block.state.predicate.BlockStatePredicate;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 
 public class ClayGolem extends IronGolem
 {
-	private static BlockPattern clayGolemFull;
-
-	public static final Predicate<BlockState> PUMPKINS_PREDICATE = (blockState -> (blockState != null && (blockState.is(Blocks.CARVED_PUMPKIN) || blockState.is(Blocks.JACK_O_LANTERN))));
+	@Nullable
+	private static BlockPattern clayGolemBuildPattern = null;
+	private static final Predicate<BlockState> IS_CLAY_GOLEM_HEAD_PREDICATE = state -> state != null && (
+		state.is(Blocks.CARVED_PUMPKIN)
+		|| state.is(Blocks.JACK_O_LANTERN)
+	);
+	private static final Predicate<BlockState> IS_CLAY_GOLEM_CLAY_PREDICATE = state -> state != null && (
+		state.is(Blocks.CLAY)
+	);
 
 	public ClayGolem(EntityType<? extends IronGolem> entityType, Level world) {
 		super(entityType, world);
@@ -50,47 +59,60 @@ public class ClayGolem extends IronGolem
 			.add(Attributes.ATTACK_DAMAGE, 8.0D);
 	}
 
-	public static BlockPattern getOrCreateClayGolemFull() {
-		if (clayGolemFull == null)
-			clayGolemFull = BlockPatternBuilder.start().aisle("~^~", "###", "~#~").where('^', BlockInWorld.hasState(PUMPKINS_PREDICATE)).where('#', BlockInWorld.hasState(BlockStatePredicate.forBlock(Blocks.CLAY))).where('~', (block) -> block.getState().isAir()).build();
-		return clayGolemFull;
+	public static BlockPattern getClayGolemBuildPattern() {
+		if (clayGolemBuildPattern == null) {
+			clayGolemBuildPattern = BlockPatternBuilder.start()
+				.aisle(
+					"~^~",
+					"###",
+					"~#~")
+				.where('^', BlockInWorld.hasState(IS_CLAY_GOLEM_HEAD_PREDICATE))
+				.where('#', BlockInWorld.hasState(IS_CLAY_GOLEM_CLAY_PREDICATE))
+				.where('~', BlockInWorld.hasState(BlockStatePredicate.forBlock(Blocks.AIR)))
+				.build();
+		}
+
+		return clayGolemBuildPattern;
 	}
 
 	public static void trySpawnClayGolem(Level world, BlockPos blockPos) {
-		if (!ItTakesPillage.getConfig().replaceIronGolemsWithClayGolems) {
+		if (!ItTakesPillage.getConfig().enableClayGolem) {
 			return;
 		}
 
-		BlockPattern golemPattern = getOrCreateClayGolemFull();
-		BlockPattern.BlockPatternMatch blockpattern$patternhelper = golemPattern.find(world, blockPos);
-		if (blockpattern$patternhelper == null) return;
-		for (int j = 0; j < golemPattern.getWidth(); j++) {
-			for (int k = 0; k < golemPattern.getHeight(); k++) {
-				BlockInWorld cachedblockinfo = blockpattern$patternhelper.getBlock(j, k, 0);
-				world.setBlock(cachedblockinfo.getPos(), Blocks.AIR.defaultBlockState(), 2);
-				world.levelEvent(2001, cachedblockinfo.getPos(), Block.getId(cachedblockinfo.getState()));
-			}
+		BlockPattern.BlockPatternMatch patternSearchResult = getClayGolemBuildPattern().find(world, blockPos);
+
+		if (patternSearchResult == null) {
+			return;
 		}
-		BlockPos blockpos = blockpattern$patternhelper.getBlock(1, 2, 0).getPos();
+
+		CarvedPumpkinBlock.clearPatternBlocks(world, patternSearchResult);
+
+		BlockPos cachedBlockPosition = patternSearchResult.getBlock(0, 2, 0).getPos();
 		ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(world/*? >= 1.21.3 {*/, VersionedEntitySpawnReason.TRIGGERED/*?}*/);
-		if (clayGolem == null) return;
-		clayGolem.setPlayerCreated(true);
-		//? if >=1.21.5 {
-		clayGolem.snapTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
-		//?} else {
-		/*clayGolem.moveTo(blockpos.getX() + 0.5D, blockpos.getY() + 0.05D, blockpos.getZ() + 0.5D, 0.0F, 0.0F);
-		*///?}
+
+		clayGolem.setPos(
+			(double) cachedBlockPosition.getX() + 0.5D,
+			(double) cachedBlockPosition.getY() + 0.05D,
+			(double) cachedBlockPosition.getZ() + 0.5D
+		);
+
+		clayGolem.finalizeSpawn((ServerLevelAccessor) world, world.getCurrentDifficultyAt(cachedBlockPosition), VersionedEntitySpawnReason.TRIGGERED, null);
 		world.addFreshEntity(clayGolem);
 
-		CarvedPumpkinBlock.updatePatternBlocks(world, blockpattern$patternhelper);
-		for (ServerPlayer serverplayerentity1 : world.getEntitiesOfClass(ServerPlayer.class, clayGolem.getBoundingBox().inflate(5.0D))) {
-			CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity1, clayGolem);
+		for (ServerPlayer serverPlayerEntity : world.getEntitiesOfClass(
+			ServerPlayer.class,
+			clayGolem.getBoundingBox().inflate(5.0D)
+		)) {
+			CriteriaTriggers.SUMMONED_ENTITY.trigger(serverPlayerEntity, clayGolem);
 		}
+
+		CarvedPumpkinBlock.updatePatternBlocks(world, patternSearchResult);
 	}
 
 	@Override
 	public void tick() {
-		if (!ItTakesPillage.getConfig().replaceIronGolemsWithClayGolems) {
+		if (!ItTakesPillage.getConfig().enableClayGolem) {
 			this.discard();
 		}
 

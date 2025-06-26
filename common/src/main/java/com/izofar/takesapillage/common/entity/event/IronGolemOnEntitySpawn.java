@@ -27,7 +27,7 @@ public final class IronGolemOnEntitySpawn
 			return false;
 		}
 
-		if (!ItTakesPillage.getConfig().replaceIronGolemsWithClayGolems) {
+		if (!ItTakesPillage.getConfig().enableClayGolem || !ItTakesPillage.getConfig().replaceIronGolemsWithClayGolems) {
 			return false;
 		}
 

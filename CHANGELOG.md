@@ -1,3 +1,10 @@
+## 1.0.8
+
+- Fixed spawn egg icons (on 1.21.6)
+- Fixed clay golem build/spawn logic
+- Added clay golem spawn egg item
+- Added more clay golem related config options for more specific configuration
+
 ## 1.0.7
 
 - Reworked config/added options to disable archers/legioners/skirmishers

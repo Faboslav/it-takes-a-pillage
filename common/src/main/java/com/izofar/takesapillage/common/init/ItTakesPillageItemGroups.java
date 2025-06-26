@@ -47,6 +47,7 @@ public class ItTakesPillageItemGroups
 		if (event.type() == AddItemGroupEntriesEvent.Type.SPAWN_EGGS) {
 			Stream.of(
 				ItTakesPillageItems.ARCHER_SPAWN_EGG,
+				ItTakesPillageItems.CLAY_GOLEM_SPAWN_EGG,
 				ItTakesPillageItems.SKIRMISHER_SPAWN_EGG,
 				ItTakesPillageItems.LEGIONER_SPAWN_EGG
 			).map(item -> item.get().getDefaultInstance()).forEach(event::add);

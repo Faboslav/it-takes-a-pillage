@@ -5,18 +5,18 @@
 		"model": "takesapillage:item/archer_spawn_egg"
 	}
 //?} else {
-    /*"model": {
-        "type": "minecraft:model",
-        "model": "minecraft:item/template_spawn_egg",
-        "tints": [
-            {
-                "type": "minecraft:constant",
-                "value": 4270425528
-            },
-            {
-                "type": "minecraft:constant",
-                "value": 4287590225
-            }
-        ]
+	/*"model": {
+		"type": "minecraft:model",
+		"model": "minecraft:item/template_spawn_egg",
+		"tints": [
+			{
+				"type": "minecraft:constant",
+				"value": 4280564792
+			},
+			{
+				"type": "minecraft:constant",
+				"value": 4287719249
+			}
+		]
 	}*///?}
 }

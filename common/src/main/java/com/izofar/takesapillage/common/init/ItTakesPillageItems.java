@@ -45,6 +45,7 @@ public final class ItTakesPillageItems
 	*///?}
 
 	public static final RegistryEntry<Item> ARCHER_SPAWN_EGG = registerSpawnEgg("archer_spawn_egg", ItTakesPillageEntityTypes.ARCHER, 0xFF243c38, 0xFF916751);
+	public static final RegistryEntry<Item> CLAY_GOLEM_SPAWN_EGG = registerSpawnEgg("clay_golem_spawn_egg", ItTakesPillageEntityTypes.CLAY_GOLEM, 0xFF7A7A7A, 0xFF5B7C46);
 	public static final RegistryEntry<Item> SKIRMISHER_SPAWN_EGG = registerSpawnEgg("skirmisher_spawn_egg", ItTakesPillageEntityTypes.SKIRMISHER, 0x421b1e, 0xFF916751);
 	public static final RegistryEntry<Item> LEGIONER_SPAWN_EGG = registerSpawnEgg("legioner_spawn_egg", ItTakesPillageEntityTypes.LEGIONER, 0xFF2b1a33, 0xFF916751);
 

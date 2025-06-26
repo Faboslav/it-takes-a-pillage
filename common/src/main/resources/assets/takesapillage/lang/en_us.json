@@ -1,5 +1,6 @@
 {
 	"item.takesapillage.archer_spawn_egg": "Archer Spawn Egg",
+	"item.takesapillage.clay_golem_spawn_egg": "Clay Golem Spawn Egg",
 	"item.takesapillage.skirmisher_spawn_egg": "Skirmisher Spawn Egg",
 	"item.takesapillage.legioner_spawn_egg": "Legioner Spawn Egg",
 	"item.takesapillage.ravager_horn": "Ravager Horn",
@@ -48,6 +49,7 @@
 	"yacl3.config.takesapillage:takesapillage.category.mobs.group.archer": "Archer",
 	"yacl3.config.takesapillage:takesapillage.category.mobs.group.legioner": "Legioner",
 	"yacl3.config.takesapillage:takesapillage.category.mobs.group.skirmisher": "Skirmisher",
+	"yacl3.config.takesapillage:takesapillage.enableClayGolem": "Enable clay golem",
 	"yacl3.config.takesapillage:takesapillage.replaceIronGolemsWithClayGolems": "Replace all iron golems with clay golems",
 	"yacl3.config.takesapillage:takesapillage.enablePillageSieges": "Enabled pillage sieges",
 	"yacl3.config.takesapillage:takesapillage.enableArcher": "Enabled archer",
