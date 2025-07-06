@@ -1,3 +1,7 @@
+## 1.0.9
+
+- Fixed crash related to custom raid members
+
 ## 1.0.8
 
 - Fixed spawn egg icons (on 1.21.6)
