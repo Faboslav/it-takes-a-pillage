@@ -71,15 +71,18 @@ public final class ItTakesPillageItems
 		int secondaryColorIn
 	) {
 		return ITEMS.register(id, () -> {
-			//? >=1.21.4 {
-			var spawnEgg = new SpawnEggItem(typeIn.get(), new Item.Properties().stacksTo(64).setId(ResourceKey.create(Registries.ITEM, ItTakesPillage.makeId(id))));
-			/*?}*/
-			//? =1.21.3 {
+			//? if >= 1.21.9 {
+			var spawnEgg = new SpawnEggItem(new Item.Properties().spawnEgg(typeIn.get()).stacksTo(64).setId(ResourceKey.create(Registries.ITEM, ItTakesPillage.makeId(id))));
+			//?} else if >=1.21.4 {
+			/*var spawnEgg = new SpawnEggItem(typeIn.get(), new Item.Properties().stacksTo(64).setId(ResourceKey.create(Registries.ITEM, ItTakesPillage.makeId(id))));
+			 *///?} else =1.21.3 {
 			/*var spawnEgg = new SpawnEggItem(typeIn.get(), primaryColorIn, secondaryColorIn, new Item.Properties().stacksTo(64).setId(ResourceKey.create(Registries.ITEM, ItTakesPillage.makeId(id))));
-			 *///?}
-			//? <=1.21.1 {
+			/*///?} else >=1.21.1 {
 			/*var spawnEgg = new SpawnEggItem(typeIn.get(), primaryColorIn, secondaryColorIn, new Item.Properties().stacksTo(64));
-			 *///?}
+			 *///?} else {
+			/*var spawnEgg = new SpawnEggItem(typeIn.get(), primaryColorIn, secondaryColorIn, new Item.Properties().stacksTo(64));
+			*///?}
+
 			var spawnEggMap = SpawnEggItemAccessor.takesapillage$getSpawnEggs();
 			spawnEggMap.put(typeIn.get(), spawnEgg);
 

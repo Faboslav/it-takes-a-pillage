@@ -4,11 +4,16 @@ import com.google.common.collect.ImmutableMap;
 import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.client.render.entity.model.ClayGolemModel;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import java.util.Map;
+
+//? if >=1.21.10 {
+import net.minecraft.client.renderer.SubmitNodeCollector;
+//?} else {
+/*import net.minecraft.client.renderer.MultiBufferSource;
+*///?}
 
 //? if >=1.21 {
 import net.minecraft.world.entity.Crackiness;
@@ -50,14 +55,16 @@ public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolemRenderS
 		super(layer);
 	}*///?}
 
-	//? >=1.21.3 {
-	public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState renderState, float yRot, float xRot)
-	 //?} else {
-	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolem clayGolem, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch)
-	*///?}
+	//? if >=1.21.9 {
+	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
+	//?} else if >=1.21.3 {
+	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
+	 *///?} else {
+	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, T moobloom, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
+	 *///?}
 	{
 		//? >=1.21.3 {
-		var clayGolem = renderState.clayGolem;
+		var clayGolem = clayGolemRenderState.clayGolem;
 		//?}
 		if (clayGolem.isInvisible()) {
 			return;
@@ -68,9 +75,11 @@ public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolemRenderS
 
 		if (crackiness != Crackiness.Level.NONE) {
 			ResourceLocation resourcelocation = resourceLocations.get(crackiness);
-			//? if >=1.21.3 {
-			renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, packedLight, renderState, -1);
-			//?} else {
+			//? if >=1.21.9 {
+			renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, submitNodeCollector, packedLight, clayGolemRenderState, -1, 1);
+			//?} else if >=1.21.3 {
+			/*renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, packedLight, renderState, -1);
+			*///?} else {
 			/*renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, packedLight, clayGolem, -1);
 			*///?}
 		}

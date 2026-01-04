@@ -27,8 +27,11 @@ import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 
 public final class PillagerStructure extends Structure
 {
-	/*? >= 1.21 {*/
+	//? if >= 1.21 {
 	public static final MapCodec<PillagerStructure> CODEC = RecordCodecBuilder.mapCodec(instance ->
+	//?} else {
+	/*public static final Codec<PillagerStructure> CODEC = RecordCodecBuilder.<PillagerStructure>mapCodec(instance ->
+	*///?}
 		instance.group(PillagerStructure.settingsCodec(instance),
 			StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
 			ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
@@ -37,21 +40,12 @@ public final class PillagerStructure extends Structure
 			Codec.intRange(0, 30).fieldOf("max_terrain_range").forGetter(structure -> structure.maxTerrainRange),
 			HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
 			Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
-			Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
+			//? >= 1.21.10 {
+			JigsawStructure.MaxDistance.CODEC.fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter)
+			//?} else {
+			/*Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
+			 *///?}
 		).apply(instance, PillagerStructure::new));
-	/*?} else {*/
-		/*public static final Codec<PillagerStructure> CODEC = RecordCodecBuilder.<PillagerStructure>mapCodec(instance ->
-		instance.group(PillagerStructure.settingsCodec(instance),
-			StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
-			ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
-			Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
-			Codec.intRange(0, 30).fieldOf("terrain_search_radius").forGetter(structure -> structure.terrainSearchRadius),
-			Codec.intRange(0, 30).fieldOf("max_terrain_range").forGetter(structure -> structure.maxTerrainRange),
-			HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
-			Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
-			Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
-		).apply(instance, PillagerStructure::new)).codec();
-	*//*?}*/
 
 	private final Holder<StructureTemplatePool> startPool;
 	private final Optional<ResourceLocation> startJigsawName;
@@ -60,7 +54,11 @@ public final class PillagerStructure extends Structure
 	private final int maxTerrainRange;
 	private final HeightProvider startHeight;
 	private final Optional<Heightmap.Types> projectStartToHeightmap;
-	private final int maxDistanceFromCenter;
+	//? >= 1.21.10 {
+	private final JigsawStructure.MaxDistance maxDistanceFromCenter;
+	//?} else {
+	/*private final int maxDistanceFromCenter;
+	 *///?}
 
 	public PillagerStructure(
 		Structure.StructureSettings config,
@@ -71,7 +69,11 @@ public final class PillagerStructure extends Structure
 		int maxTerrainRange,
 		HeightProvider startHeight,
 		Optional<Heightmap.Types> projectStartToHeightmap,
-		int maxDistanceFromCenter
+		//? >= 1.21.10 {
+		JigsawStructure.MaxDistance maxDistanceFromCenter
+		//?} else {
+		/*int maxDistanceFromCenter
+		 *///?}
 	) {
 		super(config);
 		this.startPool = startPool;

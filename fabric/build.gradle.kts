@@ -1,7 +1,17 @@
 plugins {
 	id("fabric-loom")
 	`multiloader-loader`
-	id("dev.kikugie.j52j") version "2.0"
+	id("dev.kikugie.fletching-table.fabric") version "0.1.0-alpha.22"
+}
+
+fletchingTable {
+	j52j.register("main") {
+		extension("json", "**/*.json5")
+	}
+}
+
+stonecutter {
+	constants["modMenu"] = commonMod.depOrNull("modmenu") != null
 }
 
 dependencies {
@@ -24,15 +34,17 @@ dependencies {
 			)
 		}"
 	)
-
 	modImplementation("dev.isxander:yet-another-config-lib:${commonMod.dep("yacl")}-fabric")
 
 	// Optional dependencies
-	modImplementation("com.terraformersmc:modmenu:${commonMod.dep("modmenu")}")
+	// Mod Menu (https://www.curseforge.com/minecraft/mc-mods/modmenu)
+	commonMod.depOrNull("modmenu")?.let { modMenuVersion ->
+		modImplementation("com.terraformersmc:modmenu:${modMenuVersion}")
+	}
 }
 
 loom {
-	accessWidenerPath = common.project.file("../../src/main/resources/${mod.id}.accesswidener")
+	accessWidenerPath = common.project.file("../../src/main/resources/accesswideners/${commonMod.mc}-${mod.id}.accesswidener")
 
 	runs {
 		getByName("client") {
@@ -48,6 +60,17 @@ loom {
 	}
 
 	mixin {
+		useLegacyMixinAp = true
 		defaultRefmapName = "${mod.id}.refmap.json"
+	}
+}
+
+tasks.named<ProcessResources>("processResources") {
+	val awFile = project(":common").file("src/main/resources/accesswideners/${commonMod.mc}-${mod.id}.accesswidener")
+
+	from(awFile.parentFile) {
+		include(awFile.name)
+		rename(awFile.name, "${mod.id}.accesswidener")
+		into("")
 	}
 }

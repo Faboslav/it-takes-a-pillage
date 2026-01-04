@@ -19,13 +19,14 @@ public final class ItTakesPillageConfig
 	private static final String GENERAL_CATEGORY = "general";
 	private static final String MOBS_CATEGORY = "mobs";
 
+	private static final String PILLAGE_SIEGE_GROUP = "pillage_siege";
 	private static final String CLAY_GOLEM_GROUP = "clay_golem";
 	private static final String ARCHER_GROUP = "archer";
 	private static final String LEGIONER_GROUP = "legioner";
 	private static final String SKIRMISHER_GROUP = "skirmisher";
 
 	@SerialEntry()
-	@AutoGen(category = GENERAL_CATEGORY)
+	@AutoGen(category = GENERAL_CATEGORY, group = PILLAGE_SIEGE_GROUP)
 	@Boolean(formatter = Boolean.Formatter.YES_NO, colored = true)
 	public boolean enablePillageSieges = true;
 

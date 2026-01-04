@@ -127,7 +127,11 @@
 							"add": false
 						}
 					],
-					"name": "minecraft:chain"
+					//? >= 1.21.10 {
+					"name": "minecraft:iron_chain",
+					//?} else {
+					/*"name": "minecraft:chain",
+					*///?}
 				},
 				{
 					"type": "minecraft:item",

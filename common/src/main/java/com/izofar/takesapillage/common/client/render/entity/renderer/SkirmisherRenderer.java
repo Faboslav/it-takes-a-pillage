@@ -31,7 +31,7 @@ public final class SkirmisherRenderer extends MobRenderer<Skirmisher, Skirmisher
 	public SkirmisherRenderer(EntityRendererProvider.Context context) {
 		//? >= 1.21.3 {
 		super(context, new SkirmisherModel(SkirmisherModel.createBodyLayer().bakeRoot()), 0.5F);
-		this.addLayer(new CustomHeadLayer<>(this, context.getModelSet()));
+		//this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), this));
 		this.addLayer(new ItemInHandLayer<>(this));
 		//?} else {
 		/*super(context, new SkirmisherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.SKIRMISHER)), 0.5F);

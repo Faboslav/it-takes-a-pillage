@@ -84,7 +84,11 @@ public class ItTakesPillage
 			var level = event.getLevel();
 
 			if (level != null && ((ServerLevel) level).getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && level.dimension() == Level.OVERWORLD) {
-				PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true, false);
+				//? if >= 1.21.9 {
+				PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true);
+				//?} else {
+				/*PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true, false);
+				*///?}
 			}
 		}
 	}

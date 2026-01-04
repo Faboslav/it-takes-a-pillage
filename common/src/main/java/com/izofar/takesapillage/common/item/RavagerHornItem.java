@@ -1,5 +1,6 @@
 package com.izofar.takesapillage.common.item;
 
+import com.izofar.takesapillage.common.versions.VersionedEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -43,7 +44,7 @@ public class RavagerHornItem extends InstrumentItem
 		super.finishUsingItem(itemStack, level, livingEntity);
 
 		//? if >=1.21.1 {
-		itemStack.hurtAndBreak(1, livingEntity, LivingEntity.getSlotForHand(livingEntity.getUsedItemHand()));
+		itemStack.hurtAndBreak(1, livingEntity, VersionedEntity.getEquipmentSlotForItem(livingEntity.getUsedItemHand()));
 		//?} else {
 		/*itemStack.hurtAndBreak(1, livingEntity, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
 		*///?}

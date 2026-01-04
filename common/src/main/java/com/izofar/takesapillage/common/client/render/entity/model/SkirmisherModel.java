@@ -7,6 +7,7 @@ import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.monster.AbstractIllager;
@@ -174,7 +175,12 @@ public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implemen
 	}
 
 	@Override
-	public void translateToHand(HumanoidArm arm, PoseStack stack) {
-		getArm(arm).translateAndRotate(stack);
+	//? if >= 1.21.10 {
+	public void translateToHand(EntityRenderState renderState, HumanoidArm arm, PoseStack poseStack)
+	//?} else {
+	/*public void translateToHand(HumanoidArm arm, PoseStack poseStack)
+	*///?}
+	{
+		this.getArm(arm).translateAndRotate(poseStack);
 	}
 }

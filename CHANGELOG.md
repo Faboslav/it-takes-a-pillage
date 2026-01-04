@@ -1,3 +1,10 @@
+## 1.0.10
+
+- Added new spawn egg icons
+- Fixed missing translations in config
+- Fixed skirmisher model (helm offset by 1px)
+- Ported to 1.21.0/1.21.10/1.21.11
+
 ## 1.0.9
 
 - Fixed crash related to custom raid members
@@ -15,19 +22,7 @@
 - Separated archer, legioner, skirmisher models from other vanilla illager models
 - Fixed archer, legioner and skirmisher sitting position
 - Added missing illagers/raiders tags
-- Added missing music disc tags
-
-## 1.0.6
-
-- Added missing items to custom creative tab(item group)
-- Added missing translations
-- Fixed crash related to bad omen/bucket item
-- Fixed Ravager Horn use (not adding bad omen status effect)
-- Fixed Legioner head texture
-- Updated en_us and ru_ru translations (Thanks to mpustovoi)
-- Used more biome tags to improve generation in modded worlds
-
-## 1.0.5
+- Added missing music disc tags 
 
 - Fixed crash on NeoForge
 - Fixed advancements
@@ -35,4 +30,4 @@
 
 ## 1.0.4
 
-- Ported mod to 1.20.1/1.21.1 for fabric and neoforge
+- Ported mod to 1.20.1/1.21.1 for fabric and neoforge 

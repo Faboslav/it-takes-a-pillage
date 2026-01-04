@@ -26,7 +26,7 @@ public final class ItTakesPillageNeoForge
 
 		ItTakesPillage.init();
 
-		if (FMLEnvironment.dist == Dist.CLIENT) {
+		if (FMLEnvironment./*? if >= 1.21.9 {*/ getDist() /*?} else {*/ /*dist *//*?}*/== Dist.CLIENT) {
 			ItTakesPillageNeoForgeClient.init(modEventBus, eventBus);
 		}
 

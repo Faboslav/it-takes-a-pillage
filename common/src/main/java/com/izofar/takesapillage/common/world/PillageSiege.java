@@ -37,12 +37,13 @@ public final class PillageSiege implements CustomSpawner
 	private int spawnY;
 	private int spawnZ;
 
-	@Override
-	//? >=1.21.5 {
-	public void tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
-	//?} else {
+	//? if >= 1.21.9 {
+	public void tick(ServerLevel serverLevel, boolean spawnMonsters)
+	//?} else if >=1.21.5 {
+	/*public void tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
+	 *///?} else {
 	/*public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
-	*///?}
+	 *///?}
 	{
 		if (
 			//? if >=1.21.5 {

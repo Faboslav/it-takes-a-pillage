@@ -1,14 +1,20 @@
 plugins {
 	id("multiloader-common")
 	id("fabric-loom")
-	id("dev.kikugie.j52j") version "2.0"
+	id("dev.kikugie.fletching-table.fabric") version "0.1.0-alpha.22"
 }
 
 loom {
-	accessWidenerPath = common.project.file("../../src/main/resources/${mod.id}.accesswidener")
+	accessWidenerPath = common.project.file("../../src/main/resources/accesswideners/${commonMod.mc}-${mod.id}.accesswidener")
 
 	mixin {
 		useLegacyMixinAp = false
+	}
+}
+
+fletchingTable {
+	j52j.register("main") {
+		extension("json", "**/*.json5")
 	}
 }
 
@@ -21,12 +27,12 @@ dependencies {
 		}
 	})
 
-    compileOnly("org.spongepowered:mixin:0.8.5")
+	compileOnly("org.spongepowered:mixin:0.8.5")
 
-    "io.github.llamalad7:mixinextras-common:0.3.5".let {
-        compileOnly(it)
-        annotationProcessor(it)
-    }
+	"io.github.llamalad7:mixinextras-common:0.3.5".let {
+		compileOnly(it)
+		annotationProcessor(it)
+	}
 
 	modCompileOnly("net.fabricmc:fabric-loader:${commonMod.dep("fabric_loader")}")
 	modCompileOnly("com.teamresourceful.resourcefullib:resourcefullib-common-${commonMod.dep("resourceful_lib.mc")}:${commonMod.dep("resourceful_lib.lib")}")

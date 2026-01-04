@@ -122,7 +122,7 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 
 		super.tick();
 
-		if (!this.level().isClientSide) {
+		if (!this.level().isClientSide()) {
 			this.decrementShieldCooldown();
 		}
 	}
