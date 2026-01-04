@@ -32,17 +32,17 @@ public final class IronGolemOnEntitySpawn
 		}
 
 		var level = event.worldAccess();
-		ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(entity.level()/*? >=1.21.3 {*/, event.spawnReason()/*?}*/);
+		ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(entity.level()/*? >=1.21.3 {*//*, event.spawnReason()*//*?}*/);
 
 		if (clayGolem == null) {
 			return false;
 		}
 
 		//? if >=1.21.5 {
-		clayGolem.snapTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
-		//?} else {
-		/*clayGolem.moveTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
-		*///?}
+		/*clayGolem.snapTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
+		*///?} else {
+		clayGolem.moveTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
+		//?}
 
 		clayGolem.copyPosition(entity);
 		clayGolem.yBodyRotO = entity.yBodyRotO;
@@ -67,9 +67,9 @@ public final class IronGolemOnEntitySpawn
 
 		clayGolem.finalizeSpawn(
 			(ServerLevelAccessor) level,
-			level.getCurrentDifficultyAt(entity.blockPosition()),
+			((ServerLevelAccessor) level).getCurrentDifficultyAt(entity.blockPosition()),
 			event.spawnReason(),
-			/*? <1.21.1 {*/ /*null,*//*?}*/
+			/*? <1.21.1 {*/ null,/*?}*/
 			null
 		);
 

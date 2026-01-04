@@ -7,6 +7,7 @@ import com.izofar.takesapillage.common.event.entity.EntitySpawnEvent;
 import com.izofar.takesapillage.common.event.entity.RegisterEntityAttributesEvent;
 import com.izofar.takesapillage.common.event.lifecycle.ServerLevelTickEvent;
 import com.izofar.takesapillage.common.init.*;
+import com.izofar.takesapillage.common.versions.VersionedGameRulesProvider;
 import com.izofar.takesapillage.common.world.PillageSiege;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -35,28 +36,28 @@ public class ItTakesPillage
 
 	public static ResourceLocation makeId(String id, String path) {
 		/*? >= 1.21 {*/
-		return ResourceLocation.tryBuild(
+		/*return Identifier.tryBuild(
 			id,
 			path
 		);
-		/*?} else {*/
-		/*return new ResourceLocation(
+		*//*?} else {*/
+		return new ResourceLocation(
 			id,
 			path
 		);
-		*//*?}*/
+		/*?}*/
 	}
 
 	public static ResourceLocation makeVanillaId(String id) {
 		/*? >= 1.21 {*/
-		return ResourceLocation.parse(
+		/*return Identifier.parse(
 			id
 		);
-		/*?} else {*/
-		/*return new ResourceLocation(
+		*//*?} else {*/
+		return new ResourceLocation(
 			id
 		);
-		*//*?}*/
+		/*?}*/
 	}
 
 	public static void init() {
@@ -66,8 +67,8 @@ public class ItTakesPillage
 		ItTakesPillageEntityTypes.ENTITY_TYPES.init();
 		ItTakesPillageFeatures.FEATURES.init();
 		//? if <1.21.3 {
-		/*ItTakesPillageInstruments.INSTRUMENTS.init();
-		*///?}
+		ItTakesPillageInstruments.INSTRUMENTS.init();
+		//?}
 		ItTakesPillageItemGroups.ITEM_GROUPS.init();
 		ItTakesPillageItems.ITEMS.init();
 		ItTakesPillageSoundEvents.SOUND_EVENTS.init();
@@ -83,12 +84,12 @@ public class ItTakesPillage
 		if (event.end()) {
 			var level = event.getLevel();
 
-			if (level != null && ((ServerLevel) level).getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && level.dimension() == Level.OVERWORLD) {
+			if (level != null && VersionedGameRulesProvider.getBoolean((ServerLevel) level, VersionedGameRulesProvider.SPAWN_MOBS) && level.dimension() == Level.OVERWORLD) {
 				//? if >= 1.21.9 {
-				PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true);
-				//?} else {
-				/*PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true, false);
-				*///?}
+				/*PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true);
+				*///?} else {
+				PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true, false);
+				//?}
 			}
 		}
 	}

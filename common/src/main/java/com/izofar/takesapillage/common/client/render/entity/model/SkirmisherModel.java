@@ -12,22 +12,22 @@ import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.monster.AbstractIllager;
 
 //? if >= 1.21.10 {
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
+/*import net.minecraft.client.renderer.entity.state.EntityRenderState;
+*///?}
+
+//? >=1.21.3 {
+/*import net.minecraft.client.model.EntityModel;
+import com.izofar.takesapillage.common.client.render.entity.state.SkirmisherRenderState;
+*///?} else {
+import net.minecraft.client.model.HierarchicalModel;
+import com.izofar.takesapillage.common.entity.Skirmisher;
 //?}
 
 //? >=1.21.3 {
-import net.minecraft.client.model.EntityModel;
-import com.izofar.takesapillage.common.client.render.entity.state.SkirmisherRenderState;
-//?} else {
-/*import net.minecraft.client.model.HierarchicalModel;
-import com.izofar.takesapillage.common.entity.Skirmisher;
-*///?}
-
-//? >=1.21.3 {
-public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implements ArmedModel, HeadedModel
-//?} else {
-/*public class SkirmisherModel extends HierarchicalModel<Skirmisher> implements ArmedModel, HeadedModel
-*///?}
+/*public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implements ArmedModel, HeadedModel
+*///?} else {
+public class SkirmisherModel extends HierarchicalModel<Skirmisher> implements ArmedModel, HeadedModel
+//?}
 {
 	private final ModelPart root;
 	private final ModelPart head;
@@ -39,8 +39,8 @@ public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implemen
 
 	public SkirmisherModel(ModelPart root) {
 		//? >=1.21.3 {
-		super(root);
-		//?}
+		/*super(root);
+		*///?}
 
 		this.root = root;
 		this.head = root.getChild("head");
@@ -66,21 +66,21 @@ public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implemen
 	}
 
 	//? <1.21.3 {
-	/*@Override
+	@Override
 	public ModelPart root() {
 		return this.root;
 	}
-	*///?}
+	//?}
 
 	@Override
 	//? >=1.21.3 {
-	public void setupAnim(SkirmisherRenderState renderState)
-	//?} else {
-	/*public void setupAnim(Skirmisher skirmisher, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
-	*///?}
+	/*public void setupAnim(SkirmisherRenderState renderState)
+	*///?} else {
+	public void setupAnim(Skirmisher skirmisher, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
+	//?}
 	{
 		//? >=1.21.3 {
-		var skirmisher = renderState.skirmisher;
+		/*var skirmisher = renderState.skirmisher;
 		var limbAngle = renderState.walkAnimationPos;
 		var limbDistance = renderState.walkAnimationSpeed;
 		var animationProgress = renderState.ageInTicks;
@@ -88,9 +88,9 @@ public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implemen
 		var headPitch = renderState.xRot;
 		var attackTime = renderState.attackTime;
 		var mainArm = skirmisher.getMainArm();
-		//?} else {
-		/*var attackTime = this.attackTime;
-		*///?}
+		*///?} else {
+		var attackTime = this.attackTime;
+		//?}
 		this.head.yRot = headYaw * 0.017453292F;
 		this.head.xRot = headPitch * 0.017453292F;
 		if (skirmisher.isPassenger()) {
@@ -124,10 +124,10 @@ public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implemen
 		if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.ATTACKING) {
 			if (!skirmisher.getMainHandItem().isEmpty()) {
 				//? >=1.21.3 {
-				AnimationUtils.swingWeaponDown(this.right_arm, this.left_arm, mainArm, attackTime, animationProgress);
-				//?} else {
-				/*AnimationUtils.swingWeaponDown(this.right_arm, this.left_arm, skirmisher, attackTime, animationProgress);
-				*///?}
+				/*AnimationUtils.swingWeaponDown(this.right_arm, this.left_arm, mainArm, attackTime, animationProgress);
+				*///?} else {
+				AnimationUtils.swingWeaponDown(this.right_arm, this.left_arm, skirmisher, attackTime, animationProgress);
+				//?}
 			}
 		} else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.SPELLCASTING) {
 			this.right_arm.z = 0.0F;
@@ -150,10 +150,10 @@ public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implemen
 			AnimationUtils.animateCrossbowHold(this.right_arm, this.left_arm, this.head, true);
 		} else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.CROSSBOW_CHARGE) {
 			//? >=1.21.3 {
-			AnimationUtils.animateCrossbowCharge(this.right_arm, this.left_arm, renderState.maxCrossbowChargeDuration, renderState.ticksUsingItem, true);
-			//?} else {
-			/*AnimationUtils.animateCrossbowCharge(this.right_arm, this.left_arm, skirmisher, true);
-			*///?}
+			/*AnimationUtils.animateCrossbowCharge(this.right_arm, this.left_arm, renderState.maxCrossbowChargeDuration, renderState.ticksUsingItem, true);
+			*///?} else {
+			AnimationUtils.animateCrossbowCharge(this.right_arm, this.left_arm, skirmisher, true);
+			//?}
 		} else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.CELEBRATING) {
 			this.right_arm.z = 0.0F;
 			this.right_arm.x = -5.0F;
@@ -179,10 +179,10 @@ public class SkirmisherModel extends EntityModel<SkirmisherRenderState> implemen
 
 	@Override
 	//? if >= 1.21.10 {
-	public void translateToHand(EntityRenderState renderState, HumanoidArm arm, PoseStack poseStack)
-	//?} else {
-	/*public void translateToHand(HumanoidArm arm, PoseStack poseStack)
-	*///?}
+	/*public void translateToHand(EntityRenderState renderState, HumanoidArm arm, PoseStack poseStack)
+	*///?} else {
+	public void translateToHand(HumanoidArm arm, PoseStack poseStack)
+	//?}
 	{
 		this.getArm(arm).translateAndRotate(poseStack);
 	}

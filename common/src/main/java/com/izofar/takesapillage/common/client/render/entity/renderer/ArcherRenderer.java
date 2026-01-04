@@ -10,35 +10,35 @@ import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.resources.ResourceLocation;
 
 //? >= 1.21.3 {
-import com.izofar.takesapillage.common.client.render.entity.state.ArcherRenderState;
-//?}
+/*import com.izofar.takesapillage.common.client.render.entity.state.ArcherRenderState;
+*///?}
 
 //? >= 1.21.3 {
-public final class ArcherRenderer extends IllagerRenderer<Archer, ArcherRenderState>
-//?} else {
-/*public final class ArcherRenderer extends IllagerRenderer<Archer>
-*///?}
+/*public final class ArcherRenderer extends IllagerRenderer<Archer, ArcherRenderState>
+*///?} else {
+public final class ArcherRenderer extends IllagerRenderer<Archer>
+//?}
 {
 	private static final ResourceLocation TEXTURE = ItTakesPillage.makeId("textures/entity/archer.png");
 
 	public ArcherRenderer(EntityRendererProvider.Context context)
 	{
 		//? >= 1.21.3 {
-		super(context, new ArcherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.ARCHER)), 0.5F);
-		//?} else {
 		/*super(context, new ArcherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.ARCHER)), 0.5F);
-		*///?}
+		*///?} else {
+		super(context, new ArcherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.ARCHER)), 0.5F);
+		//?}
 
 		//? >= 1.21.3 {
-		this.addLayer(new ItemInHandLayer<>(this));
-		//?} else {
-		/*this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
-		*///?}
+		/*this.addLayer(new ItemInHandLayer<>(this));
+		*///?} else {
+		this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
+		//?}
 		this.model.getHat().visible = true;
 	}
 
 	//? >= 1.21.3 {
-	@Override
+	/*@Override
 	public ArcherRenderState createRenderState() {
 		return new ArcherRenderState();
 	}
@@ -48,14 +48,14 @@ public final class ArcherRenderer extends IllagerRenderer<Archer, ArcherRenderSt
 		super.extractRenderState(archer, renderState, partialTick);
 		renderState.archer = archer;
 	}
-	//?}
+	*///?}
 
 	@Override
 	//? >= 1.21.3 {
-	public ResourceLocation getTextureLocation(ArcherRenderState renderState)
-	//?} else {
-	/*public ResourceLocation getTextureLocation(Archer archer)
-	*///?}
+	/*public Identifier getTextureLocation(ArcherRenderState renderState)
+	*///?} else {
+	public ResourceLocation getTextureLocation(Archer archer)
+	//?}
 	{
 		return TEXTURE;
 	}

@@ -22,8 +22,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 //? if >= 1.21.1 {
-import net.minecraft.core.registries.Registries;
-//?}
+/*import net.minecraft.core.registries.Registries;
+*///?}
 
 public final class PillageSiege implements CustomSpawner
 {
@@ -38,42 +38,49 @@ public final class PillageSiege implements CustomSpawner
 	private int spawnZ;
 
 	//? if >= 1.21.9 {
-	public void tick(ServerLevel serverLevel, boolean spawnMonsters)
-	//?} else if >=1.21.5 {
+	/*public void tick(ServerLevel serverLevel, boolean spawnMonsters)
+	*///?} else if >=1.21.5 {
 	/*public void tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
 	 *///?} else {
-	/*public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
-	 *///?}
+	public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
+	 //?}
 	{
 		if (
 			//? if >=1.21.5 {
-			serverLevel.isBrightOutside()
-			//?} else {
-			/*serverLevel.isDay()
-			*///?}
+			/*serverLevel.isBrightOutside()
+			*///?} else {
+			serverLevel.isDay()
+			//?}
 			|| !ItTakesPillage.getConfig().enablePillageSieges
 		) {
 			this.siegeState = State.SIEGE_DONE;
 			this.hasSetupSiege = false;
-			return /*? <1.21.5 {*//*0*//*?}*/;
+			return /*? <1.21.5 {*/0/*?}*/;
 		}
 
+		//? if >= 1.21.11 {
+		/*long l = serverLevel.getDayTime() % 24000L;
+		if (l == 12000L) {
+			this.siegeState = serverLevel.random.nextInt(10) == 0 ? State.SIEGE_TONIGHT : State.SIEGE_DONE;
+		}
+		*///?} else {
 		float f = serverLevel.getTimeOfDay(0.0F);
 		if ((double) f == 0.5D) {
 			this.siegeState = serverLevel.random.nextInt(10) == 0 ? State.SIEGE_TONIGHT:State.SIEGE_DONE;
 		}
+		//?}
 		if (this.siegeState == State.SIEGE_DONE) {
-			return /*? <1.21.5 {*//*0*//*?}*/;
+			return /*? <1.21.5 {*/0/*?}*/;
 		} else {
 			if (!this.hasSetupSiege) {
 				if (!this.tryToSetupSiege(serverLevel)) {
-					return /*? <1.21.5 {*//*0*//*?}*/;
+					return /*? <1.21.5 {*/0/*?}*/;
 				}
 				this.hasSetupSiege = true;
 			}
 			if (this.nextSpawnTime > 0) {
 				--this.nextSpawnTime;
-				return /*? <1.21.5 {*//*0*//*?}*/;
+				return /*? <1.21.5 {*/0/*?}*/;
 			} else {
 				this.nextSpawnTime = 2;
 				if (this.pillagersToSpawn > 0) {
@@ -82,7 +89,7 @@ public final class PillageSiege implements CustomSpawner
 				} else {
 					this.siegeState = State.SIEGE_DONE;
 				}
-				return /*? <1.21.5 {*//*1*//*?}*/;
+				return /*? <1.21.5 {*/1/*?}*/;
 			}
 		}
 	}
@@ -104,7 +111,12 @@ public final class PillageSiege implements CustomSpawner
 							break;
 						}
 					}
-					if (serverLevel.getTimeOfDay(serverLevel.dayTime()) > Mth.frac(11.0D / 24.0D)) {
+					//? if >= 1.21.11 {
+					/*if (Mth.frac(serverLevel.getDayTime() / 24000.0D) > (11.0D / 24.0D))
+					*///?} else {
+					if (serverLevel.getTimeOfDay(serverLevel.dayTime()) > Mth.frac(11.0D / 24.0D))
+					//?}
+					{
 						serverLevel.playSound(null, blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.RAID_HORN.value(), SoundSource.NEUTRAL, 64.0F, 1.0F);
 						serverLevel.playSound(null, blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.BELL_BLOCK, SoundSource.BLOCKS, 2.0F, 1.0F);
 						serverLevel.gameEvent(null, GameEvent.BLOCK_CHANGE, blockpos);
@@ -123,38 +135,38 @@ public final class PillageSiege implements CustomSpawner
 
 			try {
 				//? if >=1.21.5 {
-				var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get();
-				//?} else if >=1.21.1 {
+				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get();
+				*///?} else if >=1.21.1 {
 				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().data();
 				*///?} else {
-				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData();
-				*///?}
-				pillager = entityType.create(serverLevel/*? >=1.21.3 {*/, VersionedEntitySpawnReason.EVENT/*?}*/);
+				var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData();
+				//?}
+				pillager = entityType.create(serverLevel/*? >=1.21.3 {*//*, VersionedEntitySpawnReason.EVENT*//*?}*/);
 				pillager.setPersistenceRequired();
 				if (serverLevel.random.nextInt(6) < 1) {
 					//? if >= 1.21.3 {
-					pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getOminousBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
-					//?} else if >=1.21.1 {
+					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getOminousBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
+					*///?} else if >=1.21.1 {
 					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
 					*///?} else {
-					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
-					*///?}
+					pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
+					//?}
 					pillager.setDropChance(EquipmentSlot.HEAD, 2.0F);
 				}
 				//? if >=1.21.1 {
-				pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null);
-				//?} else {
-				/*pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null, null);
-				*///?}
+				/*pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null);
+				*///?} else {
+				pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null, null);
+				//?}
 			} catch (Exception exception) {
 				ItTakesPillage.getLogger().warn("Failed to create pillager for pillage siege at {}", vec3, exception);
 				return;
 			}
 			//? if >=1.21.5 {
-			pillager.snapTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
-			//?} else {
-			/*pillager.moveTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
-			*///?}
+			/*pillager.snapTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
+			*///?} else {
+			pillager.moveTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
+			//?}
 			serverLevel.addFreshEntityWithPassengers(pillager);
 		}
 	}

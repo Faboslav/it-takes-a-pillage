@@ -23,8 +23,8 @@ public final class RaidMixin
 	)
 	public void takesapillage$addRaider(
 		//? >= 1.21.5 {
-		ServerLevel serverLevel,
-		//?}
+		/*ServerLevel serverLevel,
+		*///?}
 		int wave,
 		Raider raider,
 		BlockPos pos,

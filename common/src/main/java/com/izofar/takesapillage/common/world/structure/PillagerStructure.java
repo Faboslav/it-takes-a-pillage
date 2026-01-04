@@ -22,16 +22,16 @@ import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
 import java.util.Optional;
 
 /*? >= 1.21 {*/
-import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
-/*?}*/
+/*import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
+*//*?}*/
 
 public final class PillagerStructure extends Structure
 {
 	//? if >= 1.21 {
-	public static final MapCodec<PillagerStructure> CODEC = RecordCodecBuilder.mapCodec(instance ->
-	//?} else {
-	/*public static final Codec<PillagerStructure> CODEC = RecordCodecBuilder.<PillagerStructure>mapCodec(instance ->
-	*///?}
+	/*public static final MapCodec<PillagerStructure> CODEC = RecordCodecBuilder.mapCodec(instance ->
+	*///?} else {
+	public static final Codec<PillagerStructure> CODEC = RecordCodecBuilder.<PillagerStructure>mapCodec(instance ->
+	//?}
 		instance.group(PillagerStructure.settingsCodec(instance),
 			StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
 			ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
@@ -41,11 +41,15 @@ public final class PillagerStructure extends Structure
 			HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
 			Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
 			//? >= 1.21.10 {
-			JigsawStructure.MaxDistance.CODEC.fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter)
-			//?} else {
-			/*Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
-			 *///?}
-		).apply(instance, PillagerStructure::new));
+			/*JigsawStructure.MaxDistance.CODEC.fieldOf("max_distance_from_center").forGetter((structure) -> structure.maxDistanceFromCenter)
+			*///?} else {
+			Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
+			 //?}
+		//? if >= 1.21 {
+		/*).apply(instance, PillagerStructure::new));
+		*///?} else {
+		).apply(instance, PillagerStructure::new)).codec();
+		//?}
 
 	private final Holder<StructureTemplatePool> startPool;
 	private final Optional<ResourceLocation> startJigsawName;
@@ -55,10 +59,10 @@ public final class PillagerStructure extends Structure
 	private final HeightProvider startHeight;
 	private final Optional<Heightmap.Types> projectStartToHeightmap;
 	//? >= 1.21.10 {
-	private final JigsawStructure.MaxDistance maxDistanceFromCenter;
-	//?} else {
-	/*private final int maxDistanceFromCenter;
-	 *///?}
+	/*private final JigsawStructure.MaxDistance maxDistanceFromCenter;
+	*///?} else {
+	private final int maxDistanceFromCenter;
+	 //?}
 
 	public PillagerStructure(
 		Structure.StructureSettings config,
@@ -70,10 +74,10 @@ public final class PillagerStructure extends Structure
 		HeightProvider startHeight,
 		Optional<Heightmap.Types> projectStartToHeightmap,
 		//? >= 1.21.10 {
-		JigsawStructure.MaxDistance maxDistanceFromCenter
-		//?} else {
-		/*int maxDistanceFromCenter
-		 *///?}
+		/*JigsawStructure.MaxDistance maxDistanceFromCenter
+		*///?} else {
+		int maxDistanceFromCenter
+		 //?}
 	) {
 		super(config);
 		this.startPool = startPool;
@@ -109,9 +113,9 @@ public final class PillagerStructure extends Structure
 		if (!checkLocation(context, this.terrainSearchRadius, this.maxTerrainRange)) return Optional.empty();
 		BlockPos blockpos = context.chunkPos().getMiddleBlockPosition(0);
 		/*? >= 1.21 {*/
-		return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter, PoolAliasLookup.EMPTY, JigsawStructure.DEFAULT_DIMENSION_PADDING, JigsawStructure.DEFAULT_LIQUID_SETTINGS);
-		/*?} else {*/
-		/*return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
-		 *//*?}*/
+		/*return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter, PoolAliasLookup.EMPTY, JigsawStructure.DEFAULT_DIMENSION_PADDING, JigsawStructure.DEFAULT_LIQUID_SETTINGS);
+		*//*?} else {*/
+		return JigsawPlacement.addPieces(context, this.startPool, this.startJigsawName, this.size, blockpos, false, this.projectStartToHeightmap, this.maxDistanceFromCenter);
+		 /*?}*/
 	}
 }

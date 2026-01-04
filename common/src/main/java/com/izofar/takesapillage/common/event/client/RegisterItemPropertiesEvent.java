@@ -1,5 +1,5 @@
 //? if <1.21.3 {
-/*package com.izofar.takesapillage.common.event.client;
+package com.izofar.takesapillage.common.event.client;
 
 import com.izofar.takesapillage.common.event.base.EventHandler;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
@@ -15,4 +15,4 @@ public record RegisterItemPropertiesEvent(TriConsumer<Item, ResourceLocation, Cl
 		registrar.accept(item, id, function);
 	}
 }
-*///?}
+//?}

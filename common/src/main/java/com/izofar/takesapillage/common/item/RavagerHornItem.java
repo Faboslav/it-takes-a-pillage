@@ -1,6 +1,7 @@
 package com.izofar.takesapillage.common.item;
 
 import com.izofar.takesapillage.common.versions.VersionedEntity;
+import com.izofar.takesapillage.common.versions.VersionedGameRulesProvider;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -16,51 +17,51 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 
 //? if >=1.21.3 {
-import net.minecraft.world.InteractionResult;
-//?} else {
-/*import net.minecraft.world.InteractionResultHolder;
+/*import net.minecraft.world.InteractionResult;
+*///?} else {
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.item.Item;
-*///?}
+//?}
 
 public class RavagerHornItem extends InstrumentItem
 {
 	public RavagerHornItem(TagKey<Instrument> instruments, Properties properties) {
 		//? if >=1.21.5 {
-		super(properties);
-		//?} else if >=1.21.4 {
+		/*super(properties);
+		*///?} else if >=1.21.4 {
 		/*super(instruments, properties);
 		*///?} else {
-		/*super(properties, instruments);
-		*///?}
-	}
-
-	@Override
-	//? if >=1.21.3 {
-	public boolean releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
-	//?} else {
-	/*public void releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
-	*///?}
-	{
-		super.finishUsingItem(itemStack, level, livingEntity);
-
-		//? if >=1.21.1 {
-		itemStack.hurtAndBreak(1, livingEntity, VersionedEntity.getEquipmentSlotForItem(livingEntity.getUsedItemHand()));
-		//?} else {
-		/*itemStack.hurtAndBreak(1, livingEntity, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
-		*///?}
-
-		//? if >=1.21.3 {
-		// TODO check
-		return true;
+		super(properties, instruments);
 		//?}
 	}
 
 	@Override
 	//? if >=1.21.3 {
-	public InteractionResult use(Level level, Player player, InteractionHand hand)
-	//?} else {
-	/*public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
-	*///?}
+	/*public boolean releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
+	*///?} else {
+	public void releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
+	//?}
+	{
+		super.finishUsingItem(itemStack, level, livingEntity);
+
+		//? if >=1.21.1 {
+		/*itemStack.hurtAndBreak(1, livingEntity, VersionedEntity.getEquipmentSlotForItem(livingEntity.getUsedItemHand()));
+		*///?} else {
+		itemStack.hurtAndBreak(1, livingEntity, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
+		//?}
+
+		//? if >=1.21.3 {
+		/*// TODO check
+		return true;
+		*///?}
+	}
+
+	@Override
+	//? if >=1.21.3 {
+	/*public InteractionResult use(Level level, Player player, InteractionHand hand)
+	*///?} else {
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
+	//?}
 	{
 		var result = super.use(level, player, hand);
 
@@ -83,7 +84,7 @@ public class RavagerHornItem extends InstrumentItem
 		}
 
 		i = Mth.clamp(i, 0, 4);
-		if (!level.getGameRules().getBoolean(GameRules.RULE_DISABLE_RAIDS)) {
+		if (!VersionedGameRulesProvider.getBoolean(level, VersionedGameRulesProvider.RAIDS)) {
 			player.addEffect(new MobEffectInstance(MobEffects.BAD_OMEN, 120000, i, false, false, true));
 		}
 	}

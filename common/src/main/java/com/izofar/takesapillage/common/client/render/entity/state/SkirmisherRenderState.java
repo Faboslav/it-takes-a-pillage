@@ -1,5 +1,5 @@
 //? >= 1.21.3 {
-package com.izofar.takesapillage.common.client.render.entity.state;
+/*package com.izofar.takesapillage.common.client.render.entity.state;
 
 import com.izofar.takesapillage.common.entity.Skirmisher;
 import net.minecraft.client.renderer.entity.state.IllagerRenderState;
@@ -13,4 +13,4 @@ public final class SkirmisherRenderState extends IllagerRenderState
 	public SkirmisherRenderState() {
 	}
 }
-//?}
+*///?}

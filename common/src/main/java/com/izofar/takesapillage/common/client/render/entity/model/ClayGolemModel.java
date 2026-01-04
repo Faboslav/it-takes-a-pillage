@@ -6,18 +6,18 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
 //? >=1.21.3 {
-import net.minecraft.client.model.EntityModel;
+/*import net.minecraft.client.model.EntityModel;
 import com.izofar.takesapillage.common.client.render.entity.state.ClayGolemRenderState;
-//?} else {
-/*import net.minecraft.client.model.HierarchicalModel;
+*///?} else {
+import net.minecraft.client.model.HierarchicalModel;
 import com.izofar.takesapillage.common.entity.ClayGolem;
-*///?}
+//?}
 
 //? >=1.21.3 {
-public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
-//?} else {
-/*public final class ClayGolemModel extends HierarchicalModel<ClayGolem>
-*///?}
+/*public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
+*///?} else {
+public final class ClayGolemModel extends HierarchicalModel<ClayGolem>
+//?}
 {
 	private final ModelPart root;
 	private final ModelPart head;
@@ -28,8 +28,8 @@ public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
 
 	public ClayGolemModel(ModelPart root) {
 		//? >=1.21.3 {
-		super(root);
-		//?}
+		/*super(root);
+		*///?}
 
 		this.root = root;
 		this.head = root.getChild("head");
@@ -52,26 +52,26 @@ public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
 	}
 
 	//? <1.21.3 {
-	/*@Override
+	@Override
 	public ModelPart root() {
 		return this.root;
 	}
-	*///?}
+	//?}
 
 	@Override
 	//? >=1.21.3 {
-	public void setupAnim(ClayGolemRenderState renderState)
-	//?} else {
-	/*public void setupAnim(ClayGolem clayGolem, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
-	*///?}
+	/*public void setupAnim(ClayGolemRenderState renderState)
+	*///?} else {
+	public void setupAnim(ClayGolem clayGolem, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
+	//?}
 	{
 		//? >=1.21.3 {
-		var clayGolem = renderState.clayGolem;
+		/*var clayGolem = renderState.clayGolem;
 		var limbAngle = renderState.walkAnimationPos;
 		var limbDistance = renderState.walkAnimationSpeed;
 		var headYaw = renderState.yRot;
 		var headPitch = renderState.xRot;
-		//?}
+		*///?}
 
 		this.head.yRot = headYaw * 0.017453292F;
 		this.head.xRot = headPitch * 0.017453292F;

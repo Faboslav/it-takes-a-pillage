@@ -8,9 +8,9 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 
 //? if <1.21.3 {
-/*import com.izofar.takesapillage.common.event.client.RegisterItemPropertiesEvent;
+import com.izofar.takesapillage.common.event.client.RegisterItemPropertiesEvent;
 import net.minecraft.client.renderer.item.ItemProperties;
-*///?}
+//?}
 
 public final class ItTakesPillageFabricClient implements ClientModInitializer
 {
@@ -22,8 +22,8 @@ public final class ItTakesPillageFabricClient implements ClientModInitializer
 		RegisterEntityModelLayersEvent.EVENT.invoke(new RegisterEntityModelLayersEvent((type, supplier) -> EntityModelLayerRegistry.registerModelLayer(type, supplier::get)));
 
 		//? if <1.21.3 {
-		/*RegisterItemPropertiesEvent.EVENT.invoke(new RegisterItemPropertiesEvent(ItemProperties::register));
-		*///?}
+		RegisterItemPropertiesEvent.EVENT.invoke(new RegisterItemPropertiesEvent(ItemProperties::register));
+		//?}
 	}
 }
 

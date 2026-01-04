@@ -38,9 +38,9 @@ public final class ItTakesPillageEntityTypes
 	static {
 		SharedConstants.CHECK_DATA_FIXER_SCHEMA = false;
 		CLAY_GOLEM = ENTITY_TYPES.register("clay_golem", () -> EntityType.Builder.of(ClayGolem::new, MobCategory.MISC).sized(1.4F, 2.7F).clientTrackingRange(10).build((VersionedEntityTypeResourceId.create("clay_golem"))));
-		ARCHER = ENTITY_TYPES.register("archer", () -> EntityType.Builder.of(Archer::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F)/*? >=1.21.1 {*/.passengerAttachments(2.0F).ridingOffset(-0.6F)/*?}*/.clientTrackingRange(8).build((VersionedEntityTypeResourceId.create("archer"))));
-		SKIRMISHER = ENTITY_TYPES.register("skirmisher", () -> EntityType.Builder.of(Skirmisher::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F)/*? >=1.21.1 {*/.passengerAttachments(2.0F).ridingOffset(-0.6F)/*?}*/.clientTrackingRange(8).build((VersionedEntityTypeResourceId.create("skirmisher"))));
-		LEGIONER = ENTITY_TYPES.register("legioner", () -> EntityType.Builder.of(Legioner::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F)/*? >=1.21.1 {*/.passengerAttachments(2.0F).ridingOffset(-0.6F)/*?}*/.clientTrackingRange(8).build((VersionedEntityTypeResourceId.create("legioner"))));
+		ARCHER = ENTITY_TYPES.register("archer", () -> EntityType.Builder.of(Archer::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F)/*? >=1.21.1 {*//*.passengerAttachments(2.0F).ridingOffset(-0.6F)*//*?}*/.clientTrackingRange(8).build((VersionedEntityTypeResourceId.create("archer"))));
+		SKIRMISHER = ENTITY_TYPES.register("skirmisher", () -> EntityType.Builder.of(Skirmisher::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F)/*? >=1.21.1 {*//*.passengerAttachments(2.0F).ridingOffset(-0.6F)*//*?}*/.clientTrackingRange(8).build((VersionedEntityTypeResourceId.create("skirmisher"))));
+		LEGIONER = ENTITY_TYPES.register("legioner", () -> EntityType.Builder.of(Legioner::new, MobCategory.MONSTER).canSpawnFarFromPlayer().sized(0.6F, 1.95F)/*? >=1.21.1 {*//*.passengerAttachments(2.0F).ridingOffset(-0.6F)*//*?}*/.clientTrackingRange(8).build((VersionedEntityTypeResourceId.create("legioner"))));
 		SharedConstants.CHECK_DATA_FIXER_SCHEMA = previousCheckDataFixerSchema;
 	}
 }

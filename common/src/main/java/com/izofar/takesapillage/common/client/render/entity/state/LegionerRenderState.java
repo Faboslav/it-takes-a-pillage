@@ -1,5 +1,5 @@
 //? >= 1.21.3 {
-package com.izofar.takesapillage.common.client.render.entity.state;
+/*package com.izofar.takesapillage.common.client.render.entity.state;
 
 import com.izofar.takesapillage.common.entity.Legioner;
 import net.minecraft.client.renderer.entity.state.IllagerRenderState;
@@ -11,4 +11,4 @@ public final class LegionerRenderState extends IllagerRenderState
 	public LegionerRenderState() {
 	}
 }
-//?}
+*///?}

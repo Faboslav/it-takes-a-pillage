@@ -1,5 +1,5 @@
 /*? >= 1.21 {*/
-package com.izofar.takesapillage.common.init;
+/*package com.izofar.takesapillage.common.init;
 
 import com.izofar.takesapillage.common.ItTakesPillage;
 import net.minecraft.core.registries.Registries;
@@ -15,4 +15,4 @@ public class ItTakesPillageJukeboxSongs
 		return ResourceKey.create(Registries.JUKEBOX_SONG, ItTakesPillage.makeId(id));
 	}
 }
-/*?}*/
+*//*?}*/

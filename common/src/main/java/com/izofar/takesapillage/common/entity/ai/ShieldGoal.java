@@ -110,7 +110,7 @@ public class ShieldGoal<T extends Mob & ShieldedMob> extends Goal
 	protected void findTarget() {
 		LivingEntity potentialTarget;
 		if (this.targetType != Player.class && this.targetType != ServerPlayer.class) {
-			potentialTarget = (/*? >=1.21.3 {*/(ServerLevel)/*?}*/this.mob.level()).getNearestEntity(
+			potentialTarget = (/*? >=1.21.3 {*//*(ServerLevel)*//*?}*/this.mob.level()).getNearestEntity(
 				this.mob.level().getEntitiesOfClass(
 					this.targetType,
 					this.getTargetSearchArea(this.getFollowDistance()),

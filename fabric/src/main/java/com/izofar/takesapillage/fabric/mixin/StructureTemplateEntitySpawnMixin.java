@@ -15,10 +15,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /*? >=1.21.3 {*/
-import net.minecraft.world.entity.EntitySpawnReason;
-/*?} else {*/
-/*import net.minecraft.world.entity.MobSpawnType;
- *//*?}*/
+/*import net.minecraft.world.entity.EntitySpawnReason;
+*//*?} else {*/
+import net.minecraft.world.entity.MobSpawnType;
+ /*?}*/
 
 @Mixin(StructureTemplate.class)
 public class StructureTemplateEntitySpawnMixin
@@ -28,12 +28,12 @@ public class StructureTemplateEntitySpawnMixin
             at = @At(
 				value = "INVOKE",
 				//? >=1.21.3 {
-				target = "Lnet/minecraft/world/entity/Mob;finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/EntitySpawnReason;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;"
-				//?} else if >=1.21.1 {
+				/*target = "Lnet/minecraft/world/entity/Mob;finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/EntitySpawnReason;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;"
+				*///?} else if >=1.21.1 {
 				/*target = "Lnet/minecraft/world/entity/Mob;finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;)Lnet/minecraft/world/entity/SpawnGroupData;"
 				*///?} else {
-				/*target = "Lnet/minecraft/world/entity/Mob;finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;"
-				*///?}
+				target = "Lnet/minecraft/world/entity/Mob;finalizeSpawn(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;"
+				//?}
 			),
             cancellable = true
 	)
@@ -43,7 +43,7 @@ public class StructureTemplateEntitySpawnMixin
 		Vec3 vec3,
 		boolean bl,
 		ServerLevelAccessor serverLevel,
-		/*? <1.21.1 {*/ /*CompoundTag compoundTag,*//*?}*/
+		/*? <1.21.1 {*/ CompoundTag compoundTag,/*?}*/
 		Entity entity,
 		CallbackInfo ci)
     {
@@ -55,10 +55,10 @@ public class StructureTemplateEntitySpawnMixin
 					serverLevel,
 					mob.isBaby(),
 					/*? >=1.21.3 {*/
-					EntitySpawnReason.STRUCTURE
-					/*?} else {*/
-					/*MobSpawnType.STRUCTURE
-					*//*?}*/
+					/*EntitySpawnReason.STRUCTURE
+					*//*?} else {*/
+					MobSpawnType.STRUCTURE
+					/*?}*/
 				)
 			)) {
             ci.cancel();

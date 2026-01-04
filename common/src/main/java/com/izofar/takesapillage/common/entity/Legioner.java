@@ -40,19 +40,19 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 /*? >= 1.21 {*/
-import net.minecraft.server.level.ServerLevel;
+/*import net.minecraft.server.level.ServerLevel;
 import com.izofar.takesapillage.common.ItTakesPillage;
-/*?} else {*/
-/*import java.util.UUID;
+*//*?} else {*/
+import java.util.UUID;
 import net.minecraft.nbt.CompoundTag;
-*//*?}*/
+/*?}*/
 
 
 //? >= 1.21.3 {
-import net.minecraft.world.entity.EntitySpawnReason;
-//?} else {
-/*import net.minecraft.world.entity.MobSpawnType;
-*///?}
+/*import net.minecraft.world.entity.EntitySpawnReason;
+*///?} else {
+import net.minecraft.world.entity.MobSpawnType;
+//?}
 
 public final class Legioner extends AbstractIllager implements ShieldedMob
 {
@@ -61,11 +61,11 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 	private static final EntityDataAccessor<Integer> DATA_SHIELD_COOLDOWN = SynchedEntityData.defineId(Legioner.class, EntityDataSerializers.INT);
 
 	/*? >= 1.21 {*/
-	private static final AttributeModifier SPEED_MODIFIER_BLOCKING = new AttributeModifier(ItTakesPillage.makeId("speed_modifier_attacking"), -0.10D, AttributeModifier.Operation.ADD_VALUE);
-	/*?} else {*/
-	/*private static final UUID SPEED_MODIFIER_ATTACKING_UUID = UUID.fromString("3520BCE0-D755-458F-944B-A528DB8EF9DC");
+	/*private static final AttributeModifier SPEED_MODIFIER_BLOCKING = new AttributeModifier(ItTakesPillage.makeId("speed_modifier_attacking"), -0.10D, AttributeModifier.Operation.ADD_VALUE);
+	*//*?} else {*/
+	private static final UUID SPEED_MODIFIER_ATTACKING_UUID = UUID.fromString("3520BCE0-D755-458F-944B-A528DB8EF9DC");
 	private static final AttributeModifier SPEED_MODIFIER_BLOCKING = new AttributeModifier(SPEED_MODIFIER_ATTACKING_UUID, "Shielded speed penalty", -0.10D, AttributeModifier.Operation.ADDITION);
-	*//*?}*/
+	/*?}*/
 
 	public Legioner(EntityType<? extends AbstractIllager> entitytype, Level world) {
 		super(entitytype, world);
@@ -97,22 +97,22 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 	}
 
 	/*? >= 1.21 {*/
-	@Override
+	/*@Override
 	protected void defineSynchedData(SynchedEntityData.Builder builder) {
 		super.defineSynchedData(builder);
 		builder.define(DATA_IS_SHIELDED, false);
 		builder.define(DATA_SHIELD_HAND, false);
 		builder.define(DATA_SHIELD_COOLDOWN, 0);
 	}
-	/*?} else {*/
-	/*@Override
+	*//*?} else {*/
+	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
 		this.entityData.define(DATA_IS_SHIELDED, false);
 		this.entityData.define(DATA_SHIELD_HAND, false);
 		this.entityData.define(DATA_SHIELD_COOLDOWN, 0);
 	}
-	*//*?}*/
+	/*?}*/
 
 	@Override
 	public void tick() {
@@ -132,20 +132,20 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		ServerLevelAccessor world,
 		DifficultyInstance difficulty,
 		//? >= 1.21.3 {
-		EntitySpawnReason spawnReason,
-		 //?} else {
-		/*MobSpawnType spawnReason,
-		*///?}
+		/*EntitySpawnReason spawnReason,
+		 *///?} else {
+		MobSpawnType spawnReason,
+		//?}
 		@Nullable SpawnGroupData entityData
 		//? <1.21.1 {
-		/*,CompoundTag compoundTag
-		*///?}
+		,CompoundTag compoundTag
+		//?}
 	) {
-		SpawnGroupData spawngroupdata = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*//*, compoundTag*//*?}*/);
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*/, compoundTag/*?}*/);
 		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
 		RandomSource randomSource = world.getRandom();
 		this.populateDefaultEquipmentSlots(randomSource, difficulty);
-		this.populateDefaultEquipmentEnchantments(/*? >= 1.21.1 {*/world, /*?}*/ randomSource, difficulty);
+		this.populateDefaultEquipmentEnchantments(/*? >= 1.21.1 {*//*world, *//*?}*/ randomSource, difficulty);
 
 		return spawngroupdata;
 	}
@@ -163,13 +163,13 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 	}
 
 	//? if <=1.20.1 {
-	/*@Override
+	@Override
 	public void applyRaidBuffs(int round, boolean b) {
 	}
-	*///?} else {
-	public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
+	//?} else {
+	/*public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
 	}
-	//?}
+	*///?}
 
 	@Override
 	public void knockback(double x, double y, double z) {
@@ -177,26 +177,26 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 			super.knockback(x, y, z);
 		} else {
 			//? if >=1.21.5 {
-			var soundEvent = SoundEvents.SHIELD_BLOCK.value();
-			//?} else {
-			/*var soundEvent = SoundEvents.SHIELD_BLOCK;
-			*///?}
+			/*var soundEvent = SoundEvents.SHIELD_BLOCK.value();
+			*///?} else {
+			var soundEvent = SoundEvents.SHIELD_BLOCK;
+			//?}
 			this.playSound(soundEvent, 1.0F, 0.8F + this.level().random.nextFloat() * 0.4F);
 		}
 	}
 
 	@Override
 	//? if >=1.21.5 {
-	protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
-	//?} else {
-	/*protected void blockUsingShield(LivingEntity attacker)
-	*///?}
+	/*protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
+	*///?} else {
+	protected void blockUsingShield(LivingEntity attacker)
+	//?}
 	{
 		//? if >=1.21.5 {
-		super.blockedByItem(this);
-		//?} else {
-		/*super.blockUsingShield(attacker);
-		*///?}
+		/*super.blockedByItem(this);
+		*///?} else {
+		super.blockUsingShield(attacker);
+		//?}
 
 		if (attacker.getMainHandItem().getItem() instanceof AxeItem) {
 			this.disableShield();
@@ -208,10 +208,10 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		this.stopUsingShield();
 		this.level().broadcastEntityEvent(this, (byte) 30);
 		//? if >=1.21.5 {
-		var soundEvent = SoundEvents.SHIELD_BREAK.value();
-		//?} else {
-		/*var soundEvent = SoundEvents.SHIELD_BREAK;
-		 *///?}
+		/*var soundEvent = SoundEvents.SHIELD_BREAK.value();
+		*///?} else {
+		var soundEvent = SoundEvents.SHIELD_BREAK;
+		 //?}
 		this.playSound(soundEvent, 0.8F, 0.8F + this.level().random.nextFloat() * 0.4F);
 	}
 
@@ -230,10 +230,10 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 				this.setShieldMainhand(interactionhand == InteractionHand.MAIN_HAND);
 				AttributeInstance attributeinstance = this.getAttribute(Attributes.MOVEMENT_SPEED);
 				/*? >= 1.21 {*/
-				if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING.id())) {
-					/*?} else {*/
-					/*if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
-					 *//*?}*/
+				/*if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING.id())) {
+					*//*?} else {*/
+					if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
+					 /*?}*/
 					attributeinstance.addTransientModifier(SPEED_MODIFIER_BLOCKING);
 				}
 			}

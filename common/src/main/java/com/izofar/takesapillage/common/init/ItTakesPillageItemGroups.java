@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 //? >= 1.21.1 {
-import net.minecraft.core.component.DataComponents;
+/*import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.component.CustomData;
-//?}
+*///?}
 
 /**
  * @see net.minecraft.world.item.CreativeModeTabs
@@ -35,8 +35,8 @@ public class ItTakesPillageItemGroups
 				CompoundTag nbtCompound = new CompoundTag();
 				nbtCompound.putBoolean("isCreativeTabIcon", true);
 				//? >= 1.21.1 {
-				iconStack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbtCompound));
-				//?}
+				/*iconStack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbtCompound));
+				*///?}
 				return iconStack;
 			})
 			.displayItems((itemDisplayParameters, entries) ->

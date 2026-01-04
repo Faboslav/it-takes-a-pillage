@@ -1,5 +1,5 @@
 //? >=1.21.3 {
-{
+/*{
 	"parent": "item/generated",
 	"textures": {
 		"layer0": "takesapillage:item/ravager_horn"
@@ -28,8 +28,8 @@
 	}
 }
 
-//?} else {
-/*{
+*///?} else {
+{
 	"parent": "item/generated",
 	"textures": {
 		"layer0": "takesapillage:item/ravager_horn"
@@ -113,4 +113,4 @@
 		}
 	]
 }
-*///?}
+//?}

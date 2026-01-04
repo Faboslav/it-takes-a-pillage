@@ -32,7 +32,11 @@ public class CustomDeathMessageMixin
 	}
 
 	@Inject(
+		//? if >= 1.21.11 {
+		/*method = "arrow",
+		*///?} else {
 		method = "arrow(Lnet/minecraft/world/entity/projectile/AbstractArrow;Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/damagesource/DamageSource;",
+		//?}
 		at = @At(value = "RETURN"),
 		cancellable = true
 	)

@@ -8,8 +8,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 
 //? if >= 1.21 {
-import com.teamresourceful.resourcefullib.common.registry.HolderRegistryEntry;
-//?}
+/*import com.teamresourceful.resourcefullib.common.registry.HolderRegistryEntry;
+*///?}
 
 /**
  * @see net.minecraft.sounds.SoundEvents
@@ -29,18 +29,18 @@ public final class ItTakesPillageSoundEvents
 	public static final RegistryEntry<SoundEvent> LEGIONER_DEATH = registerSoundEvent("entity.legioner.death");
 	public static final RegistryEntry<SoundEvent> LEGIONER_HURT = registerSoundEvent("entity.legioner.hurt");
 	//? if >= 1.21 {
-	public static final HolderRegistryEntry<SoundEvent> BASTILLE_BLUES = registerHolderSoundEvent("bastille_blues");
-	//?} else {
-	/*public static final RegistryEntry<SoundEvent> BASTILLE_BLUES = registerSoundEvent("bastille_blues");
-	 *///?}
+	/*public static final HolderRegistryEntry<SoundEvent> BASTILLE_BLUES = registerHolderSoundEvent("bastille_blues");
+	*///?} else {
+	public static final RegistryEntry<SoundEvent> BASTILLE_BLUES = registerSoundEvent("bastille_blues");
+	 //?}
 
 	private static RegistryEntry<SoundEvent> registerSoundEvent(String path) {
 		return SOUND_EVENTS.register(path, () -> SoundEvent.createVariableRangeEvent(ItTakesPillage.makeId(path)));
 	}
 
 	//? if >= 1.21 {
-	private static HolderRegistryEntry<SoundEvent> registerHolderSoundEvent(String path) {
+	/*private static HolderRegistryEntry<SoundEvent> registerHolderSoundEvent(String path) {
 		return SOUND_EVENTS.registerHolder(path, () -> SoundEvent.createVariableRangeEvent(ItTakesPillage.makeId(path)));
 	}
-	//?}
+	*///?}
 }

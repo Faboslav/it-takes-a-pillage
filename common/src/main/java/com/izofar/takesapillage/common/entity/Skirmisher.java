@@ -32,8 +32,8 @@ import java.util.EnumSet;
 import java.util.function.Predicate;
 
 /*? if <=1.20.1 {*/
-/*import net.minecraft.nbt.CompoundTag;
- *//*?}*/
+import net.minecraft.nbt.CompoundTag;
+ /*?}*/
 
 public final class Skirmisher extends AbstractIllager
 {
@@ -44,13 +44,13 @@ public final class Skirmisher extends AbstractIllager
 	}
 
 	//? if <=1.20.1 {
-	/*@Override
+	@Override
 	public void applyRaidBuffs(int round, boolean b) {
 	}
-	*///?} else {
-	public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
+	//?} else {
+	/*public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
 	}
-	//?}
+	*///?}
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return Monster.createMonsterAttributes()
@@ -103,10 +103,10 @@ public final class Skirmisher extends AbstractIllager
 	}
 
 	@Override
-	protected void customServerAiStep(/*? >= 1.21.4 {*/ServerLevel level /*?}*/) {
+	protected void customServerAiStep(/*? >= 1.21.4 {*//*ServerLevel level *//*?}*/) {
 		if (!this.isNoAi() && GoalUtils.hasGroundPathNavigation(this))
 			((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(((ServerLevel) this.level()).isRaided(this.blockPosition()));
-		super.customServerAiStep(/*? >= 1.21.4 {*/level /*?}*/);
+		super.customServerAiStep(/*? >= 1.21.4 {*//*level *//*?}*/);
 	}
 
 	@Override
@@ -114,20 +114,20 @@ public final class Skirmisher extends AbstractIllager
 		ServerLevelAccessor world,
 		DifficultyInstance difficulty,
 		//? >= 1.21.3 {
-		EntitySpawnReason spawnReason,
-		 //?} else {
-		/*MobSpawnType spawnReason,
-		*///?}
+		/*EntitySpawnReason spawnReason,
+		 *///?} else {
+		MobSpawnType spawnReason,
+		//?}
 		@Nullable SpawnGroupData entityData
 		//? <1.21.1 {
-		/*,CompoundTag compoundTag
-		 *///?}
+		,CompoundTag compoundTag
+		 //?}
 	) {
-		SpawnGroupData spawngroupdata = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*//*, compoundTag*//*?}*/);
+		SpawnGroupData spawngroupdata = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*/, compoundTag/*?}*/);
 		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
 		RandomSource randomSource = world.getRandom();
 		this.populateDefaultEquipmentSlots(randomSource, difficulty);
-		this.populateDefaultEquipmentEnchantments(/*? >= 1.21.1 {*/world, /*?}*/ randomSource, difficulty);
+		this.populateDefaultEquipmentEnchantments(/*? >= 1.21.1 {*//*world, *//*?}*/ randomSource, difficulty);
 
 		return spawngroupdata;
 	}
