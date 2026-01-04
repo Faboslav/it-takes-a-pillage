@@ -7,10 +7,13 @@ import net.minecraft.client.model.HeadedModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.monster.AbstractIllager;
+
+//? if >= 1.21.10 {
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
+//?}
 
 //? >=1.21.3 {
 import net.minecraft.client.model.EntityModel;

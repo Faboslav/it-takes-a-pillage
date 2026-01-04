@@ -60,7 +60,7 @@ public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolemRenderS
 	//?} else if >=1.21.3 {
 	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
 	 *///?} else {
-	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, T moobloom, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
+	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, T clayGolem, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
 	 *///?}
 	{
 		//? >=1.21.3 {

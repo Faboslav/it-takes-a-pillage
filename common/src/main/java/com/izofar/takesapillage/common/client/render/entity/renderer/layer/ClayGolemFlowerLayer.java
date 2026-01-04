@@ -4,7 +4,6 @@ import com.izofar.takesapillage.common.client.render.entity.model.ClayGolemModel
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -43,7 +42,7 @@ public final class ClayGolemFlowerLayer extends RenderLayer<ClayGolemRenderState
 	//?} else if >=1.21.3 {
 	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
 	 *///?} else {
-	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, T moobloom, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
+	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, T clayGolem, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
 	 *///?}
 	{
 		//? >=1.21.3 {
