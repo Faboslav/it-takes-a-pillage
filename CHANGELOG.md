@@ -1,6 +1,8 @@
 ## 1.0.10
 
 - Added new spawn egg icons
+- Added pt_br translations (Thanks to PrincessStelllar)
+- Added ja_jp translations (Thanks to elinka47)
 - Fixed missing translations in config
 - Fixed skirmisher model (helm offset by 1px)
 - Ported to 1.21.0/1.21.10/1.21.11
