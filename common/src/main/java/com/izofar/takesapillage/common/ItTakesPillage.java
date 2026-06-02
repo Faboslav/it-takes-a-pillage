@@ -11,10 +11,13 @@ import com.izofar.takesapillage.common.versions.VersionedGameRulesProvider;
 import com.izofar.takesapillage.common.world.PillageSiege;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+//? if <= 1.21.11 {
+/*import com.izofar.takesapillage.common.event.lifecycle.SetupEvent;
+*///?}
 
 public class ItTakesPillage
 {

@@ -64,7 +64,7 @@ public final class PillageSiege implements CustomSpawner
 		//? if >= 26.1 {
 		long l = serverLevel.getGameTime() / 24000L;
 		//?} else {
-		/*long l = world.getDayTime() / 24000L;
+		/*long l = serverLevel.getDayTime() / 24000L;
 		 *///?}
 		if (l == 12000L) {
 			this.siegeState = serverLevel.getRandom().nextInt(10) == 0 ? State.SIEGE_TONIGHT : State.SIEGE_DONE;

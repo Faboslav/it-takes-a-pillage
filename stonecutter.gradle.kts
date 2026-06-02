@@ -18,8 +18,13 @@ stonecutter {
 			replace("net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents", "net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents")
 			replace("ItemGroupEvents.MODIFY_ENTRIES_ALL", "CreativeModeTabEvents.MODIFY_OUTPUT_ALL")
 			replace("net.minecraft.client.renderer.state.CameraRenderState", "net.minecraft.client.renderer.state.level.CameraRenderState")
+			replace("chunkpos.x", "chunkpos.x()")
+			replace("chunkPos().x", "chunkPos().x()")
+			replace("chunkpos.y", "chunkpos.y()")
+			replace("chunkPos.y()", "chunkPos().y()")
+			replace("chunkpos.z", "chunkpos.z()")
+			replace("chunkPos().z", "chunkPos().z()")
 		}
-
 
 		replacements.string(current.parsed >= "1.21.11") {
 			replace("ResourceLocation", "Identifier")

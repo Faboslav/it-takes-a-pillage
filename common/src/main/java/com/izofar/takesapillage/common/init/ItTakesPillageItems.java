@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+//? if <= 1.21.11 {
+/*import com.izofar.takesapillage.common.event.lifecycle.SetupEvent;
+*///?}
+
 //? if >=1.21.3 {
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -81,10 +85,8 @@ public final class ItTakesPillageItems
 			/*var spawnEgg = new SpawnEggItem(typeIn.get(), new Item.Properties().stacksTo(64).setId(ResourceKey.create(Registries.ITEM, ItTakesPillage.makeId(id))));
 			 *///?} else =1.21.3 {
 			/*var spawnEgg = new SpawnEggItem(typeIn.get(), primaryColorIn, secondaryColorIn, new Item.Properties().stacksTo(64).setId(ResourceKey.create(Registries.ITEM, ItTakesPillage.makeId(id))));
-			/*///?} else >=1.21.1 {
+			/*///?} else {
 			/*var spawnEgg = new SpawnEggItem(typeIn.get(), primaryColorIn, secondaryColorIn, new Item.Properties().stacksTo(64));
-			 *///?} else {
-			/*var spawnEgg = new DispenserAddedSpawnEgg(typeIn, primaryColorIn, secondaryColorIn, new Item.Properties().stacksTo(64));
 			 *///?}
 
 			SPAWN_EGGS.add(new Pair<>(typeIn, spawnEgg));
@@ -95,9 +97,9 @@ public final class ItTakesPillageItems
 
 	//? if <= 1.21.11 {
 	/*public static void registerSpawnEggs(SetupEvent event) {
-		var spawnEggMap = SpawnEggItemAccessor.friendsandfoes$getSpawnEggs();
+		var spawnEggMap = SpawnEggItemAccessor.takesapillage$getSpawnEggs();
 
-		for (var entry : FriendsAndFoesItems.SPAWN_EGGS) {
+		for (var entry : ItTakesPillageItems.SPAWN_EGGS) {
 			spawnEggMap.put(entry.getFirst().get(), entry.getSecond());
 		}
 	}
