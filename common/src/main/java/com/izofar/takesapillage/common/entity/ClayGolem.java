@@ -17,7 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -89,7 +89,7 @@ public class ClayGolem extends IronGolem
 		CarvedPumpkinBlock.clearPatternBlocks(world, patternSearchResult);
 
 		BlockPos cachedBlockPosition = patternSearchResult.getBlock(0, 2, 0).getPos();
-		ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(world/*? >= 1.21.3 {*//*, VersionedEntitySpawnReason.TRIGGERED*//*?}*/);
+		ClayGolem clayGolem = ItTakesPillageEntityTypes.CLAY_GOLEM.get().create(world/*? >= 1.21.3 {*/, VersionedEntitySpawnReason.TRIGGERED/*?}*/);
 
 		clayGolem.setPos(
 			(double) cachedBlockPosition.getX() + 0.5D,
@@ -97,7 +97,7 @@ public class ClayGolem extends IronGolem
 			(double) cachedBlockPosition.getZ() + 0.5D
 		);
 
-		clayGolem.finalizeSpawn((ServerLevelAccessor) world, ((ServerLevelAccessor)world).getCurrentDifficultyAt(cachedBlockPosition), VersionedEntitySpawnReason.TRIGGERED, null/*? =1.20.1 {*/, null/*?}*/);
+		clayGolem.finalizeSpawn((ServerLevelAccessor) world, ((ServerLevelAccessor)world).getCurrentDifficultyAt(cachedBlockPosition), VersionedEntitySpawnReason.TRIGGERED, null/*? =1.20.1 {*//*, null*//*?}*/);
 
 		world.addFreshEntity(clayGolem);
 

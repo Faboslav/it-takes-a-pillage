@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 //? >= 1.21.1 {
-/*import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.component.CustomData;
-*///?}
+//?}
 
 /**
  * @see net.minecraft.world.item.CreativeModeTabs
@@ -25,7 +25,6 @@ import net.minecraft.world.item.component.CustomData;
 public class ItTakesPillageItemGroups
 {
 	public static final ResourcefulRegistry<CreativeModeTab> ITEM_GROUPS = ResourcefulRegistries.create(BuiltInRegistries.CREATIVE_MODE_TAB, ItTakesPillage.MOD_ID);
-	public static final List<RegistryEntry<Item>> CUSTOM_CREATIVE_TAB_ITEMS = ItTakesPillageItems.ITEMS.stream().toList();
 
 	public static final RegistryEntry<CreativeModeTab> MAIN_TAB = ITEM_GROUPS.register("main_tab", () ->
 		CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
@@ -35,12 +34,12 @@ public class ItTakesPillageItemGroups
 				CompoundTag nbtCompound = new CompoundTag();
 				nbtCompound.putBoolean("isCreativeTabIcon", true);
 				//? >= 1.21.1 {
-				/*iconStack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbtCompound));
-				*///?}
+				iconStack.set(DataComponents.CUSTOM_DATA, CustomData.of(nbtCompound));
+				//?}
 				return iconStack;
 			})
 			.displayItems((itemDisplayParameters, entries) ->
-				CUSTOM_CREATIVE_TAB_ITEMS.stream().map(item -> item.get().getDefaultInstance()).forEach(entries::accept)
+				ItTakesPillageItems.ITEMS.stream().map(item -> item.get().getDefaultInstance()).forEach(entries::accept)
 			).build());
 
 	public static void addItemGroupEntries(AddItemGroupEntriesEvent event) {

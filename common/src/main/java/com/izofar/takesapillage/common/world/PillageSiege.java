@@ -11,7 +11,7 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.monster.AbstractIllager;
+import net.minecraft.world.entity.monster.illager.AbstractIllager;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.raid.Raid;
@@ -22,8 +22,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 //? if >= 1.21.1 {
-/*import net.minecraft.core.registries.Registries;
-*///?}
+import net.minecraft.core.registries.Registries;
+//?}
 
 public final class PillageSiege implements CustomSpawner
 {
@@ -38,49 +38,55 @@ public final class PillageSiege implements CustomSpawner
 	private int spawnZ;
 
 	//? if >= 1.21.9 {
-	/*public void tick(ServerLevel serverLevel, boolean spawnMonsters)
-	*///?} else if >=1.21.5 {
+	public void tick(ServerLevel serverLevel, boolean spawnMonsters)
+	//?} else if >=1.21.5 {
 	/*public void tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
 	 *///?} else {
-	public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
-	 //?}
+	/*public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
+	 *///?}
 	{
 		if (
 			//? if >=1.21.5 {
-			/*serverLevel.isBrightOutside()
-			*///?} else {
-			serverLevel.isDay()
-			//?}
+			serverLevel.isBrightOutside()
+			//?} else {
+			/*serverLevel.isDay()
+			*///?}
 			|| !ItTakesPillage.getConfig().enablePillageSieges
 		) {
 			this.siegeState = State.SIEGE_DONE;
 			this.hasSetupSiege = false;
-			return /*? <1.21.5 {*/0/*?}*/;
+			return /*? <1.21.5 {*//*0*//*?}*/;
 		}
 
+
+
 		//? if >= 1.21.11 {
-		/*long l = serverLevel.getDayTime() % 24000L;
+		//? if >= 26.1 {
+		long l = serverLevel.getGameTime() / 24000L;
+		//?} else {
+		/*long l = world.getDayTime() / 24000L;
+		 *///?}
 		if (l == 12000L) {
-			this.siegeState = serverLevel.random.nextInt(10) == 0 ? State.SIEGE_TONIGHT : State.SIEGE_DONE;
+			this.siegeState = serverLevel.getRandom().nextInt(10) == 0 ? State.SIEGE_TONIGHT : State.SIEGE_DONE;
 		}
-		*///?} else {
-		float f = serverLevel.getTimeOfDay(0.0F);
+		//?} else {
+		/*float f = serverLevel.getTimeOfDay(0.0F);
 		if ((double) f == 0.5D) {
 			this.siegeState = serverLevel.random.nextInt(10) == 0 ? State.SIEGE_TONIGHT:State.SIEGE_DONE;
 		}
-		//?}
+		*///?}
 		if (this.siegeState == State.SIEGE_DONE) {
-			return /*? <1.21.5 {*/0/*?}*/;
+			return /*? <1.21.5 {*//*0*//*?}*/;
 		} else {
 			if (!this.hasSetupSiege) {
 				if (!this.tryToSetupSiege(serverLevel)) {
-					return /*? <1.21.5 {*/0/*?}*/;
+					return /*? <1.21.5 {*//*0*//*?}*/;
 				}
 				this.hasSetupSiege = true;
 			}
 			if (this.nextSpawnTime > 0) {
 				--this.nextSpawnTime;
-				return /*? <1.21.5 {*/0/*?}*/;
+				return /*? <1.21.5 {*//*0*//*?}*/;
 			} else {
 				this.nextSpawnTime = 2;
 				if (this.pillagersToSpawn > 0) {
@@ -89,7 +95,7 @@ public final class PillageSiege implements CustomSpawner
 				} else {
 					this.siegeState = State.SIEGE_DONE;
 				}
-				return /*? <1.21.5 {*/1/*?}*/;
+				return /*? <1.21.5 {*//*1*//*?}*/;
 			}
 		}
 	}
@@ -100,22 +106,27 @@ public final class PillageSiege implements CustomSpawner
 				BlockPos blockpos = player.blockPosition();
 				if (serverLevel.isVillage(blockpos) && !serverLevel.getBiome(blockpos).is(BiomeTags.WITHOUT_ZOMBIE_SIEGES)) {
 					for (int i = 0; i < 10; ++i) {
-						float f = serverLevel.random.nextFloat() * ((float) Math.PI * 2F);
+						float f = serverLevel.getRandom().nextFloat() * ((float) Math.PI * 2F);
 						this.spawnX = blockpos.getX() + Mth.floor(Mth.cos(f) * 32.0F);
 						this.spawnY = blockpos.getY();
 						this.spawnZ = blockpos.getZ() + Mth.floor(Mth.sin(f) * 32.0F);
 						Vec3 siegeLocation = this.findRandomSpawnPos(serverLevel, new BlockPos(this.spawnX, this.spawnY, this.spawnZ));
 						if (siegeLocation != null) {
 							this.nextSpawnTime = 0;
-							this.pillagersToSpawn = serverLevel.random.nextInt(6) + 4;
+							this.pillagersToSpawn = serverLevel.getRandom().nextInt(6) + 4;
 							break;
 						}
 					}
 					//? if >= 1.21.11 {
-					/*if (Mth.frac(serverLevel.getDayTime() / 24000.0D) > (11.0D / 24.0D))
-					*///?} else {
-					if (serverLevel.getTimeOfDay(serverLevel.dayTime()) > Mth.frac(11.0D / 24.0D))
-					//?}
+					//? if >= 26.1 {
+					long l = serverLevel.getGameTime() / 24000L;
+					//?} else {
+					/*long l = serverLevel.getDayTime() / 24000L;
+					 *///?}
+					if (Mth.frac(l) > (11.0D / 24.0D))
+					//?} else {
+					/*if (serverLevel.getTimeOfDay(serverLevel.dayTime()) > Mth.frac(11.0D / 24.0D))
+					*///?}
 					{
 						serverLevel.playSound(null, blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.RAID_HORN.value(), SoundSource.NEUTRAL, 64.0F, 1.0F);
 						serverLevel.playSound(null, blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.BELL_BLOCK, SoundSource.BLOCKS, 2.0F, 1.0F);
@@ -135,38 +146,38 @@ public final class PillageSiege implements CustomSpawner
 
 			try {
 				//? if >=1.21.5 {
-				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get();
-				*///?} else if >=1.21.1 {
+				var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.getRandom()).get();
+				//?} else if >=1.21.1 {
 				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().data();
 				*///?} else {
-				var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData();
-				//?}
-				pillager = entityType.create(serverLevel/*? >=1.21.3 {*//*, VersionedEntitySpawnReason.EVENT*//*?}*/);
+				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData();
+				*///?}
+				pillager = entityType.create(serverLevel/*? >=1.21.3 {*/, VersionedEntitySpawnReason.EVENT/*?}*/);
 				pillager.setPersistenceRequired();
-				if (serverLevel.random.nextInt(6) < 1) {
+				if (serverLevel.getRandom().nextInt(6) < 1) {
 					//? if >= 1.21.3 {
-					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getOminousBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
-					*///?} else if >=1.21.1 {
+					pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getOminousBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
+					//?} else if >=1.21.1 {
 					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
 					*///?} else {
-					pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
-					//?}
+					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
+					*///?}
 					pillager.setDropChance(EquipmentSlot.HEAD, 2.0F);
 				}
 				//? if >=1.21.1 {
-				/*pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null);
-				*///?} else {
-				pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null, null);
-				//?}
+				pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null);
+				//?} else {
+				/*pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null, null);
+				*///?}
 			} catch (Exception exception) {
 				ItTakesPillage.getLogger().warn("Failed to create pillager for pillage siege at {}", vec3, exception);
 				return;
 			}
 			//? if >=1.21.5 {
-			/*pillager.snapTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
-			*///?} else {
-			pillager.moveTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
-			//?}
+			pillager.snapTo(vec3.x, vec3.y, vec3.z, serverLevel.getRandom().nextFloat() * 360.0F, 0.0F);
+			//?} else {
+			/*pillager.moveTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
+			*///?}
 			serverLevel.addFreshEntityWithPassengers(pillager);
 		}
 	}
@@ -174,11 +185,11 @@ public final class PillageSiege implements CustomSpawner
 	@Nullable
 	private Vec3 findRandomSpawnPos(ServerLevel serverLevel, BlockPos blockPos) {
 		for (int i = 0; i < 10; i++) {
-			int j = blockPos.getX() + serverLevel.random.nextInt(16) - 8;
-			int k = blockPos.getZ() + serverLevel.random.nextInt(16) - 8;
+			int j = blockPos.getX() + serverLevel.getRandom().nextInt(16) - 8;
+			int k = blockPos.getZ() + serverLevel.getRandom().nextInt(16) - 8;
 			int l = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, j, k);
 			BlockPos blockpos = new BlockPos(j, l, k);
-			if (serverLevel.isVillage(blockpos) && Monster.checkMonsterSpawnRules(EntityType.PILLAGER, serverLevel, VersionedEntitySpawnReason.EVENT, blockpos, serverLevel.random))
+			if (serverLevel.isVillage(blockpos) && Monster.checkMonsterSpawnRules(EntityType.PILLAGER, serverLevel, VersionedEntitySpawnReason.EVENT, blockpos, serverLevel.getRandom()))
 				return Vec3.atBottomCenterOf(blockpos);
 		}
 		return null;

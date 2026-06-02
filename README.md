@@ -1,7 +1,7 @@
 <br>
 
 <center>
-	<img title="Friends&amp;Foes" src="https://raw.githubusercontent.com/Faboslav/it-takes-a-pillage/refs/heads/master/.github/assets/media/banner.png" alt="It takes a pillage">
+	<img title="It Takes A Pillage" src="https://raw.githubusercontent.com/Faboslav/it-takes-a-pillage/refs/heads/master/.github/assets/media/banner.png" alt="It takes a pillage">
 </center>
 
 <br>

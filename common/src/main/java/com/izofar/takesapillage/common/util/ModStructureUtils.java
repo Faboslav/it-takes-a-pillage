@@ -17,8 +17,8 @@ public abstract class ModStructureUtils
 		ChunkPos chunkpos = context.chunkPos();
 		int maxTerrainHeight = Integer.MIN_VALUE;
 		int minTerrainHeight = Integer.MAX_VALUE;
-		for (int chunkX = chunkpos.x - chunkSearchRadius; chunkX <= chunkpos.x + chunkSearchRadius; chunkX += chunkSearchRadius) {
-			for (int chunkZ = chunkpos.z - chunkSearchRadius; chunkZ <= chunkpos.z + chunkSearchRadius; chunkZ += chunkSearchRadius) {
+		for (int chunkX = chunkpos.x() - chunkSearchRadius; chunkX <= chunkpos.x() + chunkSearchRadius; chunkX += chunkSearchRadius) {
+			for (int chunkZ = chunkpos.z() - chunkSearchRadius; chunkZ <= chunkpos.z() + chunkSearchRadius; chunkZ += chunkSearchRadius) {
 				BlockPos blockpos = new BlockPos((chunkX << 4) + 7, 0, (chunkZ << 4) + 7);
 				int height = context.chunkGenerator().getBaseHeight(blockpos.getX(), blockpos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
 				maxTerrainHeight = Math.max(maxTerrainHeight, height);
@@ -34,10 +34,10 @@ public abstract class ModStructureUtils
 
 	public static boolean isOnLand(Structure.GenerationContext context, int chunkSearchRadius) {
 		ChunkPos chunkpos = context.chunkPos();
-		return isDryChunkCenter(context, new ChunkPos(chunkpos.x - chunkSearchRadius, chunkpos.z - chunkSearchRadius))
-			   && isDryChunkCenter(context, new ChunkPos(chunkpos.x - chunkSearchRadius, chunkpos.z + chunkSearchRadius))
-			   && isDryChunkCenter(context, new ChunkPos(chunkpos.x + chunkSearchRadius, chunkpos.z - chunkSearchRadius))
-			   && isDryChunkCenter(context, new ChunkPos(chunkpos.x + chunkSearchRadius, chunkpos.z + chunkSearchRadius));
+		return isDryChunkCenter(context, new ChunkPos(chunkpos.x() - chunkSearchRadius, chunkpos.z() - chunkSearchRadius))
+			   && isDryChunkCenter(context, new ChunkPos(chunkpos.x() - chunkSearchRadius, chunkpos.z() + chunkSearchRadius))
+			   && isDryChunkCenter(context, new ChunkPos(chunkpos.x() + chunkSearchRadius, chunkpos.z() - chunkSearchRadius))
+			   && isDryChunkCenter(context, new ChunkPos(chunkpos.x() + chunkSearchRadius, chunkpos.z() + chunkSearchRadius));
 	}
 
 	private static boolean isDryChunkCenter(Structure.GenerationContext context, ChunkPos chunkPos) {

@@ -44,6 +44,7 @@
 	"takesapillage.configGui.pillageSiegesOccur.title": "Pillage Sieges",
 	"instrument.takesapillage.raid_horn": "Raid Horn",
 	"item_group.takesapillage.main_tab": "It Takes A Pillage Continuation",
+	"yacl3.config.takesapillage:takesapillage": "It Takes A Pillage Continuation",
 	"yacl3.config.takesapillage:takesapillage.category.general": "General",
 	"yacl3.config.takesapillage:takesapillage.category.general.group.pillage_siege": "Pillage Sieges",
 	"yacl3.config.takesapillage:takesapillage.category.mobs": "Mobs",

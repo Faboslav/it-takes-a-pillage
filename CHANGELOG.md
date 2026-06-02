@@ -1,3 +1,8 @@
+## 1.0.11
+
+- Ported to 26.1
+- YACL is now optional dependency
+
 ## 1.0.10
 
 - Added new spawn egg icons

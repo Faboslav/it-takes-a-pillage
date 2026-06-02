@@ -8,10 +8,11 @@
 		"${modAuthor}"
 	],
 	"contact": {
-		"homepage": "https://github.com/Faboslav/it-takes-a-pillage",
-		"sources": "https://github.com/Faboslav/it-takes-a-pillage",
-		"issues": "https://github.com/Faboslav/it-takes-a-pillage/issues",
-		"discord": "https://discord.com/invite/QGwFvvMQCn"
+		"homepage": "${modGitHub}",
+		"sources": "${modGitHub}",
+		"issues": "${modGitHub}/issues",
+		"wiki": "${modGitHub}/wiki",
+		"discord": "${modDiscord}"
 	},
 	"license": "MIT",
 	"icon": "icon.png",
@@ -33,11 +34,14 @@
 	],
 	"accessWidener": "${modId}.accesswidener",
 	"depends": {
-		"minecraft": ">=${minMinecraftVersion}-",
+		"minecraft": ">=${minMinecraftVersion}",
 		"fabricloader": "*",
-		"fabric": "*",
-		"yet_another_config_lib_v3": ">=${yaclVersion}-",
-		"resourcefullib": ">=${resourcefulLibLibVersion}-"
+		"fabric-api": "*",
+		"resourcefullib": ">=${resourcefulLibLibVersion}"
+	},
+	"recommends": {
+		"yet_another_config_lib_v3": "*",
+		"modmenu": "*"
 	},
 	"custom": {
 		"modmenu": {
@@ -46,14 +50,20 @@
 				"CurseForge": "https://www.curseforge.com/minecraft/mc-mods/it-takes-a-pillage-continuation",
 				"Modrinth": "https://modrinth.com/mod/it-takes-a-pillage-continuation"
 			}
+		},
+		"catalogue": {
+			"configFactory": "com.izofar.takesapillage.fabric.modcompat.CatalogueCompat",
+			"icon": {
+				"image": "icon.png"
+			}
+		},
+		"mc-publish": {
+			"dependencies": [
+				"fabric-api(required){curseforge:306612}{modrinth:P7dR8mSH}",
+				"resourcefullib(required){curseforge:570073}{modrinth:G1hIVOrD}",
+				"yet_another_config_lib_v3(optional){curseforge:667299}{modrinth:1eAoo2KR}",
+				"modmenu(optional){curseforge:308702}{modrinth:mOgUt4GM}"
+			]
 		}
-	},
-	"mc-publish": {
-		"dependencies": [
-			"fabric-api(required){curseforge:306612}{modrinth:P7dR8mSH}",
-			"yet_another_config_lib_v3(required){curseforge:667299}{modrinth:1eAoo2KR}",
-			"resourcefullib(required){curseforge:570073}{modrinth:G1hIVOrD}",
-			"modmenu(optional){curseforge:308702}{modrinth:mOgUt4GM}"
-		]
 	}
 }

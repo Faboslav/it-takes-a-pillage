@@ -5,8 +5,8 @@ import net.minecraft.world.entity.EquipmentSlot;
 import org.jetbrains.annotations.Nullable;
 
 //? if < 1.21.9 {
-import net.minecraft.world.entity.LivingEntity;
-//?}
+/*import net.minecraft.world.entity.LivingEntity;
+*///?}
 
 public final class VersionedEntity
 {
@@ -14,8 +14,8 @@ public final class VersionedEntity
 	public static EquipmentSlot getEquipmentSlotForItem(InteractionHand hand) {
 		EquipmentSlot equipmentSlot = null;
 		//? if >= 1.21.9 {
-		/*equipmentSlot = hand.asEquipmentSlot();
-		*///?} else if >=1.21.1 {
+		equipmentSlot = hand.asEquipmentSlot();
+		//?} else if >=1.21.1 {
 		/*equipmentSlot = LivingEntity.getSlotForHand(hand);
 		*///?}
 

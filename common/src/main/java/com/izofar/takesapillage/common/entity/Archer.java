@@ -17,13 +17,13 @@ import net.minecraft.world.entity.ai.goal.RangedBowAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
-import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.monster.AbstractIllager;
+import net.minecraft.world.entity.animal.golem.IronGolem;
+import net.minecraft.world.entity.monster.illager.AbstractIllager;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.npc.villager.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
@@ -33,18 +33,18 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 //? if <= 1.21.10 {
-import net.minecraft.world.item.ProjectileWeaponItem;
-//?}
+/*import net.minecraft.world.item.ProjectileWeaponItem;
+*///?}
 
 /*? <=1.21 {*/
-import net.minecraft.nbt.CompoundTag;
- /*?}*/
+/*import net.minecraft.nbt.CompoundTag;
+ *//*?}*/
 
 //? >= 1.21.3 {
-/*import net.minecraft.world.entity.EntitySpawnReason;
-*///?} else {
-import net.minecraft.world.entity.MobSpawnType;
- //?}
+import net.minecraft.world.entity.EntitySpawnReason;
+//?} else {
+/*import net.minecraft.world.entity.MobSpawnType;
+ *///?}
 
 public class Archer extends AbstractIllager implements RangedAttackMob
 {
@@ -90,13 +90,13 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 	}
 
 	//? if <=1.20.1 {
-	@Override
+	/*@Override
 	public void applyRaidBuffs(int round, boolean b) {
 	}
-	//?} else {
-	/*public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
+	*///?} else {
+	public void applyRaidBuffs(ServerLevel serverLevel, int i, boolean bl) {
 	}
-	*///?}
+	//?}
 
 	@Override
 	public SoundEvent getCelebrateSound() {
@@ -128,38 +128,38 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 
 	protected AbstractArrow getArrow(ItemStack itemstack, float f) {
 		//? if <=1.20.1 {
-		return ProjectileUtil.getMobArrow(this, itemstack, f);
-		//?} else {
-		/*return ProjectileUtil.getMobArrow(this, itemstack, f, null);
-		*///?}
+		/*return ProjectileUtil.getMobArrow(this, itemstack, f);
+		*///?} else {
+		return ProjectileUtil.getMobArrow(this, itemstack, f, null);
+		//?}
 	}
 
 	//? <= 1.21.10 {
-	@Override
+	/*@Override
 	public boolean canFireProjectileWeapon(ProjectileWeaponItem item) {
 		return (item == Items.BOW);
 	}
-	//?}
+	*///?}
 
 	@Override
 	public SpawnGroupData finalizeSpawn(
 		ServerLevelAccessor world,
 		DifficultyInstance difficulty,
 		//? >= 1.21.3 {
-		/*EntitySpawnReason spawnReason,
-		 *///?} else {
-		MobSpawnType spawnReason,
-		//?}
+		EntitySpawnReason spawnReason,
+		 //?} else {
+		/*MobSpawnType spawnReason,
+		*///?}
 		@Nullable SpawnGroupData entityData
 		//? <1.21.1 {
-		,CompoundTag compoundTag
-		 //?}
+		/*,CompoundTag compoundTag
+		 *///?}
 	) {
-		SpawnGroupData spawnGroupData = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*/, compoundTag/*?}*/);
+		SpawnGroupData spawnGroupData = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*//*, compoundTag*//*?}*/);
 		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
 		RandomSource randomSource = world.getRandom();
 		this.populateDefaultEquipmentSlots(randomSource, difficulty);
-		this.populateDefaultEquipmentEnchantments(/*? >= 1.21.1 {*//*world, *//*?}*/ randomSource, difficulty);
+		this.populateDefaultEquipmentEnchantments(/*? >= 1.21.1 {*/world, /*?}*/ randomSource, difficulty);
 
 		return spawnGroupData;
 	}

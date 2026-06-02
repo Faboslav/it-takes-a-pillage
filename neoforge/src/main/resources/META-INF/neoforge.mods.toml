@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "*"
 license = "${modLicense}"
-issueTrackerURL = "https://github.com/Faboslav/it-takes-a-pillage/issues"
+issueTrackerURL = "${modGitHub}/issues"
 
 [[mods]]
 modId = "${modId}"
@@ -11,13 +11,16 @@ authors = "${modAuthor}"
 description = "${modDescription}"
 logoFile = "icon.png"
 logoBlur = false
-displayURL = "https://github.com/Faboslav/it-takes-a-pillage"
+displayURL = "${modGitHub}"
+
+[[mixins]]
+config = "${modId}-common.mixins.json"
 
 [[mixins]]
 config = "${modId}-neoforge.mixins.json"
 
-[[mixins]]
-config = "${modId}-common.mixins.json"
+[[accessTransformers]]
+file = "META-INF/accesstransformer.cfg"
 
 [[dependencies.${ modId }]]
 modId = "neoforge"
@@ -35,8 +38,8 @@ side = "BOTH"
 
 [[dependencies.${ modId }]]
 modId = "yet_another_config_lib_v3"
-type = "required"
-versionRange = "[${yaclVersion},)"
+type = "optional"
+versionRange = "*"
 ordering = "NONE"
 side = "BOTH"
 [dependencies.${ modId }.mc-publish]
@@ -52,8 +55,8 @@ ordering = "NONE"
 side = "BOTH"
 [dependencies.${ modId }.mc-publish]
 ignore = false
-modrinth = "resourceful-lib"
-curseforge = "resourceful-lib"
+modrinth = "resourceful_lib"
+curseforge = "resourceful_lib"
 
 [modproperties.${ modId }]
 catalogueImageIcon = "icon.png"

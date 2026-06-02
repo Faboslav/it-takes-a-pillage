@@ -13,55 +13,55 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Instrument;
 import net.minecraft.world.item.InstrumentItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.Level;
 
 //? if >=1.21.3 {
-/*import net.minecraft.world.InteractionResult;
-*///?} else {
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
+//?} else {
+/*import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.item.Item;
-//?}
+*///?}
 
 public class RavagerHornItem extends InstrumentItem
 {
 	public RavagerHornItem(TagKey<Instrument> instruments, Properties properties) {
 		//? if >=1.21.5 {
-		/*super(properties);
-		*///?} else if >=1.21.4 {
+		super(properties);
+		//?} else if >=1.21.4 {
 		/*super(instruments, properties);
 		*///?} else {
-		super(properties, instruments);
-		//?}
-	}
-
-	@Override
-	//? if >=1.21.3 {
-	/*public boolean releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
-	*///?} else {
-	public void releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
-	//?}
-	{
-		super.finishUsingItem(itemStack, level, livingEntity);
-
-		//? if >=1.21.1 {
-		/*itemStack.hurtAndBreak(1, livingEntity, VersionedEntity.getEquipmentSlotForItem(livingEntity.getUsedItemHand()));
-		*///?} else {
-		itemStack.hurtAndBreak(1, livingEntity, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
-		//?}
-
-		//? if >=1.21.3 {
-		/*// TODO check
-		return true;
+		/*super(properties, instruments);
 		*///?}
 	}
 
 	@Override
 	//? if >=1.21.3 {
-	/*public InteractionResult use(Level level, Player player, InteractionHand hand)
-	*///?} else {
-	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
-	//?}
+	public boolean releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
+	//?} else {
+	/*public void releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int remainingTicks)
+	*///?}
+	{
+		super.finishUsingItem(itemStack, level, livingEntity);
+
+		//? if >=1.21.1 {
+		itemStack.hurtAndBreak(1, livingEntity, VersionedEntity.getEquipmentSlotForItem(livingEntity.getUsedItemHand()));
+		//?} else {
+		/*itemStack.hurtAndBreak(1, livingEntity, p -> p.broadcastBreakEvent(p.getUsedItemHand()));
+		*///?}
+
+		//? if >=1.21.3 {
+		// TODO check
+		return true;
+		//?}
+	}
+
+	@Override
+	//? if >=1.21.3 {
+	public InteractionResult use(Level level, Player player, InteractionHand hand)
+	//?} else {
+	/*public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)
+	*///?}
 	{
 		var result = super.use(level, player, hand);
 

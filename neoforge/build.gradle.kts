@@ -1,7 +1,7 @@
 plugins {
 	`multiloader-loader`
 	id("net.neoforged.moddev")
-	id("dev.kikugie.fletching-table.neoforge") version "0.1.0-alpha.22"
+	id("dev.kikugie.fletching-table.neoforge") version "0.1.0-alpha.23"
 }
 
 fletchingTable {
@@ -10,7 +10,7 @@ fletchingTable {
 	}
 
 	accessConverter.register("main") {
-		add("accesswideners/${commonMod.mc}-${commonMod.id}.accesswidener")
+		add("accesswideners/${commonMod.mc}-${mod.id}.accesswidener")
 	}
 }
 
@@ -22,14 +22,10 @@ neoForge {
 
 dependencies {
 	// Required dependencies
-	implementation(
-		"com.teamresourceful.resourcefullib:resourcefullib-neoforge-${commonMod.dep("resourceful_lib.mc")}:${
-			commonMod.dep(
-				"resourceful_lib.lib"
-			)
-		}"
-	)
-	implementation("dev.isxander:yet-another-config-lib:${commonMod.dep("yacl")}-neoforge")
+	implementation("com.teamresourceful.resourcefullib:resourcefullib-neoforge-${commonMod.dep("resourceful_lib.mc")}:${commonMod.dep("resourceful_lib.lib")}")
+	commonMod.depOrNull("yacl")?.let { yaclVersion ->
+		implementation("dev.isxander:yet-another-config-lib:${yaclVersion}-neoforge")
+	}
 }
 
 neoForge {
@@ -41,16 +37,18 @@ neoForge {
 	runs {
 		register("client") {
 			client()
+			ideFolderName = "NeoForge"
 			ideName = "NeoForge Client (${project.path})"
 		}
 		register("server") {
 			server()
+			ideFolderName = "NeoForge"
 			ideName = "NeoForge Server (${project.path})"
 		}
 	}
 
-	parchment {
-		commonMod.depOrNull("parchment")?.let {
+	commonMod.depOrNull("parchment")?.let {
+		parchment {
 			mappingsVersion = it
 			minecraftVersion = commonMod.mc
 		}
@@ -67,6 +65,11 @@ sourceSets.main {
 	resources.srcDir("src/generated/resources")
 }
 
+tasks {
+	processResources {
+		exclude("${mod.id}.accesswidener")
+	}
+}
 
 tasks.named("createMinecraftArtifacts") {
 	dependsOn(":neoforge:${commonMod.propOrNull("minecraft_version")}:processResources")

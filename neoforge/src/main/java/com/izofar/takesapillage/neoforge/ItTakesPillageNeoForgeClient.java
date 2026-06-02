@@ -1,7 +1,6 @@
 package com.izofar.takesapillage.neoforge;
 
 import com.izofar.takesapillage.common.ItTakesPillageClient;
-import com.izofar.takesapillage.common.config.ItTakesPillageConfig;
 import com.izofar.takesapillage.common.event.client.RegisterEntityModelLayersEvent;
 import com.izofar.takesapillage.common.event.client.RegisterEntityRenderersEvent;
 import net.neoforged.bus.api.IEventBus;
@@ -28,15 +27,17 @@ public final class ItTakesPillageNeoForgeClient
 
 	private static void onClientSetup(final FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			if (ModList.get().isLoaded("yet_another_config_lib_v3")) {
-				ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (client, screen) -> {
-					return ItTakesPillageConfig.HANDLER.generateGui().generateScreen(screen);
-				});
+			if (!ModList.get().isLoaded("yet_another_config_lib_v3")) {
+				return;
 			}
+
+			ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (client, screen) -> {
+				return ItTakesPillageClient.getConfigScreen(screen);
+			});
 
 			//? if <1.21.3 {
 			/*RegisterItemPropertiesEvent.EVENT.invoke(new RegisterItemPropertiesEvent(ItemProperties::register));
-			*///?}
+			 *///?}
 		});
 	}
 
