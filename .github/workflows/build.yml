@@ -167,7 +167,7 @@ jobs:
             -   name: Run ${{ matrix.version }} ${{ matrix.mod_loader }} server
                 uses: headlesshq/mc-server-test@42de00da95e997b046a43eb9beb516494e542ba9 # v1.1.1
                 with:
-                    mc: ${{ steps.gradle-properties.outputs.MIN_MINECRAFT_VERSION }}
+                    mc: ${{ steps.gradle-properties.outputs.MINECRAFT_VERSION }}
                     modloader: ${{ matrix.mod_loader }}
                     java: ${{ steps.gradle-properties.outputs.JAVA_VERSION }}
                     fabric-api: ${{ steps.gradle-properties.outputs.DEPS_FABRIC_API }}
