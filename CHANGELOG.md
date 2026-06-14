@@ -1,3 +1,8 @@
+## 1.0.12
+
+- Fixed infested blocks in structures
+- Fixed skirmisher model layer
+
 ## 1.0.11
 
 - Ported to 26.1

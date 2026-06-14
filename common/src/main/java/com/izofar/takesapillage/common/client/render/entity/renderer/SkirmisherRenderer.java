@@ -3,6 +3,7 @@ package com.izofar.takesapillage.common.client.render.entity.renderer;
 import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.client.render.entity.model.SkirmisherModel;
 import com.izofar.takesapillage.common.entity.Skirmisher;
+import com.izofar.takesapillage.common.init.ItTakesPillageEntityModelLayers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
@@ -18,9 +19,7 @@ import com.izofar.takesapillage.common.client.render.entity.state.SkirmisherRend
 import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
 import net.minecraft.world.entity.monster.illager.AbstractIllager;
 import net.minecraft.world.item.CrossbowItem;
-//?} else {
-/*import com.izofar.takesapillage.common.init.ItTakesPillageEntityModelLayers;
-*///?}
+//?}
 
 //? >= 1.21.3 {
 public final class SkirmisherRenderer extends MobRenderer<Skirmisher, SkirmisherRenderState, SkirmisherModel>
@@ -33,7 +32,7 @@ public final class SkirmisherRenderer extends MobRenderer<Skirmisher, Skirmisher
 
 	public SkirmisherRenderer(EntityRendererProvider.Context context) {
 		//? >= 1.21.3 {
-		super(context, new SkirmisherModel(SkirmisherModel.createBodyLayer().bakeRoot()), 0.5F);
+		super(context, new SkirmisherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.SKIRMISHER)), 0.5F);
 		//this.addLayer(new CustomHeadLayer<>(this, context.getModelSet(), this));
 		this.addLayer(new ItemInHandLayer<>(this));
 		//?} else {

@@ -30,7 +30,15 @@ tasks {
     processResources {
         dependsOn(commonResources)
         from(commonResources)
-    }
+
+		if (project.stonecutterBuild.eval(commonMod.mc, "<1.21.1")) {
+			eachFile {
+				if (path.contains("takesapillage/structure")) {
+					path = path.replace("takesapillage/structure", "takesapillage/structures")
+				}
+			}
+		}
+	}
 
 	jar {
 		exclude("accesswideners/**")
