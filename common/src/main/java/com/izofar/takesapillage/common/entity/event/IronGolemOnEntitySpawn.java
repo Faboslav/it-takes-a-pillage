@@ -5,7 +5,7 @@ import com.izofar.takesapillage.common.entity.ClayGolem;
 import com.izofar.takesapillage.common.event.entity.EntitySpawnEvent;
 import com.izofar.takesapillage.common.init.ItTakesPillageEntityTypes;
 import com.izofar.takesapillage.common.versions.VersionedEntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
+import com.izofar.takesapillage.common.versions.VersionedEntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.ServerLevelAccessor;
 
@@ -23,7 +23,7 @@ public final class IronGolemOnEntitySpawn
 
 		Mob entity = event.entity();
 
-		if (entity.getType() != EntityType.IRON_GOLEM) {
+		if (entity.getType() != VersionedEntityType.IRON_GOLEM) {
 			return false;
 		}
 

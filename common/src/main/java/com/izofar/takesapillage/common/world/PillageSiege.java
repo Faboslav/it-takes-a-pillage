@@ -3,13 +3,13 @@ package com.izofar.takesapillage.common.world;
 import com.izofar.takesapillage.common.ItTakesPillage;
 import com.izofar.takesapillage.common.util.MobLists;
 import com.izofar.takesapillage.common.versions.VersionedEntitySpawnReason;
+import com.izofar.takesapillage.common.versions.VersionedEntityType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.monster.illager.AbstractIllager;
 import net.minecraft.world.entity.monster.Monster;
@@ -189,7 +189,7 @@ public final class PillageSiege implements CustomSpawner
 			int k = blockPos.getZ() + serverLevel.getRandom().nextInt(16) - 8;
 			int l = serverLevel.getHeight(Heightmap.Types.WORLD_SURFACE, j, k);
 			BlockPos blockpos = new BlockPos(j, l, k);
-			if (serverLevel.isVillage(blockpos) && Monster.checkMonsterSpawnRules(EntityType.PILLAGER, serverLevel, VersionedEntitySpawnReason.EVENT, blockpos, serverLevel.getRandom()))
+			if (serverLevel.isVillage(blockpos) && Monster.checkMonsterSpawnRules(VersionedEntityType.PILLAGER, serverLevel, VersionedEntitySpawnReason.EVENT, blockpos, serverLevel.getRandom()))
 				return Vec3.atBottomCenterOf(blockpos);
 		}
 		return null;

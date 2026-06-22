@@ -172,9 +172,18 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 	//?}
 
 	@Override
-	public void knockback(double x, double y, double z) {
+	//? if >= 26.2 {
+	public void knockback(double power, double xd, double zd, final DamageSource source, final float damage, final boolean comesFromEffect)
+	//?} else {
+	/*public void knockback(double x, double y, double z)
+	*///?}
+	{
 		if (!this.isUsingShield()) {
-			super.knockback(x, y, z);
+			//? if >= 26.2 {
+			super.knockback(power, xd, zd, source, damage, comesFromEffect);
+			//?} else {
+			/*super.knockback(x, y, z);
+			*///?}
 		} else {
 			//? if >=1.21.5 {
 			var soundEvent = SoundEvents.SHIELD_BLOCK.value();
@@ -186,15 +195,19 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 	}
 
 	@Override
-	//? if >=1.21.5 {
-	protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
-	//?} else {
+	//? if >= 26.2 {
+	protected void blockUsingItem(final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage)
+	//?} else if >= 1.21.5 {
+	/*protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
+	*///?} else {
 	/*protected void blockUsingShield(LivingEntity attacker)
 	*///?}
 	{
-		//? if >=1.21.5 {
-		super.blockedByItem(this);
-		//?} else {
+		//? if >= 26.2 {
+		super.blockedByItem(this, source, damage);
+		//?} else if >= 1.21.5 {
+		/*super.blockedByItem(this);
+		*///?} else {
 		/*super.blockUsingShield(attacker);
 		*///?}
 
