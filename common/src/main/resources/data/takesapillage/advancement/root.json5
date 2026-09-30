@@ -1,7 +1,11 @@
 {
 	"display": {
 		"icon": {
-			"item": "minecraft:bell"
+			//? if >=1.21.1 {
+			"id": "minecraft:bell"
+			//?} else {
+			//"item": "minecraft:bell"
+			//?}
 		},
 		"title": {
 			"translate": "advancements.takesapillage.root.title"

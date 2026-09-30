@@ -32,9 +32,32 @@ tasks {
         from(commonResources)
 
 		if (project.stonecutterBuild.eval(commonMod.mc, "<1.21.1")) {
+			val namespaces = listOf("takesapillage", "minecraft")
+			val renamedFolders = mapOf(
+				"structure" to "structures",
+				"loot_table" to "loot_tables",
+				"advancement" to "advancements",
+				"tags/entity_type" to "tags/entity_types",
+				"tags/item" to "tags/items",
+			)
+
+			eachFile eachFile@{
+				for (namespace in namespaces) {
+					for ((singular, plural) in renamedFolders) {
+						val prefix = "data/$namespace/$singular/"
+						if (path.startsWith(prefix)) {
+							path = path.replaceFirst(prefix, "data/$namespace/$plural/")
+							return@eachFile
+						}
+					}
+				}
+			}
+		}
+
+		if (project.stonecutterBuild.eval(commonMod.mc, ">=26.3")) {
 			eachFile {
-				if (path.contains("takesapillage/structure")) {
-					path = path.replace("takesapillage/structure", "takesapillage/structures")
+				if (path.startsWith("data/takesapillage/worldgen/configured_feature/")) {
+					path = path.replaceFirst("worldgen/configured_feature/", "worldgen/feature/")
 				}
 			}
 		}

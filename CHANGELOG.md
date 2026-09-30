@@ -1,6 +1,9 @@
 ## 1.0.13
 
 - Fixed default config values
+- Fixed mod illagers not being killable via the vanilla raiders/illager entity type tags on 1.21.1 and newer
+- Fixed music disc not being added to the vanilla music_discs item tag on 1.21.1 and newer
+- Fixed archer/legioner/skirmisher loot tables failing to load on 1.20.1 (dropping no loot at all)
 
 ## 1.0.12
 

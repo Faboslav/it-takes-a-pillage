@@ -1,8 +1,16 @@
 {
+	//? if >=1.21.1 {
 	"parent": "minecraft:adventure/root",
+	//?} else {
+	//"parent": "takesapillage:root",
+	//?}
 	"display": {
 		"icon": {
+			//? if >=1.21.1 {
 			"id": "minecraft:deepslate_bricks"
+			//?} else {
+			//"item": "minecraft:deepslate_bricks"
+			//?}
 		},
 		"title": {
 			"translate": "advancements.takesapillage.bastille.title"
@@ -28,7 +36,7 @@
 					}
 				}
 			},
-			//?} else {
+			//?} else if >=1.21.1 {
 			/*"conditions": {
 				"player": [
 					{
@@ -37,6 +45,20 @@
 						"predicate": {
 							"location": {
 								"structures": "takesapillage:bastille"
+							}
+						}
+					}
+				]
+			},
+			*///?} else {
+			/*"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"structure": "takesapillage:bastille"
 							}
 						}
 					}

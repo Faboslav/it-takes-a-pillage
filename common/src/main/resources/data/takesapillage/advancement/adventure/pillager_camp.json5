@@ -1,9 +1,17 @@
 {
+	//? if >=1.21.1 {
 	"parent": "minecraft:adventure/root",
+	//?} else {
+	//"parent": "takesapillage:root",
+	//?}
 	"display": {
 		"icon": {
+			//? if >=1.21.1 {
 			"count": 1,
 			"id": "minecraft:dark_oak_log"
+			//?} else {
+			//"item": "minecraft:dark_oak_log"
+			//?}
 		},
 		"title": {
 			"translate": "advancements.takesapillage.pillager_camp.title"
@@ -11,6 +19,13 @@
 		"description": {
 			"translate": "advancements.takesapillage.pillager_camp.description"
 		}
+		//? if <1.21.1 {
+		/*,
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+		*///?}
 	},
 	"criteria": {
 		"in_pillager_camp": {
@@ -26,7 +41,7 @@
 					}
 				}
 			},
-			//?} else {
+			//?} else if >=1.21.1 {
 			/*"conditions": {
 				"player": [
 					{
@@ -35,6 +50,20 @@
 						"predicate": {
 							"location": {
 								"structures": "takesapillage:pillager_camp"
+							}
+						}
+					}
+				]
+			},
+			*///?} else {
+			/*"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"location": {
+								"structure": "takesapillage:pillager_camp"
 							}
 						}
 					}
