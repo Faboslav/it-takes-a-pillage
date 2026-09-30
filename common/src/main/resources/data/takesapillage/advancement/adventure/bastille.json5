@@ -16,7 +16,20 @@
 	},
 	"criteria": {
 		"in_bastille": {
+			//? if >=26.3 {
 			"conditions": {
+				"player": {
+					"type": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"location": {
+							"structures": "takesapillage:bastille"
+						}
+					}
+				}
+			},
+			//?} else {
+			/*"conditions": {
 				"player": [
 					{
 						"condition": "minecraft:entity_properties",
@@ -29,6 +42,7 @@
 					}
 				]
 			},
+			*///?}
 			"trigger": "minecraft:location"
 		}
 	},

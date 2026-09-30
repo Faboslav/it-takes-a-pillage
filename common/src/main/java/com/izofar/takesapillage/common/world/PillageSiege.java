@@ -40,17 +40,17 @@ public final class PillageSiege implements CustomSpawner
 	//? if >= 1.21.9 {
 	public void tick(ServerLevel serverLevel, boolean spawnMonsters)
 	//?} else if >=1.21.5 {
-	/*public void tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
-	 *///?} else {
-	/*public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
-	 *///?}
+	//public void tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
+	 //?} else {
+	//public int tick(ServerLevel serverLevel, boolean spawnMonsters, boolean spawnAnimals)
+	 //?}
 	{
 		if (
 			//? if >=1.21.5 {
 			serverLevel.isBrightOutside()
 			//?} else {
-			/*serverLevel.isDay()
-			*///?}
+			//serverLevel.isDay()
+			//?}
 			|| !ItTakesPillage.getConfig().enablePillageSieges
 		) {
 			this.siegeState = State.SIEGE_DONE;
@@ -64,8 +64,8 @@ public final class PillageSiege implements CustomSpawner
 		//? if >= 26.1 {
 		long l = serverLevel.getGameTime() / 24000L;
 		//?} else {
-		/*long l = serverLevel.getDayTime() / 24000L;
-		 *///?}
+		//long l = serverLevel.getDayTime() / 24000L;
+		 //?}
 		if (l == 12000L) {
 			this.siegeState = serverLevel.getRandom().nextInt(10) == 0 ? State.SIEGE_TONIGHT : State.SIEGE_DONE;
 		}
@@ -121,12 +121,12 @@ public final class PillageSiege implements CustomSpawner
 					//? if >= 26.1 {
 					long l = serverLevel.getGameTime() / 24000L;
 					//?} else {
-					/*long l = serverLevel.getDayTime() / 24000L;
-					 *///?}
+					//long l = serverLevel.getDayTime() / 24000L;
+					 //?}
 					if (Mth.frac(l) > (11.0D / 24.0D))
 					//?} else {
-					/*if (serverLevel.getTimeOfDay(serverLevel.dayTime()) > Mth.frac(11.0D / 24.0D))
-					*///?}
+					//if (serverLevel.getTimeOfDay(serverLevel.dayTime()) > Mth.frac(11.0D / 24.0D))
+					//?}
 					{
 						serverLevel.playSound(null, blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.RAID_HORN.value(), SoundSource.NEUTRAL, 64.0F, 1.0F);
 						serverLevel.playSound(null, blockpos.getX(), blockpos.getY(), blockpos.getZ(), SoundEvents.BELL_BLOCK, SoundSource.BLOCKS, 2.0F, 1.0F);
@@ -148,27 +148,27 @@ public final class PillageSiege implements CustomSpawner
 				//? if >=1.21.5 {
 				var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.getRandom()).get();
 				//?} else if >=1.21.1 {
-				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().data();
-				*///?} else {
-				/*var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData();
-				*///?}
+				//var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().data();
+				//?} else {
+				//var entityType = MobLists.PILLAGER_SIEGE_LIST.getRandom(serverLevel.random).get().getData();
+				//?}
 				pillager = entityType.create(serverLevel/*? >=1.21.3 {*/, VersionedEntitySpawnReason.EVENT/*?}*/);
 				pillager.setPersistenceRequired();
 				if (serverLevel.getRandom().nextInt(6) < 1) {
 					//? if >= 1.21.3 {
 					pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getOminousBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
 					//?} else if >=1.21.1 {
-					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
-					*///?} else {
-					/*pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
-					*///?}
+					//pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance(pillager.registryAccess().lookupOrThrow(Registries.BANNER_PATTERN)));
+					//?} else {
+					//pillager.setItemSlot(EquipmentSlot.HEAD, Raid.getLeaderBannerInstance());
+					//?}
 					pillager.setDropChance(EquipmentSlot.HEAD, 2.0F);
 				}
 				//? if >=1.21.1 {
 				pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null);
 				//?} else {
-				/*pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null, null);
-				*///?}
+				//pillager.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(pillager.blockPosition()), VersionedEntitySpawnReason.EVENT, null, null);
+				//?}
 			} catch (Exception exception) {
 				ItTakesPillage.getLogger().warn("Failed to create pillager for pillage siege at {}", vec3, exception);
 				return;
@@ -176,8 +176,8 @@ public final class PillageSiege implements CustomSpawner
 			//? if >=1.21.5 {
 			pillager.snapTo(vec3.x, vec3.y, vec3.z, serverLevel.getRandom().nextFloat() * 360.0F, 0.0F);
 			//?} else {
-			/*pillager.moveTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
-			*///?}
+			//pillager.moveTo(vec3.x, vec3.y, vec3.z, serverLevel.random.nextFloat() * 360.0F, 0.0F);
+			//?}
 			serverLevel.addFreshEntityWithPassengers(pillager);
 		}
 	}

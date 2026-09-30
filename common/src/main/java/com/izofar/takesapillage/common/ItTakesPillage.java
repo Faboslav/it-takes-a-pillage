@@ -16,8 +16,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 //? if <= 1.21.11 {
-/*import com.izofar.takesapillage.common.event.lifecycle.SetupEvent;
-*///?}
+//import com.izofar.takesapillage.common.event.lifecycle.SetupEvent;
+//?}
 
 public class ItTakesPillage
 {
@@ -68,14 +68,14 @@ public class ItTakesPillage
 		ItTagesPillageTags.init();
 
 		//? if <= 1.21.11 {
-		/*SetupEvent.EVENT.addListener(ItTakesPillageItems::registerSpawnEggs);
-		*///?}
+		//SetupEvent.EVENT.addListener(ItTakesPillageItems::registerSpawnEggs);
+		//?}
 
 		ItTakesPillageEntityTypes.ENTITY_TYPES.init();
 		ItTakesPillageFeatures.FEATURES.init();
 		//? if <1.21.3 {
-		/*ItTakesPillageInstruments.INSTRUMENTS.init();
-		*///?}
+		//ItTakesPillageInstruments.INSTRUMENTS.init();
+		//?}
 		ItTakesPillageItemGroups.ITEM_GROUPS.init();
 		ItTakesPillageItems.ITEMS.init();
 		ItTakesPillageSoundEvents.SOUND_EVENTS.init();
@@ -95,8 +95,8 @@ public class ItTakesPillage
 				//? if >= 1.21.9 {
 				PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true);
 				//?} else {
-				/*PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true, false);
-				*///?}
+				//PillageSiege.PILLAGE_SIEGE.tick((ServerLevel) level, true, false);
+				//?}
 			}
 		}
 	}

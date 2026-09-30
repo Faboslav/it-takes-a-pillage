@@ -16,8 +16,8 @@ import com.izofar.takesapillage.common.client.render.entity.state.LegionerRender
 //? >= 1.21.3 {
 public final class LegionerRenderer extends IllagerRenderer<Legioner, LegionerRenderState>
 //?} else {
-/*public final class LegionerRenderer extends IllagerRenderer<Legioner>
-*///?}
+//public final class LegionerRenderer extends IllagerRenderer<Legioner>
+//?}
 {
 	private static final Identifier TEXTURE = ItTakesPillage.makeId("textures/entity/legioner.png");
 
@@ -26,14 +26,14 @@ public final class LegionerRenderer extends IllagerRenderer<Legioner, LegionerRe
 		//? >= 1.21.3 {
 		super(context, new LegionerModel(context.bakeLayer(ItTakesPillageEntityModelLayers.LEGIONER)), 0.5F);
 		//?} else {
-		/*super(context, new LegionerModel(context.bakeLayer(ItTakesPillageEntityModelLayers.LEGIONER)), 0.5F);
-		 *///?}
+		//super(context, new LegionerModel(context.bakeLayer(ItTakesPillageEntityModelLayers.LEGIONER)), 0.5F);
+		 //?}
 
 		//? >= 1.21.3 {
 		this.addLayer(new ItemInHandLayer<>(this));
 		//?} else {
-		/*this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
-		 *///?}
+		//this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
+		 //?}
 		this.model.getHat().visible = true;
 	}
 
@@ -54,8 +54,8 @@ public final class LegionerRenderer extends IllagerRenderer<Legioner, LegionerRe
 	//? >= 1.21.3 {
 	public Identifier getTextureLocation(LegionerRenderState renderState)
 	//?} else {
-	/*public Identifier getTextureLocation(Legioner legioner)
-	*///?}
+	//public Identifier getTextureLocation(Legioner legioner)
+	//?}
 	{
 		return TEXTURE;
 	}

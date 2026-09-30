@@ -3,9 +3,13 @@
 		{
 			"rules": [
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:cracked_deepslate_bricks",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:cracked_deepslate_bricks"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:deepslate_bricks",
 						"probability": 0.5,
@@ -16,9 +20,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:cracked_deepslate_tiles",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:cracked_deepslate_tiles"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:deepslate_tiles",
 						"probability": 0.5,
@@ -29,9 +37,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:cracked_stone_bricks",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:cracked_stone_bricks"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:stone_bricks",
 						"probability": 0.25,
@@ -42,9 +54,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:mossy_stone_bricks",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:mossy_stone_bricks"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:stone_bricks",
 						"probability": 0.1,
@@ -55,9 +71,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:cobblestone",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:cobblestone"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:stone_bricks",
 						"probability": 0.1,
@@ -68,9 +88,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:mossy_cobblestone",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:mossy_cobblestone"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:stone_bricks",
 						"probability": 0.1,
@@ -81,9 +105,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:cracked_stone_bricks",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:cracked_stone_bricks"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:stone_bricks",
 						"probability": 0.25,
@@ -94,9 +122,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:grass_block",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:grass_block"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:dirt",
 						"probability": 1.0,
@@ -107,9 +139,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:coarse_dirt",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:coarse_dirt"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:grass_block",
 						"probability": 0.15,

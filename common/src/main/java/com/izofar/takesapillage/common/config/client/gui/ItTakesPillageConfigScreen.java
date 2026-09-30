@@ -27,34 +27,34 @@ public final class ItTakesPillageConfigScreen
 			.category(ConfigCategory.createBuilder()
 				.name(Component.translatable("yacl3.config.takesapillage:takesapillage.category.general"))
 				.group(group("general", "pillage_siege")
-					.option(bool("enablePillageSieges", config.enablePillageSieges, () -> config.enablePillageSieges, value -> config.enablePillageSieges = value))
+					.option(bool("enablePillageSieges", ItTakesPillageConfig.ENABLE_PILLAGE_SIEGES_DEFAULT_VALUE, () -> config.enablePillageSieges, value -> config.enablePillageSieges = value))
 					.build())
 				.build())
 			.category(ConfigCategory.createBuilder()
 				.name(Component.translatable("yacl3.config.takesapillage:takesapillage.category.mobs"))
 				.group(group("mobs", "clay_golem")
-					.option(bool("enableClayGolem", config.enableClayGolem, () -> config.enableClayGolem, value -> config.enableClayGolem = value))
-					.option(bool("replaceIronGolemsWithClayGolems", config.replaceIronGolemsWithClayGolems, () -> config.replaceIronGolemsWithClayGolems, value -> config.replaceIronGolemsWithClayGolems = value))
+					.option(bool("enableClayGolem", ItTakesPillageConfig.ENABLE_CLAY_GOLEM_DEFAULT_VALUE, () -> config.enableClayGolem, value -> config.enableClayGolem = value))
+					.option(bool("replaceIronGolemsWithClayGolems", ItTakesPillageConfig.REPLACE_IRON_GOLEMS_WITH_CLAY_GOLEMS_DEFAULT_VALUE, () -> config.replaceIronGolemsWithClayGolems, value -> config.replaceIronGolemsWithClayGolems = value))
 					.build())
 				.group(group("mobs", "archer")
-					.option(bool("enableArcher", config.enableArcher, () -> config.enableArcher, value -> config.enableArcher = value))
-					.option(bool("enableArcherInRaids", config.enableArcherInRaids, () -> config.enableArcherInRaids, value -> config.enableArcherInRaids = value))
+					.option(bool("enableArcher", ItTakesPillageConfig.ENABLE_ARCHER_DEFAULT_VALUE, () -> config.enableArcher, value -> config.enableArcher = value))
+					.option(bool("enableArcherInRaids", ItTakesPillageConfig.ENABLE_ARCHER_IN_RAIDS_DEFAULT_VALUE, () -> config.enableArcherInRaids, value -> config.enableArcherInRaids = value))
 					.build())
 				.group(group("mobs", "legioner")
-					.option(bool("enableLegioner", config.enableLegioner, () -> config.enableLegioner, value -> config.enableLegioner = value))
-					.option(bool("enableLegionerInRaids", config.enableLegionerInRaids, () -> config.enableLegionerInRaids, value -> config.enableLegionerInRaids = value))
+					.option(bool("enableLegioner", ItTakesPillageConfig.ENABLE_LEGIONER_DEFAULT_VALUE, () -> config.enableLegioner, value -> config.enableLegioner = value))
+					.option(bool("enableLegionerInRaids", ItTakesPillageConfig.ENABLE_LEGIONER_IN_RAIDS_DEFAULT_VALUE, () -> config.enableLegionerInRaids, value -> config.enableLegionerInRaids = value))
 					.build())
 				.group(group("mobs", "skirmisher")
-					.option(bool("enableSkirmisher", config.enableSkirmisher, () -> config.enableSkirmisher, value -> config.enableSkirmisher = value))
-					.option(bool("enableSkirmisherInRaids", config.enableSkirmisherInRaids, () -> config.enableSkirmisherInRaids, value -> config.enableSkirmisherInRaids = value))
+					.option(bool("enableSkirmisher", ItTakesPillageConfig.ENABLE_SKIRMISHER_DEFAULT_VALUE, () -> config.enableSkirmisher, value -> config.enableSkirmisher = value))
+					.option(bool("enableSkirmisherInRaids", ItTakesPillageConfig.ENABLE_SKIRMISHER_IN_RAIDS_DEFAULT_VALUE, () -> config.enableSkirmisherInRaids, value -> config.enableSkirmisherInRaids = value))
 					.build())
 				.build())
 			.save(ItTakesPillageConfig::save)
 			.build()
 			.generateScreen(parent);
 		//?} else {
-		/*return null;
-		 *///?}
+		//return null;
+		 //?}
 	}
 
 	//? if yacl {

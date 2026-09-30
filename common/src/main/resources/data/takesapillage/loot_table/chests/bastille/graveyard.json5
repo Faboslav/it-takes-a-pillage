@@ -11,7 +11,18 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -22,6 +33,7 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:gold_nugget"
 				},
 				{
@@ -36,7 +48,18 @@
 				{
 					"type": "minecraft:item",
 					"weight": 10,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 7
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -47,12 +70,24 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:bone"
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 10,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 4
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -63,12 +98,24 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:rotten_flesh"
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 10,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 5
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -79,15 +126,22 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:apple"
 				},
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:enchant_randomly"
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:enchant_randomly"
 						}
 					],
+					*///?}
 					"name": "minecraft:iron_shovel"
 				},
 				{
@@ -97,7 +151,18 @@
 				{
 					"type": "minecraft:item",
 					"weight": 2,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 4
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -108,12 +173,24 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:emerald"
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 5,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 6,
+							"max": 12
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -124,6 +201,7 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:iron_nugget"
 				}
 			]

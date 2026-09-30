@@ -12,26 +12,26 @@ import java.util.Map;
 //? if >=1.21.10 {
 import net.minecraft.client.renderer.SubmitNodeCollector;
 //?} else {
-/*import net.minecraft.client.renderer.MultiBufferSource;
-*///?}
+//import net.minecraft.client.renderer.MultiBufferSource;
+//?}
 
 //? if >=1.21 {
 import net.minecraft.world.entity.Crackiness;
 //?} else {
-/*import net.minecraft.world.entity.animal.golem.IronGolem;
-*///?}
+//import net.minecraft.world.entity.animal.golem.IronGolem;
+//?}
 
 //? if >=1.21.3 {
 import com.izofar.takesapillage.common.client.render.entity.state.ClayGolemRenderState;
 //?} else {
-/*import com.izofar.takesapillage.common.entity.ClayGolem;
-*///?}
+//import com.izofar.takesapillage.common.entity.ClayGolem;
+//?}
 
 //? if >=1.21.3 {
 public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolemRenderState, ClayGolemModel>
 //?} else {
-/*public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolem, ClayGolemModel>
-*///?}
+//public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolem, ClayGolemModel>
+//?}
 {
 	//? if >=1.21 {
 	private static final Map<Crackiness.Level, Identifier> resourceLocations = ImmutableMap.of(
@@ -58,10 +58,10 @@ public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolemRenderS
 	//? if >=1.21.9 {
 	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
 	//?} else if >=1.21.3 {
-	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
-	 *///?} else {
-	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolem clayGolem, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
-	 *///?}
+	//public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
+	 //?} else {
+	//public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolem clayGolem, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
+	 //?}
 	{
 		//? >=1.21.3 {
 		var clayGolem = clayGolemRenderState.clayGolem;
@@ -78,10 +78,10 @@ public final class ClayGolemCrackinessLayer extends RenderLayer<ClayGolemRenderS
 			//? if >=1.21.9 {
 			renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, submitNodeCollector, packedLight, clayGolemRenderState, -1, 1);
 			//?} else if >=1.21.3 {
-			/*renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, packedLight, clayGolemRenderState, -1);
-			*///?} else {
-			/*renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, packedLight, clayGolem, -1);
-			*///?}
+			//renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, packedLight, clayGolemRenderState, -1);
+			//?} else {
+			//renderColoredCutoutModel(this.getParentModel(), resourcelocation, poseStack, bufferSource, packedLight, clayGolem, -1);
+			//?}
 		}
 		//?} else {
 		/*IronGolem.Crackiness crackiness = clayGolem.getCrackiness();

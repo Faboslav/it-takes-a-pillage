@@ -5,7 +5,7 @@
 		"layer0": "takesapillage:item/clay_golem_spawn_egg"
 	}
 	//?} else {
-	/*"parent": "item/template_spawn_egg",
+	//"parent": "item/template_spawn_egg",
 
-	*///?}
+	//?}
 }

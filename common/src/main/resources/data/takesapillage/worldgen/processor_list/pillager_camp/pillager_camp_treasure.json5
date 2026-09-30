@@ -3,9 +3,13 @@
 		{
 			"rules": [
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:grass_block",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:grass_block"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:dirt",
 						"probability": 1.0,
@@ -16,9 +20,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:coarse_dirt",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:coarse_dirt"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:grass_block",
 						"probability": 0.15,
@@ -29,9 +37,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:deepslate_iron_ore",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:deepslate_iron_ore"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:cobbled_deepslate",
 						"probability": 0.3,
@@ -42,9 +54,13 @@
 					}
 				},
 				{
-					"output_state": {
+					//? if >=26.3 {
+					"output_state": "minecraft:raw_iron_block",
+					//?} else {
+					/*"output_state": {
 						"Name": "minecraft:raw_iron_block"
 					},
+					*///?}
 					"input_predicate": {
 						"block": "minecraft:cobbled_deepslate",
 						"probability": 0.15,

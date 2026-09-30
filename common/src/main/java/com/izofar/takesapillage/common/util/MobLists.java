@@ -34,26 +34,26 @@ public final class MobLists
 		ImmutableList<Weighted<EntityType<? extends T>>> entries
 	)
 	//?} else {
-	/*public static <T extends Mob> WeightedRandomList<WeightedEntry.Wrapper<EntityType<? extends T>>> createWeightedList(ImmutableList list)
-	*///?}
+	//public static <T extends Mob> WeightedRandomList<WeightedEntry.Wrapper<EntityType<? extends T>>> createWeightedList(ImmutableList list)
+	//?}
 	{
 		//? >=1.21.5 {
 		return WeightedList.of(entries);
 		//?} else {
-		/*return WeightedRandomList.create(list);
-		*///?}
+		//return WeightedRandomList.create(list);
+		//?}
 	}
 
 	//? >=1.21.5 {
 	public static <T extends Mob> Weighted<EntityType<? extends T>> createWeightedEntry(EntityType<? extends T> entityType, int weight)
 	//?} else {
-	/*public static WeightedEntry.Wrapper<EntityType<? extends Mob>> createWeightedEntry(EntityType<? extends Mob> entityType, int weight)
-	*///?}
+	//public static WeightedEntry.Wrapper<EntityType<? extends Mob>> createWeightedEntry(EntityType<? extends Mob> entityType, int weight)
+	//?}
 	{
 		//? >=1.21.5 {
 		return new Weighted<>(entityType, weight);
 		//?} else {
-		/*return WeightedEntry.wrap(entityType, weight);
-		*///?}
+		//return WeightedEntry.wrap(entityType, weight);
+		//?}
 	}
 }

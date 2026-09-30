@@ -41,8 +41,8 @@ public final class IronGolemOnEntitySpawn
 		//? if >=1.21.5 {
 		clayGolem.snapTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
 		//?} else {
-		/*clayGolem.moveTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
-		*///?}
+		//clayGolem.moveTo(entity.getX(), entity.getY(), entity.getZ(), clayGolem.getRandom().nextFloat() * 360.0F, 0.0F);
+		//?}
 
 		clayGolem.copyPosition(entity);
 		clayGolem.yBodyRotO = entity.yBodyRotO;
@@ -51,7 +51,7 @@ public final class IronGolemOnEntitySpawn
 		clayGolem.yHeadRot = entity.yHeadRot;
 		clayGolem.setBaby(entity.isBaby());
 		clayGolem.setNoAi(entity.isNoAi());
-		clayGolem.setInvulnerable(entity.isInvulnerable());
+		clayGolem.setPermanentlyInvulnerable(entity.isInvulnerable());
 
 
 		if(entity.hasCustomName()) {

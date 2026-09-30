@@ -11,7 +11,18 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -22,6 +33,7 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:bone_meal"
 				},
 				{
@@ -36,7 +48,18 @@
 				{
 					"type": "minecraft:item",
 					"weight": 10,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 7
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -47,12 +70,24 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:wheat"
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 10,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 4
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -63,12 +98,24 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:bread"
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 10,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 5
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -79,6 +126,7 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:apple"
 				},
 				{
@@ -92,7 +140,18 @@
 				{
 					"type": "minecraft:item",
 					"weight": 2,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 4
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -103,12 +162,24 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:emerald"
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 5,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 6,
+							"max": 12
+						},
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -119,6 +190,7 @@
 							"add": false
 						}
 					],
+					*///?}
 					"name": "minecraft:wheat_seeds"
 				}
 			]

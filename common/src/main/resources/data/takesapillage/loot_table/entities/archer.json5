@@ -6,7 +6,29 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 2,
+								"min": 0
+							}
+						},
+						{
+							"type": "minecraft:enchanted_count_increase",
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1,
+								"min": 0
+							},
+							"enchantment": "minecraft:looting"
+						}
+					],
+					//?} else {
+					/*"functions": [
 						{
 							"add": false,
 							"count": {
@@ -26,6 +48,7 @@
 							"function": "minecraft:enchanted_count_increase"
 						}
 					],
+					*///?}
 					"name": "minecraft:arrow"
 				}
 			],
@@ -33,15 +56,43 @@
 		},
 		{
 			"bonus_rolls": 0.0,
-			"conditions": [
+			//? if >=26.3 {
+			"condition": {
+				"type": "minecraft:killed_by_player"
+			},
+			//?} else {
+			/*"conditions": [
 				{
 					"condition": "minecraft:killed_by_player"
 				}
 			],
+			*///?}
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"add": false,
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1,
+								"min": 0
+							}
+						},
+						{
+							"type": "minecraft:enchanted_count_increase",
+							"count": {
+								"type": "minecraft:uniform",
+								"max": 1,
+								"min": 0
+							},
+							"enchantment": "minecraft:looting"
+						}
+					],
+					//?} else {
+					/*"functions": [
 						{
 							"add": false,
 							"count": {
@@ -61,6 +112,7 @@
 							"function": "minecraft:enchanted_count_increase"
 						}
 					],
+					*///?}
 					"name": "minecraft:emerald"
 				}
 			],
@@ -68,28 +120,63 @@
 		},
 		{
 			"bonus_rolls": 0.0,
-			"conditions": [
+			//? if >=26.3 {
+			"condition": {
+				"type": "minecraft:entity_properties",
+				"entity": "this",
+				"predicate": {
+					"minecraft:type_specific/raider": {
+						"is_captain": true
+					}
+				}
+			},
+			//?} else if >=1.21.9 {
+			/*"conditions": [
 				{
 					"condition": "minecraft:entity_properties",
 					"entity": "this",
 					"predicate": {
-						//? if >= 1.21.9 {
 						"minecraft:type_specific/raider": {
 							"is_captain": true
 						}
-						//?} else {
-						/*"type_specific": {
-							"type": "minecraft:raider",
-							"is_captain": true
-						}
-						*///?}
 					}
 				}
 			],
+			*///?} else {
+			/*"conditions": [
+				{
+					"condition": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"type_specific": {
+							"type": "minecraft:raider",
+							"is_captain": true
+						}
+					}
+				}
+			],
+			*///?}
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"add": false,
+							"count": 1
+						},
+						{
+							"type": "minecraft:set_ominous_bottle_amplifier",
+							"amplifier": {
+								"type": "minecraft:uniform",
+								"max": 4,
+								"min": 0
+							}
+						}
+					],
+					//?} else {
+					/*"functions": [
 						{
 							"add": false,
 							"count": 1.0,
@@ -104,6 +191,7 @@
 							"function": "minecraft:set_ominous_bottle_amplifier"
 						}
 					],
+					*///?}
 					"name": "minecraft:ominous_bottle"
 				}
 			],

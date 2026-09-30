@@ -33,18 +33,18 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
 
 //? if <= 1.21.10 {
-/*import net.minecraft.world.item.ProjectileWeaponItem;
-*///?}
+//import net.minecraft.world.item.ProjectileWeaponItem;
+//?}
 
 /*? <=1.21 {*/
-/*import net.minecraft.nbt.CompoundTag;
- *//*?}*/
+//import net.minecraft.nbt.CompoundTag;
+ /*?}*/
 
 //? >= 1.21.3 {
 import net.minecraft.world.entity.EntitySpawnReason;
 //?} else {
-/*import net.minecraft.world.entity.MobSpawnType;
- *///?}
+//import net.minecraft.world.entity.MobSpawnType;
+ //?}
 
 public class Archer extends AbstractIllager implements RangedAttackMob
 {
@@ -128,8 +128,8 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 
 	protected AbstractArrow getArrow(ItemStack itemstack, float f) {
 		//? if <=1.20.1 {
-		/*return ProjectileUtil.getMobArrow(this, itemstack, f);
-		*///?} else {
+		//return ProjectileUtil.getMobArrow(this, itemstack, f);
+		//?} else {
 		return ProjectileUtil.getMobArrow(this, itemstack, f, null);
 		//?}
 	}
@@ -148,12 +148,12 @@ public class Archer extends AbstractIllager implements RangedAttackMob
 		//? >= 1.21.3 {
 		EntitySpawnReason spawnReason,
 		 //?} else {
-		/*MobSpawnType spawnReason,
-		*///?}
+		//MobSpawnType spawnReason,
+		//?}
 		@Nullable SpawnGroupData entityData
 		//? <1.21.1 {
-		/*,CompoundTag compoundTag
-		 *///?}
+		//,CompoundTag compoundTag
+		 //?}
 	) {
 		SpawnGroupData spawnGroupData = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*//*, compoundTag*//*?}*/);
 		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);

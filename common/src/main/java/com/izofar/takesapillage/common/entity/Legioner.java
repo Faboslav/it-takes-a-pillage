@@ -32,7 +32,11 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.villager.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.item.AxeItem;
+//? if >=26.3 {
+import net.minecraft.tags.ItemTags;
+//?} else {
+//import net.minecraft.world.item.AxeItem;
+//?}
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -51,8 +55,8 @@ import net.minecraft.nbt.CompoundTag;
 //? >= 1.21.3 {
 import net.minecraft.world.entity.EntitySpawnReason;
 //?} else {
-/*import net.minecraft.world.entity.MobSpawnType;
-*///?}
+//import net.minecraft.world.entity.MobSpawnType;
+//?}
 
 public final class Legioner extends AbstractIllager implements ShieldedMob
 {
@@ -134,12 +138,12 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		//? >= 1.21.3 {
 		EntitySpawnReason spawnReason,
 		 //?} else {
-		/*MobSpawnType spawnReason,
-		*///?}
+		//MobSpawnType spawnReason,
+		//?}
 		@Nullable SpawnGroupData entityData
 		//? <1.21.1 {
-		/*,CompoundTag compoundTag
-		*///?}
+		//,CompoundTag compoundTag
+		//?}
 	) {
 		SpawnGroupData spawngroupdata = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*//*, compoundTag*//*?}*/);
 		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);
@@ -175,43 +179,51 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 	//? if >= 26.2 {
 	public void knockback(double power, double xd, double zd, final DamageSource source, final float damage, final boolean comesFromEffect)
 	//?} else {
-	/*public void knockback(double x, double y, double z)
-	*///?}
+	//public void knockback(double x, double y, double z)
+	//?}
 	{
 		if (!this.isUsingShield()) {
 			//? if >= 26.2 {
 			super.knockback(power, xd, zd, source, damage, comesFromEffect);
 			//?} else {
-			/*super.knockback(x, y, z);
-			*///?}
+			//super.knockback(x, y, z);
+			//?}
 		} else {
 			//? if >=1.21.5 {
 			var soundEvent = SoundEvents.SHIELD_BLOCK.value();
 			//?} else {
-			/*var soundEvent = SoundEvents.SHIELD_BLOCK;
-			*///?}
+			//var soundEvent = SoundEvents.SHIELD_BLOCK;
+			//?}
 			this.playSound(soundEvent, 1.0F, 0.8F + this.level().getRandom().nextFloat() * 0.4F);
 		}
 	}
 
 	@Override
-	//? if >= 26.2 {
-	protected void blockUsingItem(final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage)
+	//? if >= 26.3 {
+	protected void blockUsingItem(final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage, final boolean fullyBlocked)
+	//?} else if >= 26.2 {
+	//protected void blockUsingItem(final ServerLevel level, final LivingEntity attacker, final DamageSource source, final float damage)
 	//?} else if >= 1.21.5 {
-	/*protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
-	*///?} else {
-	/*protected void blockUsingShield(LivingEntity attacker)
-	*///?}
+	//protected void blockUsingItem(ServerLevel level, LivingEntity attacker)
+	//?} else {
+	//protected void blockUsingShield(LivingEntity attacker)
+	//?}
 	{
-		//? if >= 26.2 {
-		super.blockedByItem(this, source, damage);
+		//? if >= 26.3 {
+		super.blockedByItem(this, source, damage, fullyBlocked);
+		//?} else if >= 26.2 {
+		//super.blockedByItem(this, source, damage);
 		//?} else if >= 1.21.5 {
-		/*super.blockedByItem(this);
-		*///?} else {
-		/*super.blockUsingShield(attacker);
-		*///?}
+		//super.blockedByItem(this);
+		//?} else {
+		//super.blockUsingShield(attacker);
+		//?}
 
-		if (attacker.getMainHandItem().getItem() instanceof AxeItem) {
+		//? if >= 26.3 {
+		if (attacker.getMainHandItem().is(ItemTags.AXES)) {
+		//?} else {
+		//if (attacker.getMainHandItem().getItem() instanceof AxeItem) {
+		//?}
 			this.disableShield();
 		}
 	}
@@ -223,8 +235,8 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 		//? if >=1.21.5 {
 		var soundEvent = SoundEvents.SHIELD_BREAK.value();
 		//?} else {
-		/*var soundEvent = SoundEvents.SHIELD_BREAK;
-		 *///?}
+		//var soundEvent = SoundEvents.SHIELD_BREAK;
+		 //?}
 		this.playSound(soundEvent, 0.8F, 0.8F + this.level().getRandom().nextFloat() * 0.4F);
 	}
 
@@ -245,8 +257,8 @@ public final class Legioner extends AbstractIllager implements ShieldedMob
 				/*? >= 1.21 {*/
 				if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING.id())) {
 					/*?} else {*/
-					/*if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
-					 *//*?}*/
+					//if (attributeinstance != null && !attributeinstance.hasModifier(SPEED_MODIFIER_BLOCKING)) {
+					 /*?}*/
 					attributeinstance.addTransientModifier(SPEED_MODIFIER_BLOCKING);
 				}
 			}

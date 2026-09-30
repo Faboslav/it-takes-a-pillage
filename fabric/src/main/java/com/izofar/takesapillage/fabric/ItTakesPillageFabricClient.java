@@ -22,8 +22,8 @@ public final class ItTakesPillageFabricClient implements ClientModInitializer
 		RegisterEntityModelLayersEvent.EVENT.invoke(new RegisterEntityModelLayersEvent((type, supplier) -> ModelLayerRegistry.registerModelLayer(type, supplier::get)));
 
 		//? if <1.21.3 {
-		/*RegisterItemPropertiesEvent.EVENT.invoke(new RegisterItemPropertiesEvent(ItemProperties::register));
-		*///?}
+		//RegisterItemPropertiesEvent.EVENT.invoke(new RegisterItemPropertiesEvent(ItemProperties::register));
+		//?}
 	}
 }
 

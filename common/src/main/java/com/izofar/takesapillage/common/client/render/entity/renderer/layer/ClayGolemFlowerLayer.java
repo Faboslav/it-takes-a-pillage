@@ -19,14 +19,14 @@ import net.minecraft.client.Minecraft;
 //? if >= 1.21.3 {
 import com.izofar.takesapillage.common.client.render.entity.state.ClayGolemRenderState;
 //?} else {
-/*import com.izofar.takesapillage.common.entity.ClayGolem;
-*///?}
+//import com.izofar.takesapillage.common.entity.ClayGolem;
+//?}
 
 //? if >=1.21.3 {
 public final class ClayGolemFlowerLayer extends RenderLayer<ClayGolemRenderState, ClayGolemModel>
 //?} else {
-/*public final class ClayGolemFlowerLayer extends RenderLayer<ClayGolem, ClayGolemModel>
-*///?}
+//public final class ClayGolemFlowerLayer extends RenderLayer<ClayGolem, ClayGolemModel>
+//?}
 {
 	//? >=1.21.3 {
 	public ClayGolemFlowerLayer(RenderLayerParent<ClayGolemRenderState, ClayGolemModel> renderLayerParent) {
@@ -40,10 +40,10 @@ public final class ClayGolemFlowerLayer extends RenderLayer<ClayGolemRenderState
 	//? if >=1.21.9 {
 	public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
 	//?} else if >=1.21.3 {
-	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
-	 *///?} else {
-	/*public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolem clayGolem, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
-	 *///?}
+	//public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolemRenderState clayGolemRenderState, float yRot, float xRot)
+	 //?} else {
+	//public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, ClayGolem clayGolem, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float yRot, float xRot)
+	 //?}
 	{
 		//? >=1.21.3 {
 		var clayGolem = clayGolemRenderState.clayGolem;
@@ -58,15 +58,15 @@ public final class ClayGolemFlowerLayer extends RenderLayer<ClayGolemRenderState
 		poseStack.translate(-1.0185D, 0.78D, -0.9375D);
 		poseStack.translate(0.5D, 0.5D, 0.5D);
 		poseStack.scale(0.5F, 0.5F, 0.5F);
-		poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+		poseStack.rotate(Axis.XP.rotationDegrees(-90.0F));
 		poseStack.translate(-0.5D, -0.5D, -0.5D);
 		//? if>=26.1 {
 		clayGolemRenderState.poppyFlowerModel.submit(poseStack, submitNodeCollector, packedLight, OverlayTexture.NO_OVERLAY, clayGolemRenderState.outlineColor);
 		//?} else if >=1.21.10 {
-		/*submitNodeCollector.submitBlock(poseStack, Blocks.POPPY.defaultBlockState(), packedLight, OverlayTexture.NO_OVERLAY, clayGolemRenderState.outlineColor);
-		*///?} else {
-		/*Minecraft.getInstance().getBlockRenderer().renderSingleBlock(Blocks.POPPY.defaultBlockState(), poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
-		*///?}
+		//submitNodeCollector.submitBlock(poseStack, Blocks.POPPY.defaultBlockState(), packedLight, OverlayTexture.NO_OVERLAY, clayGolemRenderState.outlineColor);
+		//?} else {
+		//Minecraft.getInstance().getBlockRenderer().renderSingleBlock(Blocks.POPPY.defaultBlockState(), poseStack, bufferSource, packedLight, OverlayTexture.NO_OVERLAY);
+		//?}
 		poseStack.popPose();
 	}
 }

@@ -19,8 +19,8 @@ public final class ItTakesPillageClient
 		RegisterEntityRenderersEvent.EVENT.addListener(ItTakesPillageEntityRenderers::registerEntityRenderers);
 		RegisterEntityModelLayersEvent.EVENT.addListener(ItTakesPillageEntityModelLayers::registerEntityModelLayers);
 		//? if <1.21.3 {
-		/*RegisterItemPropertiesEvent.EVENT.addListener(ItTakesPillageItems::registerItemProperties);
-		*///?}
+		//RegisterItemPropertiesEvent.EVENT.addListener(ItTakesPillageItems::registerItemProperties);
+		//?}
 	}
 
 	public static Screen getConfigScreen(Screen screen) {

@@ -32,8 +32,8 @@ import java.util.EnumSet;
 import java.util.function.Predicate;
 
 /*? if <=1.20.1 {*/
-/*import net.minecraft.nbt.CompoundTag;
- *//*?}*/
+//import net.minecraft.nbt.CompoundTag;
+ /*?}*/
 
 public final class Skirmisher extends AbstractIllager
 {
@@ -116,12 +116,12 @@ public final class Skirmisher extends AbstractIllager
 		//? >= 1.21.3 {
 		EntitySpawnReason spawnReason,
 		 //?} else {
-		/*MobSpawnType spawnReason,
-		*///?}
+		//MobSpawnType spawnReason,
+		//?}
 		@Nullable SpawnGroupData entityData
 		//? <1.21.1 {
-		/*,CompoundTag compoundTag
-		 *///?}
+		//,CompoundTag compoundTag
+		 //?}
 	) {
 		SpawnGroupData spawngroupdata = super.finalizeSpawn(world, difficulty, spawnReason, entityData /*? <1.21.1 {*//*, compoundTag*//*?}*/);
 		((GroundPathNavigation) this.getNavigation()).setCanOpenDoors(true);

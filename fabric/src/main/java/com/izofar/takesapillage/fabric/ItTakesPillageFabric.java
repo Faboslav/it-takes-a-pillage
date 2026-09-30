@@ -35,8 +35,8 @@ public final class ItTakesPillageFabric implements ModInitializer
 			}
 		});
 		//?} else {
-		/*ServerTickEvents.END_WORLD_TICK.register(world -> ServerLevelTickEvent.EVENT.invoke(new ServerLevelTickEvent(world, true)));
-		*///?}
+		//ServerTickEvents.END_WORLD_TICK.register(world -> ServerLevelTickEvent.EVENT.invoke(new ServerLevelTickEvent(world, true)));
+		//?}
 		RegisterEntityAttributesEvent.EVENT.invoke(new RegisterEntityAttributesEvent(FabricDefaultAttributeRegistry::register));
 	}
 }

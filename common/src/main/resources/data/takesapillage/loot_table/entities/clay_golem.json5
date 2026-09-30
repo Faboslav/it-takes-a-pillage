@@ -6,7 +6,18 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"add": false,
+						"count": {
+							"type": "minecraft:uniform",
+							"max": 2,
+							"min": 0
+						}
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"add": false,
 							"count": {
@@ -17,6 +28,7 @@
 							"function": "minecraft:set_count"
 						}
 					],
+					*///?}
 					"name": "minecraft:allium"
 				}
 			],
@@ -27,7 +39,18 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"add": false,
+						"count": {
+							"type": "minecraft:uniform",
+							"max": 5,
+							"min": 3
+						}
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"add": false,
 							"count": {
@@ -38,6 +61,7 @@
 							"function": "minecraft:set_count"
 						}
 					],
+					*///?}
 					"name": "minecraft:clay_ball"
 				}
 			],

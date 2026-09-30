@@ -16,8 +16,8 @@ import com.izofar.takesapillage.common.entity.ClayGolem;
 //? >=1.21.3 {
 public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
 //?} else {
-/*public final class ClayGolemModel extends HierarchicalModel<ClayGolem>
-*///?}
+//public final class ClayGolemModel extends HierarchicalModel<ClayGolem>
+//?}
 {
 	private final ModelPart root;
 	private final ModelPart head;
@@ -62,8 +62,8 @@ public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
 	//? >=1.21.3 {
 	public void setupAnim(ClayGolemRenderState renderState)
 	//?} else {
-	/*public void setupAnim(ClayGolem clayGolem, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
-	*///?}
+	//public void setupAnim(ClayGolem clayGolem, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch)
+	//?}
 	{
 		//? >=1.21.3 {
 		var clayGolem = renderState.clayGolem;

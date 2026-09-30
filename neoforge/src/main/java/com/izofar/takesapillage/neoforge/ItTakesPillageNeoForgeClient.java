@@ -36,8 +36,8 @@ public final class ItTakesPillageNeoForgeClient
 			});
 
 			//? if <1.21.3 {
-			/*RegisterItemPropertiesEvent.EVENT.invoke(new RegisterItemPropertiesEvent(ItemProperties::register));
-			 *///?}
+			//RegisterItemPropertiesEvent.EVENT.invoke(new RegisterItemPropertiesEvent(ItemProperties::register));
+			 //?}
 		});
 	}
 

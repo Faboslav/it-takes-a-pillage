@@ -14,7 +14,20 @@
 	},
 	"criteria": {
 		"in_pillager_camp": {
+			//? if >=26.3 {
 			"conditions": {
+				"player": {
+					"type": "minecraft:entity_properties",
+					"entity": "this",
+					"predicate": {
+						"location": {
+							"structures": "takesapillage:pillager_camp"
+						}
+					}
+				}
+			},
+			//?} else {
+			/*"conditions": {
 				"player": [
 					{
 						"condition": "minecraft:entity_properties",
@@ -27,6 +40,7 @@
 					}
 				]
 			},
+			*///?}
 			"trigger": "minecraft:location"
 		}
 	},

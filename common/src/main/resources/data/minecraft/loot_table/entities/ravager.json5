@@ -8,13 +8,21 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": 1,
+						"add": false
+					},
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": 1.0,
 							"add": false
 						}
 					],
+					*///?}
 					"name": "takesapillage:ravager_horn"
 				}
 			]

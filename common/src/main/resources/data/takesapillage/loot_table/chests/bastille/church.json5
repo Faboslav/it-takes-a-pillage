@@ -12,7 +12,18 @@
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:glowstone_dust",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 0,
+							"max": 2
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -23,11 +34,23 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:sugar",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 0,
+							"max": 2
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -38,11 +61,23 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:redstone",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 0,
+							"max": 2
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -53,11 +88,23 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:spider_eye",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 0,
+							"max": 2
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -68,11 +115,23 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:glass_bottle",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 0,
+							"max": 2
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -83,11 +142,23 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:gunpowder",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 0,
+							"max": 2
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -98,12 +169,24 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 2,
 					"name": "minecraft:stick",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 0,
+							"max": 2
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -114,6 +197,7 @@
 							"add": false
 						}
 					]
+					*///?}
 				}
 			]
 		},
@@ -129,7 +213,24 @@
 					"type": "minecraft:item",
 					"name": "minecraft:potion",
 					"weight": 7,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 3,
+								"max": 5
+							},
+							"add": false
+						},
+						{
+							"type": "minecraft:set_potion",
+							"id": "minecraft:water"
+						}
+					]
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -144,12 +245,24 @@
 							"id": "minecraft:water"
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 5,
 					"name": "minecraft:glistering_melon_slice",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 5
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -160,12 +273,24 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 5,
 					"name": "minecraft:golden_carrot",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 3,
+							"max": 5
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -176,6 +301,7 @@
 							"add": false
 						}
 					]
+					*///?}
 				}
 			]
 		},
@@ -191,7 +317,18 @@
 					"type": "minecraft:item",
 					"weight": 3,
 					"name": "minecraft:tinted_glass",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 3,
+							"max": 5
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -202,12 +339,24 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 5,
 					"name": "minecraft:cobbled_deepslate",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 4,
+							"max": 7
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -218,6 +367,7 @@
 							"add": false
 						}
 					]
+					*///?}
 				}
 			]
 		},
@@ -238,7 +388,18 @@
 					"type": "minecraft:item",
 					"weight": 4,
 					"name": "minecraft:string",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 6
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -249,12 +410,24 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 4,
 					"name": "minecraft:arrow",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 2,
+							"max": 7
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -265,12 +438,30 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:potion",
 					"weight": 3,
-					"functions": [
+					//? if >=26.3 {
+					"modifier": [
+						{
+							"type": "minecraft:set_count",
+							"count": {
+								"type": "minecraft:uniform",
+								"min": 1,
+								"max": 3
+							},
+							"add": false
+						},
+						{
+							"type": "minecraft:set_potion",
+							"id": "minecraft:healing"
+						}
+					]
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -285,12 +476,24 @@
 							"id": "minecraft:healing"
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"weight": 3,
 					"name": "minecraft:iron_ingot",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:set_count",
+						"count": {
+							"type": "minecraft:uniform",
+							"min": 1,
+							"max": 3
+						},
+						"add": false
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:set_count",
 							"count": {
@@ -301,15 +504,22 @@
 							"add": false
 						}
 					]
+					*///?}
 				},
 				{
 					"type": "minecraft:item",
 					"name": "minecraft:book",
-					"functions": [
+					//? if >=26.3 {
+					"modifier": {
+						"type": "minecraft:enchant_randomly"
+					}
+					//?} else {
+					/*"functions": [
 						{
 							"function": "minecraft:enchant_randomly"
 						}
 					]
+					*///?}
 				}
 			]
 		},

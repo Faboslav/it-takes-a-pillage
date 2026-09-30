@@ -11,8 +11,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.client.renderer.entity.MobRenderer;
 
 //? if <= 1.21.3 {
-/*import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-*///?}
+//import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
+//?}
 
 //? >= 1.21.3 {
 import com.izofar.takesapillage.common.client.render.entity.state.SkirmisherRenderState;
@@ -21,11 +21,12 @@ import net.minecraft.world.entity.monster.illager.AbstractIllager;
 import net.minecraft.world.item.CrossbowItem;
 //?}
 
+@SuppressWarnings("all")
 //? >= 1.21.3 {
 public final class SkirmisherRenderer extends MobRenderer<Skirmisher, SkirmisherRenderState, SkirmisherModel>
 //?} else {
-/*public final class SkirmisherRenderer extends MobRenderer<Skirmisher, SkirmisherModel>
-*///?}
+//public final class SkirmisherRenderer extends MobRenderer<Skirmisher, SkirmisherModel>
+//?}
 {
 	private static final Identifier TEXTURE = ItTakesPillage.makeId("textures/entity/skirmisher.png");
 	public static final float SCALE = 0.9375F;
@@ -47,12 +48,12 @@ public final class SkirmisherRenderer extends MobRenderer<Skirmisher, Skirmisher
 		//? >=1.21.3 {
 		SkirmisherRenderState renderState,
 		//?} else {
-		/*Skirmisher skirmisher,
-		*///?}
+		//Skirmisher skirmisher,
+		//?}
 		PoseStack poseStack
 		//? <1.21.3 {
-		/*,float partialTickTime
-		*///?}
+		//,float partialTickTime
+		//?}
 	) {
 		poseStack.scale(SCALE, SCALE, SCALE);
 	}
@@ -70,14 +71,16 @@ public final class SkirmisherRenderer extends MobRenderer<Skirmisher, Skirmisher
 		//? if >= 1.21.11 {
 		ArmedEntityRenderState.extractArmedEntityRenderState(skirmisher, renderState, this.itemModelResolver, partialTick);
 		//?} else {
-		/*ArmedEntityRenderState.extractArmedEntityRenderState(skirmisher, renderState, this.itemModelResolver);
-		*///?}
+		//ArmedEntityRenderState.extractArmedEntityRenderState(skirmisher, renderState, this.itemModelResolver);
+		//?}
 		renderState.isRiding = skirmisher.isPassenger();
 		renderState.mainArm = skirmisher.getMainArm();
 		renderState.armPose = skirmisher.getArmPose();
 		renderState.maxCrossbowChargeDuration = renderState.armPose == AbstractIllager.IllagerArmPose.CROSSBOW_CHARGE ? CrossbowItem.getChargeDuration(skirmisher.getUseItem(), skirmisher) : 0;
 		renderState.ticksUsingItem = skirmisher.getTicksUsingItem();
-		renderState.attackAnim = skirmisher.getAttackAnim(partialTick);
+		//? if <26.3 {
+		//renderState.attackAnim = skirmisher.getAttackAnim(partialTick);
+		//?}
 		renderState.isAggressive = skirmisher.isAggressive();
 	}
 	//?}
@@ -86,8 +89,8 @@ public final class SkirmisherRenderer extends MobRenderer<Skirmisher, Skirmisher
 	//? >= 1.21.3 {
 	public Identifier getTextureLocation(SkirmisherRenderState renderState)
 	//?} else {
-	/*public Identifier getTextureLocation(Skirmisher skirmisher)
-	*///?}
+	//public Identifier getTextureLocation(Skirmisher skirmisher)
+	//?}
 	{
 		return TEXTURE;
 	}

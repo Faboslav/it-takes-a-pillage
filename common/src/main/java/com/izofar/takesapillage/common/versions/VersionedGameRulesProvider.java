@@ -8,8 +8,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.gamerules.GameRule;
 import net.minecraft.world.level.gamerules.GameRules;
 //?} else {
-/*import net.minecraft.world.level.gamerules.GameRules;
- *///?}
+//import net.minecraft.world.level.gamerules.GameRules;
+ //?}
 
 public final class VersionedGameRulesProvider
 {
@@ -26,14 +26,14 @@ public final class VersionedGameRulesProvider
 		//? if >=1.21.11 {
 		GameRule<?> gameRule
 		//? } else {
-		/*GameRules.Key<GameRules.BooleanValue> gameRule
-		 *///?}
+		//GameRules.Key<GameRules.BooleanValue> gameRule
+		 //?}
 	) {
 		//? if >= 1.21.11 {
 		return (Boolean) ((ServerLevel)entity.level()).getGameRules().get(gameRule);
 		//?} else {
-		/*return ((ServerLevel) entity.level()).getGameRules().getBoolean(gameRule);
-		 *///?}
+		//return ((ServerLevel) entity.level()).getGameRules().getBoolean(gameRule);
+		 //?}
 	}
 
 	public static boolean getBoolean(
@@ -41,14 +41,14 @@ public final class VersionedGameRulesProvider
 		//? if >=1.21.11 {
 		GameRule<?> gameRule
 		//? } else {
-		/*GameRules.Key<GameRules.BooleanValue> gameRule
-		 *///?}
+		//GameRules.Key<GameRules.BooleanValue> gameRule
+		 //?}
 	) {
 		//? if >= 1.21.11 {
 		return (Boolean) serverLevel.getGameRules().get(gameRule);
 		//?} else {
-		/*return serverLevel.getGameRules().getBoolean(gameRule);
-		 *///?}
+		//return serverLevel.getGameRules().getBoolean(gameRule);
+		 //?}
 	}
 
 	public static GameRules getGameRules(Entity entity) {
@@ -57,8 +57,8 @@ public final class VersionedGameRulesProvider
 		/*? >=1.21.3 {*/
 		gameRules = ((ServerLevel)entity.level()).getGameRules();
 		/*?} else {*/
-		/*gameRules = entity.level().getGameRules();
-		 *//*?}*/
+		//gameRules = entity.level().getGameRules();
+		 /*?}*/
 
 		return gameRules;
 	}

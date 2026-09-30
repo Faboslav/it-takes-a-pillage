@@ -1,3 +1,7 @@
+## 1.0.13
+
+- Fixed default config values
+
 ## 1.0.12
 
 - Fixed infested blocks in structures

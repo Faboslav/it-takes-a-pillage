@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 public final class SkirmisherRenderState extends IllagerRenderState
 {
 	public Skirmisher skirmisher;
-	public float attackTime;
 
 	public SkirmisherRenderState() {
 	}

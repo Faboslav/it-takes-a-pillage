@@ -8,14 +8,14 @@ import net.minecraft.world.entity.HumanoidArm;
 //? >= 1.21.3 {
 import com.izofar.takesapillage.common.client.render.entity.state.LegionerRenderState;
 //?} else {
-/*import com.izofar.takesapillage.common.entity.Legioner;
-*///?}
+//import com.izofar.takesapillage.common.entity.Legioner;
+//?}
 
 //? >= 1.21.3 {
 public final class LegionerModel extends IllagerModel<LegionerRenderState>
 //?} else {
-/*public class LegionerModel extends IllagerModel<Legioner>
- *///?}
+//public class LegionerModel extends IllagerModel<Legioner>
+ //?}
 {
 	private final ModelPart rightArm;
 	private final ModelPart leftArm;
@@ -44,8 +44,8 @@ public final class LegionerModel extends IllagerModel<LegionerRenderState>
 		var legioner = renderState.legioner;
 		super.setupAnim(renderState);
 		//?} else {
-		/*super.setupAnim(legioner, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-		*///?}
+		//super.setupAnim(legioner, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+		//?}
 		
 		if (legioner.isAlive() && legioner.isUsingShield()) {
 			boolean flag = legioner.getMainArm() == HumanoidArm.RIGHT;

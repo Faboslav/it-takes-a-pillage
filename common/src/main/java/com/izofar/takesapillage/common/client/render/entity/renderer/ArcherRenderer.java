@@ -16,8 +16,8 @@ import com.izofar.takesapillage.common.client.render.entity.state.ArcherRenderSt
 //? >= 1.21.3 {
 public final class ArcherRenderer extends IllagerRenderer<Archer, ArcherRenderState>
 //?} else {
-/*public final class ArcherRenderer extends IllagerRenderer<Archer>
-*///?}
+//public final class ArcherRenderer extends IllagerRenderer<Archer>
+//?}
 {
 	private static final Identifier TEXTURE = ItTakesPillage.makeId("textures/entity/archer.png");
 
@@ -26,14 +26,14 @@ public final class ArcherRenderer extends IllagerRenderer<Archer, ArcherRenderSt
 		//? >= 1.21.3 {
 		super(context, new ArcherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.ARCHER)), 0.5F);
 		//?} else {
-		/*super(context, new ArcherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.ARCHER)), 0.5F);
-		*///?}
+		//super(context, new ArcherModel(context.bakeLayer(ItTakesPillageEntityModelLayers.ARCHER)), 0.5F);
+		//?}
 
 		//? >= 1.21.3 {
 		this.addLayer(new ItemInHandLayer<>(this));
 		//?} else {
-		/*this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
-		*///?}
+		//this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
+		//?}
 		this.model.getHat().visible = true;
 	}
 
@@ -54,8 +54,8 @@ public final class ArcherRenderer extends IllagerRenderer<Archer, ArcherRenderSt
 	//? >= 1.21.3 {
 	public Identifier getTextureLocation(ArcherRenderState renderState)
 	//?} else {
-	/*public Identifier getTextureLocation(Archer archer)
-	*///?}
+	//public Identifier getTextureLocation(Archer archer)
+	//?}
 	{
 		return TEXTURE;
 	}
