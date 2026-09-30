@@ -3,6 +3,7 @@
 - Fixed default config values
 - Fixed tags problems
 - Improved performance of extra structure checks
+- Fixed Mod Menu integration on Fabric
 
 ## 1.0.12
 
