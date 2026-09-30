@@ -2,6 +2,7 @@
 
 - Fixed default config values
 - Fixed tags problems
+- Improved performance of extra structure checks
 
 ## 1.0.12
 

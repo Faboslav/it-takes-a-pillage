@@ -104,8 +104,7 @@ public final class PillagerStructure extends Structure
 		int j = context.chunkPos().z() >> 4;
 		WorldgenRandom worldgenrandom = new WorldgenRandom(new LegacyRandomSource(0L));
 		worldgenrandom.setSeed((i ^ j << 4) ^ context.seed());
-		return ModStructureUtils.isRelativelyFlat(context, terrainSearchRadius, maxTerrainRange)
-			   && ModStructureUtils.isOnLand(context, terrainSearchRadius);
+		return ModStructureUtils.isRelativelyFlat(context, terrainSearchRadius, maxTerrainRange);
 	}
 
 	@Override
