@@ -55,6 +55,7 @@ public final class ClayGolemRenderer extends MobRenderer<ClayGolem, ClayGolemRen
 	public void extractRenderState(ClayGolem clayGolem, ClayGolemRenderState renderState, float partialTick) {
 		super.extractRenderState(clayGolem, renderState, partialTick);
 		renderState.clayGolem = clayGolem;
+		renderState.attackTicksRemaining = clayGolem.getAttackAnimationTick() > 0 ? clayGolem.getAttackAnimationTick() - partialTick : 0.0F;
 
 		//? if >= 26.1 {
 		this.blockModelResolver.update(renderState.poppyFlowerModel, Blocks.POPPY.defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
@@ -82,7 +83,7 @@ public final class ClayGolemRenderer extends MobRenderer<ClayGolem, ClayGolemRen
 
 		if (clayGolem.walkAnimation.speed() >= 0.01D) {
 			//? if >=1.21.3 {
-			float f1 = clayGolem.walkAnimation.position(renderState.walkAnimationSpeed) + 6.0F;
+			float f1 = renderState.walkAnimationPos + 6.0F;
 			//?} else {
 			//float f1 = clayGolem.walkAnimation.position(roll) + 6.0F;
 			//?}

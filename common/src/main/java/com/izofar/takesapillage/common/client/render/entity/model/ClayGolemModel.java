@@ -71,7 +71,10 @@ public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
 		var limbDistance = renderState.walkAnimationSpeed;
 		var headYaw = renderState.yRot;
 		var headPitch = renderState.xRot;
-		//?}
+		var attackTicksRemaining = renderState.attackTicksRemaining;
+		//?} else {
+		/*var attackTicksRemaining = clayGolem.getAttackAnimationTick() > 0 ? clayGolem.getAttackAnimationTick() - (animationProgress - clayGolem.tickCount) : 0.0F;
+		*///?}
 
 		this.head.yRot = headYaw * 0.017453292F;
 		this.head.xRot = headPitch * 0.017453292F;
@@ -80,10 +83,9 @@ public class ClayGolemModel extends EntityModel<ClayGolemRenderState>
 		this.right_leg.yRot = 0.0F;
 		this.left_leg.yRot = 0.0F;
 
-		int i = clayGolem.getAttackAnimationTick();
-		if (i > 0) {
-			this.right_arm.xRot = -2.0F + 1.5F * Mth.triangleWave(i - headYaw, 10.0F);
-			this.left_arm.xRot = -2.0F + 1.5F * Mth.triangleWave(i - headYaw, 10.0F);
+		if (attackTicksRemaining > 0.0F) {
+			this.right_arm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTicksRemaining, 10.0F);
+			this.left_arm.xRot = -2.0F + 1.5F * Mth.triangleWave(attackTicksRemaining, 10.0F);
 		} else {
 			int j = clayGolem.getOfferFlowerTick();
 			if (j > 0) {

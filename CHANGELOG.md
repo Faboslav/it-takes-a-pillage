@@ -1,3 +1,8 @@
+## 1.0.14
+
+- Fixed clay golem attack animation
+- Fixed archer arrows not counting as projectiles
+
 ## 1.0.13
 
 - Fixed default config values

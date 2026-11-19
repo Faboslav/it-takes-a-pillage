@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.block.BlockModelRenderState;
 public final class ClayGolemRenderState extends LivingEntityRenderState
 {
 	public ClayGolem clayGolem;
+	public float attackTicksRemaining;
 	//? if >= 26.1 {
 	public final BlockModelRenderState poppyFlowerModel;
 	//?}
